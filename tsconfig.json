@@ -1,8 +1,9 @@
 {
   "compilerOptions": {
     "target": "es5",
-    "module": "amd",
+    "module": "commonjs",
     "sourceMap": false,
-    "outFile": "dist/js/app.js"
+    "removeComments": true,
+    "outDir": "build/"
   }
 }
