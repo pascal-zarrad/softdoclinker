@@ -104,3 +104,4 @@ fabric.properties
 ### Ignore out JS
 
 dist/js
+build/

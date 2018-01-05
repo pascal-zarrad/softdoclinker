@@ -8,14 +8,17 @@
   "license": "MIT",
   "private": false,
   "scripts": {
-    "build": "npm run cleanOutput && npm run compileTS",
+    "build": "npm run cleanOutput && npm run cleanBuildOutput && npm run compileTS && npm run webpackCompileOutput",
+    "cleanBuildOutput": "del-cli build/",
     "cleanOutput": "del-cli dist/js/app.js",
-    "compileTS": "tsc"
+    "compileTS": "tsc",
+    "webpackCompileOutput": "webpack --config webpack.config.js"
   },
   "dependencies": {
     "del-cli": "^1.1.0"
   },
   "devDependencies": {
-    "typescript": "^2.6.2"
+    "typescript": "^2.6.2",
+    "webpack": "^3.10.0"
   }
 }
