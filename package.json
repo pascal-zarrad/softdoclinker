@@ -1,0 +1,21 @@
+{
+  "name": "SoftDocLinker",
+  "version": "1.0.0",
+  "description": "Provide an overview and viewer for software documentations. Especially for GitHub Pages.",
+  "main": "release/js/app.js",
+  "repository": "https://github.com/PlayerForceHD/SoftDocLinker.git",
+  "author": "PlayerForce <admin@playerforce.me>",
+  "license": "MIT",
+  "private": false,
+  "scripts": {
+    "build": "npm run cleanOutput && npm run compileTS",
+    "cleanOutput": "del-cli dist/js/app.js",
+    "compileTS": "tsc"
+  },
+  "dependencies": {
+    "del-cli": "^1.1.0"
+  },
+  "devDependencies": {
+    "typescript": "^2.6.2"
+  }
+}
