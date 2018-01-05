@@ -23,6 +23,11 @@ So you just have to modify the JSon file and push your changes to GitHub to upda
 
 - Tutorial will be added after first version that works is done.
 
+### Customization
+
+You can change the favicon by replacing the favicon at ```img/icon.png```.
+You can customize a lot of things in the ```cfg.json``` located at ```cfg/cfg.json```.
+
 ### Building the project
 
 To build this project, you must have installed NPM.
