@@ -23,6 +23,13 @@ So you just have to modify the JSon file and push your changes to GitHub to upda
 
 - Tutorial will be added after first version that works is done.
 
+### Building the project
+
+To build this project, you must have installed NPM.
+Simply run ```npm run build``` (or ```yarn run build```, if you're using yarn).
+It will (re)build the app.js that provides the required logic for SoftDocLinker to run.
+After running the build command, your required files are located in the ```dist/``` folder!
+
 ### I want to make SoftDocLinker better!
 
 SoftDocLinker is a simple project, so just make your changes, create a pull request.
