@@ -28,7 +28,7 @@ So you just have to modify the JSon file and push your changes to GitHub to upda
 You can change the favicon by replacing the favicon at ```img/icon.png```.
 You can customize a lot of things in the ```cfg.json``` located at ```cfg/cfg.json```.
 
-**List of all available configuration options in ```cfg.json```:
+**List of all available configuration options in ```cfg.json```:**
 
 Option | Description
 ------------ | -------------
