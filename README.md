@@ -28,6 +28,17 @@ So you just have to modify the JSon file and push your changes to GitHub to upda
 You can change the favicon by replacing the favicon at ```img/icon.png```.
 You can customize a lot of things in the ```cfg.json``` located at ```cfg/cfg.json```.
 
+**List of all available configuration options in ```cfg.json```:
+
+Option | Description
+------------ | -------------
+pageTitle | Change the text displayed in the tab next to the favicon
+navbarBrand | The text displayed in the navigation bar as brand
+enableCustomNavbarButton | Decide if a custom button should be shown in the navigation bar (Useful as back to homepage button)
+customNavbarButtonText | The text that should be displayed in the navigation bar button
+customNavbarButtonTarget | The target address where the button will point to (Default is this project page)
+
+
 ### Building the project
 
 To build this project, you must have installed NPM.
