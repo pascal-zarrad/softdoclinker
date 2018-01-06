@@ -10,13 +10,53 @@ export class CoreConfiguration implements Serializable<CoreConfiguration> {
     private constructor() {
     }
 
+    // General Settings
+
     /**
      * The title of the page
      */
     private _pageTitle;
 
+    /**
+     * The text for the navbar brand
+     */
+    private _navbarBrand;
+
+    // Settings for Navbar Button
+
+    get navbarBrand() {
+        return this._navbarBrand;
+    }
+
+    /**
+     * The toggle if the custom button should be enabled
+     */
+    private _enableCustomNavbarButton;
+
+    get enableCustomNavbarButton() {
+        return this._enableCustomNavbarButton;
+    }
+
     get pageTitle() {
         return this._pageTitle;
+    }
+
+    /**
+     * The text displayed in the button
+     */
+    private _customNavbarButtonText;
+
+    get customNavbarButtonText() {
+        return this._customNavbarButtonText;
+    }
+
+    /**
+     * The link to which the user will be redirected when clicking on the custom button
+     */
+    private _customNavbarButtonTarget;
+
+    get customNavbarButtonTarget() {
+        return this._customNavbarButtonTarget;
     }
 
     /**
@@ -34,6 +74,10 @@ export class CoreConfiguration implements Serializable<CoreConfiguration> {
 
     deserialize(object: any): CoreConfiguration {
         this._pageTitle = object.pageTitle;
+        this._navbarBrand = object.navbarBrand;
+        this._enableCustomNavbarButton = object.enableCustomNavbarButton;
+        this._customNavbarButtonText = object.customNavbarButtonText;
+        this._customNavbarButtonTarget = object.customNavbarButtonTarget;
         return this;
     }
 }

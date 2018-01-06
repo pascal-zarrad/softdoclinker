@@ -8,17 +8,18 @@
   "license": "MIT",
   "private": false,
   "scripts": {
-    "build": "npm run cleanOutput && npm run cleanBuildOutput && npm run compileTS && npm run webpackCompileOutput",
+    "build": "npm run cleanOutput && npm run cleanBuildOutput && npm run compileTS && npm run webpackBundleOutput",
+    "release": "npm run cleanOutput && npm run cleanBuildOutput && npm run compileTS && npm run webpackBundleAndMinifyOutput",
     "cleanBuildOutput": "del-cli build/",
     "cleanOutput": "del-cli dist/js/app.js",
     "compileTS": "tsc",
-    "webpackCompileOutput": "webpack --config webpack.config.js"
-  },
-  "dependencies": {
-    "del-cli": "^1.1.0"
+    "webpackBundleOutput": "webpack --config webpack.config.js",
+    "webpackBundleAndMinifyOutput": "webpack --config webpack.minify.config.js"
   },
   "devDependencies": {
+    "del-cli": "^1.1.0",
     "typescript": "^2.6.2",
+    "uglifyjs-webpack-plugin": "^1.1.6",
     "webpack": "^3.10.0"
   }
 }
