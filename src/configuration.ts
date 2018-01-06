@@ -2,6 +2,8 @@
  * Our core configuration to provide some basic configuration options which makes SoftDocLinker customizable.
  * This config mostly provides Meta-Data which is used to update the DOM on-the-fly
  */
+import {NavbarButton} from "./buttons";
+
 export class CoreConfiguration implements Serializable<CoreConfiguration> {
 
     /**
@@ -22,42 +24,12 @@ export class CoreConfiguration implements Serializable<CoreConfiguration> {
      */
     private _navbarBrand;
 
-    // Settings for Navbar Button
-
-    get navbarBrand() {
-        return this._navbarBrand;
-    }
+    // Settings for Navbar
 
     /**
-     * The toggle if the custom button should be enabled
+     * The buttons displayed in the navigation bar
      */
-    private _enableCustomNavbarButton;
-
-    get enableCustomNavbarButton() {
-        return this._enableCustomNavbarButton;
-    }
-
-    get pageTitle() {
-        return this._pageTitle;
-    }
-
-    /**
-     * The text displayed in the button
-     */
-    private _customNavbarButtonText;
-
-    get customNavbarButtonText() {
-        return this._customNavbarButtonText;
-    }
-
-    /**
-     * The link to which the user will be redirected when clicking on the custom button
-     */
-    private _customNavbarButtonTarget;
-
-    get customNavbarButtonTarget() {
-        return this._customNavbarButtonTarget;
-    }
+    private _navbarButtons: NavbarButton[];
 
     /**
      * Create a new CoreConfiguration from a JSon object
@@ -72,12 +44,26 @@ export class CoreConfiguration implements Serializable<CoreConfiguration> {
         throw new Error("Serialization has not been implemented!");
     }
 
+    get navbarButtons(): NavbarButton[] {
+        return this._navbarButtons;
+    }
+
+    get navbarBrand() {
+        return this._navbarBrand;
+    }
+
+    get pageTitle() {
+        return this._pageTitle;
+    }
+
     deserialize(object: any): CoreConfiguration {
         this._pageTitle = object.pageTitle;
         this._navbarBrand = object.navbarBrand;
-        this._enableCustomNavbarButton = object.enableCustomNavbarButton;
-        this._customNavbarButtonText = object.customNavbarButtonText;
-        this._customNavbarButtonTarget = object.customNavbarButtonTarget;
+        let navbarButtons: NavbarButton[] = [];
+        for (let buttonData of object.navbarButtons) {
+            navbarButtons.push(NavbarButton.fromJSon(buttonData));
+        }
+        this._navbarButtons = navbarButtons;
         return this;
     }
 }
