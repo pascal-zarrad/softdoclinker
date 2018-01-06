@@ -39,12 +39,25 @@ export class CustomizationProcessor {
      * @param{CoreConfiguration} config The config from which the custom button is created
      */
     private applyNavigationBarButton(config: CoreConfiguration): void {
-        document.getElementById("custom-navbar-button").innerText = config.customNavbarButtonText;
-        document.getElementById("custom-navbar-button").setAttribute("href", config.customNavbarButtonTarget);
-        if (config.enableCustomNavbarButton) {
-            $("#custom-navbar-button").css("display", "inline");
-        } else {
-            $("#custom-navbar-button").css("display", "none");
+        if (config.navbarButtons != undefined) {
+            let buttonContainer: HTMLElement = document.getElementById("navbar-buttons");
+            for (let buttonRaw of config.navbarButtons) {
+                let newButton: HTMLElement = document.createElement("a");
+                let iconMeta: string;
+                if (buttonRaw.icon != undefined && buttonRaw.icon !== "none") {
+                    iconMeta = "fa fa-lg " + buttonRaw.icon;
+                } else {
+                    iconMeta = undefined;
+                }
+                let iconSpan = "";
+                if (iconMeta != undefined) {
+                    iconSpan = '<span class="' + iconMeta + '"></span> '
+                }
+                newButton.setAttribute("href", buttonRaw.target);
+                newButton.classList.add("nav-link", "waves-effect", "waves-light");
+                newButton.innerHTML = iconSpan + buttonRaw.displayText;
+                buttonContainer.appendChild(newButton);
+            }
         }
     }
 }

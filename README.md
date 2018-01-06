@@ -34,10 +34,7 @@ Option | Description
 ------------ | -------------
 pageTitle | Change the text displayed in the tab next to the favicon
 navbarBrand | The text displayed in the navigation bar as brand
-enableCustomNavbarButton | Decide if a custom button should be shown in the navigation bar (Useful as back to homepage button)
-customNavbarButtonText | The text that should be displayed in the navigation bar button
-customNavbarButtonTarget | The target address where the button will point to (Default is this project page)
-
+navbarButtons | Can be used to create custom links in the navigation bar. By default a "Back to Home" link that can also be removed is configured. There's no limit on how many buttons you can create. All buttons follow the JSon scheme: ```{"displayText": "Back to Home", "icon": "fa-home", "target: "https://github.com/PlayerForceHD/SoftDocLinker"}```. ```displayText``` is the text displayed to the user. ```icon``` is the icon at the left side of the button, you can simply set the value to ```none``` or fully remove it to set no icon. ```target``` is the URL where the button will point to.
 
 ### Building the project
 

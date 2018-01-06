@@ -1,7 +1,11 @@
 {
   "pageTitle": "Software Documentations",
-  "navbarBrand": "SoftDocLinker - Software Documentations",
-  "enableCustomNavbarButton": true,
-  "customNavbarButtonText": "Back to Home",
-  "customNavbarButtonTarget": "https://github.com/PlayerForceHD/SoftDocLinker"
+  "navbarBrand": "SoftDocLinker",
+  "navbarButtons": [
+    {
+      "displayText": " Back to Home",
+      "icon": "fa-home",
+      "target": "https://github.com/PlayerForceHD/SoftDocLinker"
+    }
+  ]
 }

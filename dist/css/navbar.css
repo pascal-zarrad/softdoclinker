@@ -1,5 +1,16 @@
+.nav {
+    font-family: 'Roboto', sans-serif;
+}
+
 .navbar-brand-custom {
-    font-weight: bold;
-    font-family: "Roboto Bold", "Arial Black";
-    cursor: default;
+    color: black;
+    font-family: 'Roboto', sans-serif;
+}
+
+.navbar-brand {
+    color: black !important;
+}
+
+.nav-link {
+    color: black;
 }
