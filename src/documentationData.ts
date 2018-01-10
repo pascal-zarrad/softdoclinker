@@ -23,11 +23,17 @@ export class DocumentationData {
      */
     public documentationURL: string;
 
-    private constructor(title: string, description: string, sourceURL: string, documentationURL: string) {
+    /**
+     * Enables or disables the showing in the iframe
+     */
+    public enableShow: boolean;
+
+    private constructor(title: string, description: string, sourceURL: string, documentationURL: string, enableShow: boolean) {
         this.title = title;
         this.description = description;
         this.sourceURL = sourceURL;
         this.documentationURL = documentationURL;
+        this.enableShow = enableShow;
     }
 
     /**
@@ -36,6 +42,6 @@ export class DocumentationData {
      * @returns {DocumentationData} The created DocumentationData object
      */
     public static fromJSon(data): DocumentationData {
-        return new DocumentationData(data.title, data.description, data.sourceURL, data.documentationURL);
+        return new DocumentationData(data.title, data.description, data.sourceURL, data.documentationURL, data.enableShow);
     }
 }
