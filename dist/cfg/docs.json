@@ -4,7 +4,8 @@
       "title": "SoftDocLinker",
       "description": "The documentation of the project this page is based on!",
       "sourceURL": "https://github.com/PlayerForceHD/SoftDocLinker",
-      "documentationURL": "https://docs.playerforce.me/"
+      "documentationURL": "https://docs.playerforce.me/",
+      "enableShow": false
     }
   ]
 }

@@ -36,7 +36,7 @@ export class DocumentationListProcessor {
             listElement.appendChild(descriptionElement);
 
             let links: HTMLElement = document.createElement("p");
-            descriptionElement.classList.add("list-group-item-text", "text-center");
+            links.classList.add("list-group-item-text", "text-center");
 
             if (config.sourceURL != undefined && config.sourceURL != "none") {
                 let sourceURLElement: HTMLElement = document.createElement("a");
@@ -57,18 +57,19 @@ export class DocumentationListProcessor {
                 documentationURLElement.appendChild(iconSpan);
                 links.appendChild(documentationURLElement);
 
-                let documentationShowURLElement: HTMLElement = document.createElement("a");
-                documentationShowURLElement.setAttribute("href", "#");
-                documentationShowURLElement.addEventListener('click', function () {
-                    let documentationFrame: HTMLIFrameElement = <HTMLIFrameElement>document.getElementById("document-frame");
-                    documentationFrame.src = config.documentationURL;
-                });
-                let iconShowSpan: HTMLElement = document.createElement("span");
-                iconShowSpan.classList.add("fa", "fa-eye");
-                iconShowSpan.innerText = " Show";
-                documentationShowURLElement.appendChild(iconShowSpan);
-
-                links.appendChild(documentationShowURLElement);
+                if (config.enableShow) {
+                    let documentationShowURLElement: HTMLElement = document.createElement("a");
+                    documentationShowURLElement.setAttribute("href", "#");
+                    documentationShowURLElement.addEventListener('click', function () {
+                        let documentationFrame: HTMLIFrameElement = <HTMLIFrameElement>document.getElementById("document-frame");
+                        documentationFrame.src = config.documentationURL;
+                    });
+                    let iconShowSpan: HTMLElement = document.createElement("span");
+                    iconShowSpan.classList.add("fa", "fa-eye");
+                    iconShowSpan.innerText = " Show";
+                    documentationShowURLElement.appendChild(iconShowSpan);
+                    links.appendChild(documentationShowURLElement);
+                }
             }
 
             listElement.appendChild(links);
