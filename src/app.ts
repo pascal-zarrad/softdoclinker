@@ -1,16 +1,29 @@
 import {AjaxJsonDataResolver, JSonDataReceiver} from "./ajaxJsonDataResolver";
-import {CoreConfiguration} from "./configuration";
+import {CoreConfiguration, DocumentationConfiguration} from "./configuration";
 import {CustomizationProcessor} from "./customizationProcessor";
+import {DocumentationListProcessor} from "./documentationListProcessor";
+
+declare var jquery: any;
 
 /**
  * Main class of SoftDocLinker
  */
-class SoftDocLinker {
+export class SoftDocLinker {
+
+    /**
+     * Before our app starts we detect the browser.
+     * If it's mobile it will be optimized for the small screens and remove the viewer.
+     */
+    public readonly isMobileBrowser: boolean = /*jquery.browser.mobile*/false;
 
     /**
      * Our CoreConfiguration which will be loaded from ../cfg/cfg.json
      */
     public configuration: CoreConfiguration;
+    /**
+     * The configuration that provides the data for the documentation list.
+     */
+    public documentationConfiguration: DocumentationConfiguration;
     /**
      * Our AjaxJsonDataResolver which is used to resolve our required data.
      */
@@ -20,14 +33,48 @@ class SoftDocLinker {
      */
     private readonly _customizationProcessor: CustomizationProcessor;
 
-    constructor() {
+    /**
+     * The DocumentationListProcessor used to process the DocumentationConfiguration
+     */
+    private readonly _documentationListProcessor: DocumentationListProcessor;
+
+    private constructor() {
+        if (this.isMobileBrowser) {
+            this.optimizeMobileView();
+        } else {
+            document.getElementById('document-frame').setAttribute("src", "noneload.html");
+        }
         this.dataResolver = new AjaxJsonDataResolver();
         this._customizationProcessor = new CustomizationProcessor();
+        this._documentationListProcessor = new DocumentationListProcessor();
         this.loadCoreConfig(); // Load the core config to apply customized settings
+        this.loadDocumentations(); // Load the documentations to list them.
+    }
+
+    get documentationListProcessor(): DocumentationListProcessor {
+        return this._documentationListProcessor;
+    }
+
+    /**
+     * Removes the viewer and set's the document list to full size
+     */
+    private optimizeMobileView() {
+        document.getElementById('document-frame').remove();
+        document.getElementById('doc-list').classList.remove("col-md-3");
+        document.getElementById('doc-list').classList.add("col-md-12");
+        document.getElementById('doc-list').classList.remove("doc-list-body");
+        document.getElementById('doc-list').classList.add("doc-list-body-mobile");
     }
 
     get customizationProcessor(): CustomizationProcessor {
         return this._customizationProcessor;
+    }
+
+    /**
+     * Load the documentations from the DocumentationConfiguration
+     */
+    private loadDocumentations() {
+        this.dataResolver.loadData("cfg/docs.json", new DocumentationConfigurationReceiver(this));
     }
 
     /**
@@ -67,6 +114,32 @@ class CoreConfigurationReceiver extends JSonDataReceiver {
         let coreConfiguration: CoreConfiguration = CoreConfiguration.getCoreConfigurationFromJsonObject(data);
         this.softDocLinker.configuration = coreConfiguration;
         this.softDocLinker.customizationProcessor.updateWithConfiguration(coreConfiguration);
+    }
+
+}
+
+/**
+ * The receiver for the DocumentationConfiguration
+ * After receiving the DocumentationConfiguration, this receiver does deserialize the received JSon object to a
+ * DocumentationConfiguration object and passes it to our SoftDocLinker instance and also calls our DocumentationListProcessor to
+ * update the list.
+ */
+class DocumentationConfigurationReceiver extends JSonDataReceiver {
+
+    /**
+     * Our SoftDocLinker instance
+     */
+    private readonly softDocLinker: SoftDocLinker;
+
+    constructor(softDocLinker: SoftDocLinker) {
+        super();
+        this.softDocLinker = softDocLinker;
+    }
+
+    receive(data) {
+        let documentationConfiguration: DocumentationConfiguration = DocumentationConfiguration.getDocumentationConfigurationFromJSonObject(data);
+        this.softDocLinker.documentationConfiguration = documentationConfiguration;
+        this.softDocLinker.documentationListProcessor.updateDocumentationList(documentationConfiguration);
     }
 
 }

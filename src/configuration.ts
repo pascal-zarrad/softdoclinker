@@ -3,6 +3,44 @@
  * This config mostly provides Meta-Data which is used to update the DOM on-the-fly
  */
 import {NavbarButton} from "./buttons";
+import {DocumentationData} from "./documentationData";
+
+export class DocumentationConfiguration implements Serializable<DocumentationConfiguration> {
+
+    private constructor() {
+    }
+
+    /**
+     * The documentations available
+     */
+    private _documentations: DocumentationData[] = [];
+
+    get documentations(): DocumentationData[] {
+        return this._documentations;
+    }
+
+    /**
+     * Create a new DocumentationConfiguration from a JSon object
+     * @param object The object to deserialize into an DocumentationConfiguration object
+     * @returns {DocumentationConfiguration} The DocumentationConfiguration object from the JSon object
+     */
+    public static getDocumentationConfigurationFromJSonObject(object): DocumentationConfiguration {
+        return new DocumentationConfiguration().deserialize(object);
+    }
+
+    serialize(object: DocumentationConfiguration): any {
+        throw new Error("Serialization has not been implemented!");
+    }
+
+    deserialize(object: any): DocumentationConfiguration {
+        for (let documentationData of object.documentations) {
+            let docuData = DocumentationData.fromJSon(documentationData);
+            this._documentations.push(docuData);
+        }
+        return this;
+    }
+
+}
 
 export class CoreConfiguration implements Serializable<CoreConfiguration> {
 
