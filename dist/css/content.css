@@ -1,0 +1,86 @@
+body {
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    max-height: 100vh;
+    font-family: 'Roboto', sans-serif;
+}
+
+a {
+    font-family: 'Roboto', sans-serif;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+link {
+    font-family: 'Roboto', sans-serif;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.use-height {
+    height: 100%;
+}
+
+.use-width {
+    width: 100%;
+}
+
+.no-padding {
+    padding: 0 !important;
+}
+
+.row {
+    width: 100vw !important;
+    margin: 0 !important;
+}
+
+.doc-list-body {
+    background: #FFFF;
+    height: 100%;
+    min-height: 100%;
+    max-height: 100vh;
+    margin: 0;
+    padding: 0;
+    overflow-x: auto;
+    overflow-y: visible;
+}
+
+.doc-list-body-mobile {
+    background: #F5F5F6;
+    height: 100%;
+    min-height: 100%;
+    max-height: 100vh;
+    margin: 0;
+    padding: 0;
+    overflow-x: auto;
+    overflow-y: visible;
+}
+
+.document-viewer {
+    background: #F5F5F6;
+    height: 100% !important;
+    max-height: 100vh;
+    margin: 0;
+    padding: 0;
+    overflow: auto;
+}
+
+.document-frame {
+    background: #F5F5F6;
+    height: 100vh !important;
+    width: 100vw !important;
+    margin: 0;
+    padding: 0;
+    border: none;
+    overflow: visible;
+}
+
+.document-frame-alternate {
+    background: #F5F5F6;
+    height: 100vh !important;
+    width: 100vw !important;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
