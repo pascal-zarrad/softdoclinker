@@ -11,6 +11,12 @@ declare var jquery: any;
 export class SoftDocLinker {
 
     /**
+     * The current version of SoftDocLinker
+     * @type {string}
+     */
+    public static readonly VERSION = "1.0.0";
+
+    /**
      * Before our app starts we detect the browser.
      * If it's mobile it will be optimized for the small screens and remove the viewer.
      */
@@ -64,6 +70,8 @@ export class SoftDocLinker {
         document.getElementById('doc-list').classList.add("col-md-12");
         document.getElementById('doc-list').classList.remove("doc-list-body");
         document.getElementById('doc-list').classList.add("doc-list-body-mobile");
+        document.getElementById("doc-list-container").classList.remove("doc-list-background");
+        document.getElementById("doc-list-container").classList.add("doc-list-background-mobile");
     }
 
     get customizationProcessor(): CustomizationProcessor {
