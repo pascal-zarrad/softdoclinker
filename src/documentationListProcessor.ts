@@ -62,6 +62,8 @@ export class DocumentationListProcessor {
                     documentationShowURLElement.setAttribute("href", "#");
                     documentationShowURLElement.addEventListener('click', function () {
                         let documentationFrame: HTMLIFrameElement = <HTMLIFrameElement>document.getElementById("document-frame");
+                        documentationFrame.classList.remove("no-scroll");
+                        document.getElementById("document-viewer").classList.remove("no-scroll");
                         documentationFrame.src = config.documentationURL;
                     });
                     let iconShowSpan: HTMLElement = document.createElement("span");

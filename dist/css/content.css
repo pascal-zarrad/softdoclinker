@@ -23,7 +23,7 @@ link {
 }
 
 .use-width {
-    width: 100%;
+    width: 100vw;
 }
 
 .no-padding {
@@ -38,7 +38,7 @@ link {
 .doc-list-body {
     background: #FFFF;
     height: 100%;
-    min-height: 100%;
+    min-height: 100vh;
     max-height: 100vh;
     margin: 0;
     padding: 0;
@@ -49,12 +49,17 @@ link {
 .doc-list-body-mobile {
     background: #FFFF;
     height: 100%;
-    min-height: 100%;
+    min-height: 100vh;
     max-height: 100vh;
     margin: 0;
     padding: 0;
     overflow-x: auto;
     overflow-y: visible;
+}
+
+.list-group-item {
+    border-left: transparent !important;
+    border-right: transparent !important;
 }
 
 .doc-list-background {
@@ -67,7 +72,7 @@ link {
 
 .document-viewer {
     background: #F5F5F6;
-    height: 100% !important;
+    height: 100vh !important;
     max-height: 100vh;
     margin: 0;
     padding: 0;
@@ -91,4 +96,8 @@ link {
     margin: 0;
     padding: 0;
     overflow: hidden;
+}
+
+.no-scroll {
+    overflow: hidden !important;
 }

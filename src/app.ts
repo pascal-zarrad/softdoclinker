@@ -20,7 +20,7 @@ export class SoftDocLinker {
      * Before our app starts we detect the browser.
      * If it's mobile it will be optimized for the small screens and remove the viewer.
      */
-    public readonly isMobileBrowser: boolean = /*jquery.browser.mobile*/false;
+    public readonly isMobileBrowser: boolean = jquery.browser.mobile;
 
     /**
      * Our CoreConfiguration which will be loaded from ../cfg/cfg.json
@@ -45,6 +45,7 @@ export class SoftDocLinker {
     private readonly _documentationListProcessor: DocumentationListProcessor;
 
     private constructor() {
+        document.getElementById('soft-doc-linker-version').innerText = SoftDocLinker.VERSION;
         if (this.isMobileBrowser) {
             this.optimizeMobileView();
         } else {
