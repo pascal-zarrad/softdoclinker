@@ -3,7 +3,7 @@ import {CoreConfiguration, DocumentationConfiguration} from "./configuration";
 import {CustomizationProcessor} from "./customizationProcessor";
 import {DocumentationListProcessor} from "./documentationListProcessor";
 
-declare var jquery: any;
+declare var jQuery: any;
 
 /**
  * Main class of SoftDocLinker
@@ -20,7 +20,7 @@ export class SoftDocLinker {
      * Before our app starts we detect the browser.
      * If it's mobile it will be optimized for the small screens and remove the viewer.
      */
-    public readonly isMobileBrowser: boolean = jquery.browser.mobile;
+    public readonly isMobileBrowser: boolean = jQuery.browser.mobile;
 
     /**
      * Our CoreConfiguration which will be loaded from ../cfg/cfg.json
@@ -152,5 +152,4 @@ class DocumentationConfigurationReceiver extends JSonDataReceiver {
     }
 
 }
-
 SoftDocLinker.main();
