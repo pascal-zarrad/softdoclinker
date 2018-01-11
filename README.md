@@ -19,11 +19,17 @@ So you just have to modify the JSon file and push your changes to GitHub to upda
 
 ### Install on GitHub Pages
 
-- Tutorial will be added after first version that works is done.
-
+ 1. Download the latest release (under "releases") or clone this repo and compile it using NodeJS & NPM with the command ```npm run release``` and use the content of the ```dist/``` folder.
+ 2. If you downloaded the latest release add it to the GitHub repository of your GitHub pages repository.
+ 3. Edit the ```cfg/cfg.json``` and ```cfg/docs.json``` to fit your requirements. Additional info can be found under the paragraph "Customization"!
+ 4. Upload the Page onto your Web-Server!
+ 
 ### Install on a Webserver
 
-- Tutorial will be added after first version that works is done.
+ 1. Download the latest release (under "releases") or clone this repo and compile it using NodeJS & NPM with the command ```npm run release``` and use the content of the ```dist/``` folder.
+ 2. Edit the ```cfg/cfg.json``` and ```cfg/docs.json``` to fit your requirements. Additional info can be found under the paragraph "Customization"!
+ 4. Push the page.
+ 5. Just edit the ```cfg/docs.json``` at any time and push your changes to update your page!
 
 ### Customization
 
@@ -37,6 +43,12 @@ Option | Description
 pageTitle | Change the text displayed in the tab next to the favicon
 navbarBrand | The text displayed in the navigation bar as brand
 navbarButtons | Can be used to create custom links in the navigation bar. By default a "Back to Home" link that can also be removed is configured. There's no limit on how many buttons you can create. All buttons follow the JSon scheme: ```{"displayText": "Back to Home", "icon": "fa-home", "target: "https://github.com/PlayerForceHD/SoftDocLinker"}```. ```displayText``` is the text displayed to the user. ```icon``` is the icon at the left side of the button, you can simply set the value to ```none``` or fully remove it to set no icon. ```target``` is the URL where the button will point to.
+
+**The ```docs.json``` and it's content**
+
+Just look into the docs.json. All available arguments are self-explaining.
+Simply add another object to the JSon array as normally.
+You can add an unlimited amount of documentations.
 
 ### Building the project
 
