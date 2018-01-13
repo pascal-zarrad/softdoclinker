@@ -1,7 +1,7 @@
 # SoftDocLinker
 
 SoftDocLinker (Software Documentation Linker) is a place where all relevant software documentation can be linked.
-It can be hard to maintain dozens of documentation for different project while providing a central place to view them.
+It can be hard to maintain dozens of documentation for different projects while providing a central place to view them.
 
 SoftDocLinker aims to solve this problem with a huge simplicity. It has been build to make it as easy as possible to have a
 dynamic page for your documentations on GitHub Pages without any external service.
@@ -62,5 +62,5 @@ After running the build command, your required files are located in the ```dist/
 SoftDocLinker is a simple project, so just make your changes, create a pull request.
 When your changes are nice, they will be merged.
 
-You can add anything you want or what you think that is should be implemented.
+You can add anything you want or what you think that should be implemented.
 There's only one restriction: Everything needs to be compatible to GitHub Pages.
