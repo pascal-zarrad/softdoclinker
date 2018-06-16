@@ -14,7 +14,7 @@ export class SoftDocLinker {
      * The current version of SoftDocLinker
      * @type {string}
      */
-    public static readonly VERSION = "1.1.0";
+    public static readonly VERSION = "1.0.0";
 
     /**
      * Before our app starts we detect the browser.
@@ -44,25 +44,18 @@ export class SoftDocLinker {
      */
     private readonly _documentationListProcessor: DocumentationListProcessor;
 
-    /**
-     * Indicates the status if the entire page resize has been done
-     */
-    private initialResizeComplete: boolean = false;
-
     private constructor() {
         document.getElementById('soft-doc-linker-version').innerText = SoftDocLinker.VERSION;
         if (this.isMobileBrowser) {
             this.optimizeMobileView();
         } else {
             document.getElementById('document-frame').setAttribute("src", "noneload.html");
-            jQuery("#document-viewer").show();
         }
         this.dataResolver = new AjaxJsonDataResolver();
         this._customizationProcessor = new CustomizationProcessor();
         this._documentationListProcessor = new DocumentationListProcessor();
         this.loadCoreConfig(); // Load the core config to apply customized settings
         this.loadDocumentations(); // Load the documentations to list them.
-        this.registerFooterAndListResizeHandler(); // Resize our fixed footer to parent element's width
     }
 
     get documentationListProcessor(): DocumentationListProcessor {
@@ -105,39 +98,6 @@ export class SoftDocLinker {
      */
     private loadCoreConfig() {
         this.dataResolver.loadData("cfg/cfg.json", new CoreConfigurationReceiver(this));
-    }
-
-    /**
-     * Adjust the footer size to fit the document list viewer
-     */
-    public adjustFooterAndListSize() {
-        // Adjust footer size
-        let parentElement: HTMLElement = document.getElementById("doc-list");
-        let docListFooterElement = jQuery(".doc-list-footer");
-        docListFooterElement.width(parentElement.offsetWidth);
-        // Adjust list size
-        if (this.initialResizeComplete) {
-            let windowHeight: number = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
-            let listHeight: number = (windowHeight - docListFooterElement.height() - jQuery("#navigation-bar").height()) + 3;
-            jQuery("#doc-list").height(listHeight);
-        } else {
-            let windowHeight: number = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
-            let listHeight: number = (windowHeight - 2 * docListFooterElement.height() - jQuery("#navigation-bar").height()) + 3;
-            jQuery("#doc-list").height(listHeight);
-        }
-    }
-
-    /**
-     * Register a resize listener to control resizing of fixed footer element
-     */
-    private registerFooterAndListResizeHandler() {
-        this.adjustFooterAndListSize();
-        this.initialResizeComplete = true;
-        let me = this;
-        jQuery(window).resize(
-            function () {
-                me.adjustFooterAndListSize();
-            })
     }
 }
 
