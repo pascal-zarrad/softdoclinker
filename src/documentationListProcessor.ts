@@ -42,9 +42,9 @@ export class DocumentationListProcessor {
                 let sourceURLElement: HTMLElement = document.createElement("a");
                 sourceURLElement.setAttribute("href", config.sourceURL);
                 let iconSpan: HTMLElement = document.createElement("span");
-                iconSpan.classList.add("fas", "fa-pencil-alt", "doc-list-link-span");
+                iconSpan.classList.add("fa", "fa-pencil");
+                iconSpan.innerText = " Source";
                 sourceURLElement.appendChild(iconSpan);
-                sourceURLElement.appendChild(this.generateTextSpan("Source"));
                 links.appendChild(sourceURLElement);
             }
 
@@ -52,9 +52,9 @@ export class DocumentationListProcessor {
                 let documentationURLElement: HTMLElement = document.createElement("a");
                 documentationURLElement.setAttribute("href", config.documentationURL);
                 let iconSpan: HTMLElement = document.createElement("span");
-                iconSpan.classList.add("fa", "fa-book", "doc-list-link-span");
+                iconSpan.classList.add("fa", "fa-book");
+                iconSpan.innerText = " Documentation";
                 documentationURLElement.appendChild(iconSpan);
-                documentationURLElement.appendChild(this.generateTextSpan("Documentation"));
                 links.appendChild(documentationURLElement);
 
                 if (config.enableShow) {
@@ -67,9 +67,9 @@ export class DocumentationListProcessor {
                         documentationFrame.src = config.documentationURL;
                     });
                     let iconShowSpan: HTMLElement = document.createElement("span");
-                    iconShowSpan.classList.add("fa", "fa-eye", "doc-list-link-span");
+                    iconShowSpan.classList.add("fa", "fa-eye");
+                    iconShowSpan.innerText = " Show";
                     documentationShowURLElement.appendChild(iconShowSpan);
-                    documentationShowURLElement.appendChild(this.generateTextSpan("Show"));
                     links.appendChild(documentationShowURLElement);
                 }
             }
@@ -89,16 +89,5 @@ export class DocumentationListProcessor {
             element.remove();
         }
         this.documentationNodes = [];
-    }
-
-    /**
-     * Generate a span styled for the document list
-     * @param {string} text The text which will be displayed in the new span
-     */
-    private generateTextSpan(text: string): HTMLElement {
-        let textSpan = document.createElement("span");
-        textSpan.classList.add("doc-list-link-span");
-        textSpan.innerText = " " + text;
-        return textSpan;
     }
 }
