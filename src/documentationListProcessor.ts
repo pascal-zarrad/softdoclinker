@@ -1,5 +1,7 @@
 import {DocumentationConfiguration} from "./configuration";
 
+declare var jQuery: any;
+
 export class DocumentationListProcessor {
 
     /**
@@ -57,7 +59,7 @@ export class DocumentationListProcessor {
                 documentationURLElement.appendChild(this.generateTextSpan("Documentation"));
                 links.appendChild(documentationURLElement);
 
-                if (config.enableShow) {
+                if (config.enableShow && !jQuery.browser.mobile) {
                     let documentationShowURLElement: HTMLElement = document.createElement("a");
                     documentationShowURLElement.setAttribute("href", "#");
                     documentationShowURLElement.addEventListener('click', function () {

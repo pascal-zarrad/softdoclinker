@@ -15,6 +15,11 @@ export class DocumentationConfiguration implements Serializable<DocumentationCon
      */
     private _documentations: DocumentationData[] = [];
 
+    /**
+     * The mobile browser status
+     */
+    private _mobileBrowser: boolean = false;
+
     get documentations(): DocumentationData[] {
         return this._documentations;
     }
@@ -40,6 +45,13 @@ export class DocumentationConfiguration implements Serializable<DocumentationCon
         return this;
     }
 
+    get mobileBrowser(): boolean {
+        return this._mobileBrowser;
+    }
+
+    set mobileBrowser(value: boolean) {
+        this._mobileBrowser = value;
+    }
 }
 
 export class CoreConfiguration implements Serializable<CoreConfiguration> {
