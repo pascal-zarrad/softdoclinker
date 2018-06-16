@@ -14,7 +14,7 @@ A: Yes, it is! Look at "Install on a Webserver" for further information.
 
 Q: How is it possible to have a dynamic page on GitHub Pages without a backend?
 
-A: We're using a JSon file to store the required Meta-Data which is then requested using a AJAX request.
+A: We're using a JSon file to store the required Meta-Data which is then requested using an AJAX request.
 So you just have to modify the JSon file and push your changes to GitHub to update anything.
 
 ### Install on GitHub Pages

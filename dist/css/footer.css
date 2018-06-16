@@ -1,0 +1,21 @@
+.footer-copyright {
+    background-color: lightgray !important;
+    color: white !important;
+    border-top: lightgray solid 1px;
+    border-right: lightgray solid 1px;
+}
+
+.doc-footer {
+    position: relative;
+}
+
+.footer-container {
+    width: 100%;
+    height: auto;
+    position: fixed;
+    bottom: 0;
+}
+
+.doc-list-footer {
+    padding-top: 0 !important;
+}

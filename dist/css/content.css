@@ -3,17 +3,11 @@ body {
     width: 100%;
     overflow: hidden;
     max-height: 100vh;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Roboto', Arial, sans-serif;
 }
 
 a {
-    font-family: 'Roboto', sans-serif;
-    padding-left: 10px;
-    padding-right: 10px;
-}
-
-link {
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Roboto', Arial, sans-serif;
     padding-left: 10px;
     padding-right: 10px;
 }
@@ -38,18 +32,17 @@ link {
 .doc-list-body {
     background: #FFFF;
     height: 100%;
-    min-height: 100vh;
     max-height: 100vh;
     margin: 0;
     padding: 0;
     overflow-x: auto;
     overflow-y: visible;
+    border-right: lightgray solid 1px;
 }
 
 .doc-list-body-mobile {
     background: #FFFF;
     height: 100%;
-    min-height: 100vh;
     max-height: 100vh;
     margin: 0;
     padding: 0;
@@ -58,8 +51,10 @@ link {
 }
 
 .list-group-item {
+    border-top: transparent !important;
     border-left: transparent !important;
     border-right: transparent !important;
+    margin-bottom: 0px;
 }
 
 .doc-list-background {
@@ -68,6 +63,10 @@ link {
 
 .doc-list-background-mobile {
     background: #F5F5F7;
+}
+
+.doc-list-link-span {
+    font-family: 'Roboto', Arial, sans-serif;
 }
 
 .document-viewer {
