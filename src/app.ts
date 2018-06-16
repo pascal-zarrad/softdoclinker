@@ -14,7 +14,7 @@ export class SoftDocLinker {
      * The current version of SoftDocLinker
      * @type {string}
      */
-    public static readonly VERSION = "1.1.0";
+    public static readonly VERSION = "1.1.1";
 
     /**
      * Before our app starts we detect the browser.
