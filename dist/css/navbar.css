@@ -1,5 +1,6 @@
 .nav {
     font-family: 'Roboto', sans-serif;
+    border-bottom: lightgray solid 1px;
 }
 
 .navbar-brand-custom {
