@@ -1,6 +1,6 @@
 # SoftDocLinker
 
-SoftDocLinker (Software Documentation Linker) is a place where all relevant software documentation can be linked.
+SoftDocLinker (Software Documentation Linker) is a place where all relevant software documentation can be linked together.
 It can be hard to maintain dozens of documentation for different projects while providing a central place to view them.
 
 SoftDocLinker aims to solve this problem with a huge simplicity. It has been build to make it as easy as possible to have a
@@ -42,7 +42,7 @@ Option | Description
 ------------ | -------------
 pageTitle | Change the text displayed in the tab next to the favicon
 navbarBrand | The text displayed in the navigation bar as brand
-navbarButtons | Can be used to create custom links in the navigation bar. By default a "Back to Home" link that can also be removed is configured. There's no limit on how many buttons you can create. All buttons follow the JSon scheme: ```{"displayText": "Back to Home", "icon": "fa-home", "target: "https://github.com/PlayerForceHD/SoftDocLinker"}```. ```displayText``` is the text displayed to the user. ```icon``` is the icon at the left side of the button, you can simply set the value to ```none``` or fully remove it to set no icon. ```target``` is the URL where the button will point to.
+navbarButtons | Can be used to create custom links in the navigation bar. By default a "Back to Home" link that can also be removed is configured. There's no limit on how many buttons you can create. All buttons follow the following JSon scheme: ```{"displayText": "Back to Home", "icon": "fa-home", "target: "https://github.com/PlayerForceHD/SoftDocLinker"}```. ```displayText``` is the text displayed to the user. ```icon``` is the icon at the left side of the button, you can simply set the value to ```none``` or fully remove it to set no icon. ```target``` is the URL where the button will point to.
 
 **The ```docs.json``` and it's content**
 
@@ -59,8 +59,8 @@ After running the build command, your required files are located in the ```dist/
 
 ### I want to make SoftDocLinker better!
 
-SoftDocLinker is a simple project, so just make your changes, create a pull request.
-When your changes are nice, they will be merged.
+SoftDocLinker is a simple project, so just make your changes and create a pull request.
+When your changes are nice, they will be accepted and merged.
 
-You can add anything you want or what you think that should be implemented.
-There's only one restriction: Everything needs to be compatible to GitHub Pages.
+You can add anything you want or what you think that should be implemented, as long as it makes sense.
+There're only two restrictions: Everything needs to be compatible to GitHub Pages.
