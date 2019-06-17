@@ -3,7 +3,7 @@
   "version": "1.1.1",
   "description": "Provide an overview and viewer for software documentations. Especially for GitHub Pages.",
   "main": "release/js/app.js",
-  "repository": "https://github.com/PlayerForceHD/SoftDocLinker.git",
+  "repository": "https://github.com/pascal-zarrad/SoftDocLinker.git",
   "author": "PlayerForce <admin@playerforce.me>",
   "license": "MIT",
   "private": false,
