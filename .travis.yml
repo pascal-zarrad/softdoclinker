@@ -1,0 +1,11 @@
+language: node_js
+node_js:
+  - 12
+  - 12.13.0
+  - 13
+  - lts/*
+cache:
+  yarn: true
+sudo: false
+notifications:
+  email: false
