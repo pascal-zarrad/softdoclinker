@@ -22,4 +22,4 @@ The README will change from time to time, so stay tuned!
 ## Contributing
 
 You are welcome to contribute to SoftDocLinker if you have improvements or bug fixes.
-Refer to [Contributing](/CONTRIBUTING.md) if you want to get a contributor or simply create an issue.
+Refer to [Contributing](/CONTRIBUTING.md) if you want to be a contributor or simply create an issue.
