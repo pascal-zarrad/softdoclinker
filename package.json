@@ -1,25 +1,18 @@
 {
-  "name": "SoftDocLinker",
-  "version": "1.1.1",
-  "description": "Provide an overview and viewer for software documentations. Especially for GitHub Pages.",
+  "name": "softdoclinker",
+  "version": "2.0.0",
+  "description": "Provide a serverless central place for your documentations",
   "main": "release/js/app.js",
-  "repository": "https://github.com/pascal-zarrad/SoftDocLinker.git",
-  "author": "PlayerForce <admin@playerforce.me>",
+  "repository": "https://github.com/pascal-zarrad/softdoclinker.git",
+  "author": "PlayerForce <P.Zarrad@outlook.de>",
   "license": "MIT",
   "private": false,
   "scripts": {
-    "build": "npm run cleanOutput && npm run cleanBuildOutput && npm run compileTS && npm run webpackBundleOutput",
-    "release": "npm run cleanOutput && npm run cleanBuildOutput && npm run compileTS && npm run webpackBundleAndMinifyOutput",
-    "cleanBuildOutput": "del-cli build/",
-    "cleanOutput": "del-cli dist/js/app.js",
-    "compileTS": "tsc",
-    "webpackBundleOutput": "webpack --config webpack.config.js",
-    "webpackBundleAndMinifyOutput": "webpack --config webpack.minify.config.js"
+    "build": "echo  \"Build currently not implemented\""
+  },
+  "dependencies": {
+    
   },
   "devDependencies": {
-    "del-cli": "^1.1.0",
-    "typescript": "^2.6.2",
-    "uglifyjs-webpack-plugin": "^1.1.6",
-    "webpack": "^3.10.0"
   }
 }
