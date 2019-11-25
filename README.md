@@ -17,7 +17,32 @@ The target of v2.0.0 is to use modern technologies and improvements which includ
 
 The README will change from time to time, so stay tuned!
 
+## Current command setup
 
+### Project setup
+```
+yarn install
+```
+
+### Compiles and hot-reloads for development
+```
+yarn serve
+```
+
+### Compiles and minifies for production
+```
+yarn build
+```
+
+### Run your unit tests
+```
+yarn test:unit
+```
+
+### Lints and fixes files
+```
+yarn lint
+```
 
 ## Contributing
 
