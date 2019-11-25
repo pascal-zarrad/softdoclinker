@@ -7,7 +7,7 @@ dynamic page for your documentations on GitHub Pages without any external servic
 
 ## Current state of development
 SoftDocLinker v2.0.0 is currently in development. That's why this README is that empty. 
-But don't worry, the working versions of v1.1.1 are still available as release!
+But don't worry, the working versions of v1 are still available as release!
 
 The target of v2.0.0 is to use modern technologies and improvements which includes:
  - Vue
