@@ -1,17 +1,21 @@
-# JetBrains
+# Editor config ignore
 .idea
-# VS Code
-.vscode/
+.vscode
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
 
-# Dependency directories
-node_modules/
-# Build directories
-dist/
-
-# Log files
 *.log
 
-# Yarn
-yarn.lock
-# npm
+# We use yarn, not npm!
 package-lock.json
+
+.DS_Store
+node_modules
+/dist
+
+# local env files
+.env.local
+.env.*.local
