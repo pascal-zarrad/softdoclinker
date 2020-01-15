@@ -1,6 +1,6 @@
 import Axios from "axios";
-import ConfigDataProviderInterface from "./configDataProviderInterface";
 import ConfigInterface from "@/model/config/configInterface";
+import DataProviderInterface from "../dataProviderInterface";
 
 /**
  * A data provider to load the base configuration of
@@ -8,11 +8,12 @@ import ConfigInterface from "@/model/config/configInterface";
  *
  * @since 2.0.0
  */
-export default class ConfigDataProvider implements ConfigDataProviderInterface {
+export default class ConfigAjaxDataProvider
+    implements DataProviderInterface<ConfigInterface> {
     /**
      * @inheritdoc
      */
-    public load(): Promise<ConfigInterface> {
+    public async load(): Promise<ConfigInterface> {
         return Axios.get("config/config.json");
     }
 }

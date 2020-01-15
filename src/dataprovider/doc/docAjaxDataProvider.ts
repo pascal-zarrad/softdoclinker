@@ -1,6 +1,6 @@
 import Axios from "axios";
 import DocCollectionInterface from "@/model/doc/docCollectionInterface";
-import DataProviderInterface from './dataProviderInterface';
+import DataProviderInterface from "../dataProviderInterface";
 
 /**
  * A data provider that gains its data from a json configuration file
@@ -8,7 +8,7 @@ import DataProviderInterface from './dataProviderInterface';
  *
  * @since 2.0.0
  */
-export default class JSONRemoteDataProvider
+export default class DocAjaxDataProvider
     implements DataProviderInterface<DocCollectionInterface> {
     /**
      * @inheritdoc
