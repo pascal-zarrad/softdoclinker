@@ -9,8 +9,6 @@ import ConfigAjaxDataProvider from "./configAjaxDataProvider";
  * @since 2.0.0
  */
 export default class ConfigDataProviderFactory {
-    constrcutor() {}
-
     /**
      * Create a new DataProvider for a specific backend.
      * If the specified backend does not exist, a

@@ -9,8 +9,6 @@ import DocAjaxDataProvider from "./docAjaxDataProvider";
  * @since 2.0.0
  */
 export default class DocDataProviderFactory {
-    constrcutor() {}
-
     /**
      * Create a new DataProvider for a specific backend.
      * If the specified backend does not exist, a
