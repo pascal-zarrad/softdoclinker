@@ -8,7 +8,7 @@ describe("ConfigDataProviderFactory", () => {
         const configDataProviderFactory: ConfigDataProviderFactory = new ConfigDataProviderFactory();
 
         const result: DataProviderInterface<ConfigInterface> = configDataProviderFactory.create(
-            "backend"
+            "ajax"
         );
 
         expect(result).toBeInstanceOf(ConfigAjaxDataProvider);

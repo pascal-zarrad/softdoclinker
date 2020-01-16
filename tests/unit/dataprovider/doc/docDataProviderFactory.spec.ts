@@ -8,7 +8,7 @@ describe("DocDataProviderFactory", () => {
         const docDataProviderFactory: DocDataProviderFactory = new DocDataProviderFactory();
 
         const result: DataProviderInterface<DocCollectionInterface> = docDataProviderFactory.create(
-            "backend"
+            "ajax"
         );
 
         expect(result).toBeInstanceOf(DocAjaxDataProvider);
