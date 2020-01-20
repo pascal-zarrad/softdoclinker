@@ -3,7 +3,7 @@
  *
  * @since 2.0.0
  */
-export default interface ConfigInterface {
+export default interface ConfigDataInterface {
     /**
      * The backend that should be used
      * Currently available options: JSON

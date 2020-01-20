@@ -1,5 +1,5 @@
 import DataProviderInterface from "../dataProviderInterface";
-import ConfigInterface from "@/model/config/configInterface";
+import ConfigDataInterface from "@/model/config/configDataInterface";
 import ConfigAjaxDataProvider from "./configAjaxDataProvider";
 
 /**
@@ -16,7 +16,7 @@ export default class ConfigDataProviderFactory {
      *
      * @param backend The backend type of the data provider
      */
-    public create(backend: string): DataProviderInterface<ConfigInterface> {
+    public create(backend: string): DataProviderInterface<ConfigDataInterface> {
         switch (backend) {
             case "ajax":
                 return new ConfigAjaxDataProvider();

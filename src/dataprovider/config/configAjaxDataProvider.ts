@@ -1,5 +1,5 @@
 import Axios from "axios";
-import ConfigInterface from "@/model/config/configInterface";
+import ConfigDataInterface from "@/model/config/configDataInterface";
 import DataProviderInterface from "../dataProviderInterface";
 
 /**
@@ -9,11 +9,11 @@ import DataProviderInterface from "../dataProviderInterface";
  * @since 2.0.0
  */
 export default class ConfigAjaxDataProvider
-    implements DataProviderInterface<ConfigInterface> {
+    implements DataProviderInterface<ConfigDataInterface> {
     /**
      * @inheritdoc
      */
-    public async load(): Promise<ConfigInterface> {
+    public async load(): Promise<ConfigDataInterface> {
         return Axios.get("config/config.json");
     }
 }
