@@ -1,7 +1,7 @@
 /**
- * An interface that represents a data repository that is used to gain
- * (and save) data.
- * This interface utilizes the caching mechanims of the application.
+ * An interface that represents a data repository that is used to
+ * get data.
+ * This interface utilizes the caching mechanism of the application.
  *
  * @since 2.0.0
  */
