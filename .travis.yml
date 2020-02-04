@@ -1,8 +1,10 @@
 language: node_js
+os: [
+    "linux"
+]
 node_js:
   - lts/*
 cache:
   yarn: true
-sudo: false
 notifications:
   email: false
