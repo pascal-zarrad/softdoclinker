@@ -1,5 +1,7 @@
 import CacheManagementInterface from "../cacheManagementInterface";
 import CacheDataStorage from "../cacheDataStorage";
+import { set, get, del } from "idb-keyval";
+import AbstractCacheManagement from "../abstractCacheManagement";
 
 /**
  * A cache manager that utilizes IndexedDB to store data local
@@ -14,60 +16,35 @@ import CacheDataStorage from "../cacheDataStorage";
  * @since 2.0.0
  */
 export default class IndexedDBCacheManagement<T>
-    implements CacheManagementInterface<T> {
-    /**
-     * The instance of the browsers IndexedDB that is used by
-     * this cache type to persist data.
-     */
-    private readonly _indexedDBDatabase: IDBDatabase;
+    extends AbstractCacheManagement<T> {
 
     /**
-     * Constructor
+     * @inheritdoc
      *
-     * @param indexedDBDatabase The database that is used
+     * The IndexedDB cache does not need any initialization.
+     * The promise returned by this function will do nothing.
      */
-    constructor(indexedDBDatabase: IDBDatabase) {
-        this._indexedDBDatabase = indexedDBDatabase;
+    initialize(): Promise<void> {
+        return Promise.resolve();
     }
-
-    /**
-     *
-     * @param cacheMasterKeys
-     */
-    initialize(cacheMasterKeys: string[]): Promise<boolean> {
-        this._indexedDBDatabase = indexedDB.open();
-    }
-
     /**
      * @inheritdoc
      */
     load(key: string): Promise<CacheDataStorage<T>> {
-        return Promise.resolve();
+        return get(key);
     }
 
     /**
      * @inheritdoc
      */
-    update(data: CacheDataStorage<T>): Promise<boolean> {
-        throw new Error("Method not implemented.");
+    update(data: CacheDataStorage<T>): Promise<void> {
+        return set(data.key, data);
     }
 
     /**
      * @inheritdoc
      */
-    invalidate(): void {}
-
-    /**
-     * @inheritdoc
-     */
-    isValid(): Promise<boolean> {
-        throw new Error("Method not implemented.");
-    }
-
-    /**
-     * Getter: _indexedDBDatabase
-     */
-    public get indexedDBDatabase(): IDBDatabase {
-        return this._indexedDBDatabase;
+    invalidate(key: string): void {
+        del(key);
     }
 }

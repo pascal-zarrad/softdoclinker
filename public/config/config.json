@@ -1,6 +1,9 @@
 {
     "instanceName": "SoftDocLinker",
     "backend": "JSON",
+    "cache": {
+        "lifetime": 86400
+    },
     "navigation": {
         "links": [
             {
