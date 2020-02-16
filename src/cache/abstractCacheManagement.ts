@@ -2,8 +2,8 @@ import CacheManagementInterface from "./cacheManagementInterface";
 import CacheDataStorage from "./cacheDataStorage";
 
 /**
- * Abstract cache management that provides some default methods and values
- * for cache management.
+ * Provides an abstract base with some default methods
+ * and values for cache management implementations.
  *
  * @since 2.0.0
  */
