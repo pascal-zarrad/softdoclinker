@@ -1,0 +1,16 @@
+{
+    "instanceName": "SoftDocLinker",
+    "backend": "JSON",
+    "cache": {
+        "lifetime": 86400
+    },
+    "navigation": {
+        "links": [
+            {
+                "displayText": " Back to Home",
+                "icon": "fa-home",
+                "target": "https://github.com/PlayerForceHD/SoftDocLinker"
+            }
+        ]
+    }
+}
