@@ -15,28 +15,28 @@ export default abstract class AbstractDataRepository<T>
     /**
      * The DataProviderInterface used as backend data source
      */
-    protected dataProvider: DataProviderInterface<T>;
+    protected _dataProvider: DataProviderInterface<T>;
 
     /**
      * The CacheManagementInterface that is used to interact with
      * the cached data.
      */
-    protected cacheManagement: CacheManagementInterface<T>;
+    protected _cacheManagement: CacheManagementInterface<T>;
 
     /**
      * The cacheDataStorageFactory factory used to create new
      * cacheDataStorage instances.
      */
-    protected cacheDataStorageFactory: CacheDataStorageFactory;
+    protected _cacheDataStorageFactory: CacheDataStorageFactory;
 
     constructor(
         dataProvider: DataProviderInterface<T>,
         cacheManagement: CacheManagementInterface<T>,
         cacheDataStorageFactory: CacheDataStorageFactory
     ) {
-        this.dataProvider = dataProvider;
-        this.cacheManagement = cacheManagement;
-        this.cacheDataStorageFactory = cacheDataStorageFactory;
+        this._dataProvider = dataProvider;
+        this._cacheManagement = cacheManagement;
+        this._cacheDataStorageFactory = cacheDataStorageFactory;
     }
 
     /**

@@ -120,7 +120,7 @@ describe("ConfigDataRepository", () => {
                 expectedConfigData
             );
             expect(cacheDataStorageFactory.create).toHaveBeenCalledWith(
-                ConfigDataRepository.CONFIG_KEY,
+                expectedKey,
                 expectedConfigData
             );
             expect(configDataProviderInterface.load).toHaveBeenCalled();
