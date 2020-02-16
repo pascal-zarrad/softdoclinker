@@ -1,4 +1,3 @@
-import CacheManagementInterface from "../cacheManagementInterface";
 import CacheDataStorage from "../cacheDataStorage";
 import { set, get, del } from "idb-keyval";
 import AbstractCacheManagement from "../abstractCacheManagement";
@@ -15,9 +14,9 @@ import AbstractCacheManagement from "../abstractCacheManagement";
  *
  * @since 2.0.0
  */
-export default class IndexedDBCacheManagement<T>
-    extends AbstractCacheManagement<T> {
-
+export default class IndexedDBCacheManagement<
+    T
+> extends AbstractCacheManagement<T> {
     /**
      * @inheritdoc
      *

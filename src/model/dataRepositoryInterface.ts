@@ -11,5 +11,5 @@ export default interface DataRepositoryInterface<T> {
      * This function uses the caching functionalities
      * of the cache package to speed up loading time.
      */
-    load(key: string): T;
+    load(key: string): Promise<T>;
 }
