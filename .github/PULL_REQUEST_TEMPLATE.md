@@ -9,7 +9,7 @@ What is the expected behavior that is expected by the changes of the PR?
  - The page should no longer show the mentioned symbol at...
 
 ### Additional information
-Add here additional information if applicable or remove this section-
+Add here additional information if applicable or remove this section.
 
 #### Checklist
 Use the following checklist to ensure your PR meets all contribution requirements.
