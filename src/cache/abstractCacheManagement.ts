@@ -12,7 +12,7 @@ export default abstract class AbstractCacheManagement<T>
     /**
      * The lifetime of a cache data storage till it is invalid in milliseconds.
      */
-    protected lifetime: number;
+    protected _lifetime: number;
 
     /**
      * Constructor
@@ -20,7 +20,7 @@ export default abstract class AbstractCacheManagement<T>
      * @param lifetime The lifetime that cached data has in this cache (default: 24 hours)
      */
     public constructor(lifetime: number = 86400) {
-        this.lifetime = lifetime;
+        this._lifetime = lifetime;
     }
 
     /**
@@ -53,7 +53,7 @@ export default abstract class AbstractCacheManagement<T>
         }
 
         const lastAccessDelta = Date.now() - cacheItem.lastAccess.getTime();
-        if (lastAccessDelta > this.lifetime) {
+        if (lastAccessDelta > this._lifetime) {
             return false;
         }
 
