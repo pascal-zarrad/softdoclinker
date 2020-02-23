@@ -6,8 +6,7 @@ import IndexedDBCacheManagement from "./indexeddb/indexedDBCacheManagement";
  *
  * @since 2.0.0
  */
-export default class CacheManagementFactory
-{
+export default class CacheManagementFactory {
     /**
      * Create a new cache management instance with a specific type
      * of caching backend.
