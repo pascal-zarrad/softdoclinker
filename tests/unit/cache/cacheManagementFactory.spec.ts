@@ -5,9 +5,9 @@ import IndexedDBCacheManagement from "@/cache/indexeddb/indexedDBCacheManagement
 describe("CacheManagementFactory", () => {
     describe("create", () => {
         it("should return IndexedDBCacheManagement as default", () => {
-            const cacheManagementFactory: CacheManagementFactory<ConfigDataInterface> = new CacheManagementFactory();
+            const cacheManagementFactory: CacheManagementFactory = new CacheManagementFactory();
 
-            const result = cacheManagementFactory.create(
+            const result = cacheManagementFactory.create<ConfigDataInterface>(
                 "DefinitelyNotAValidType"
             );
 
@@ -15,9 +15,11 @@ describe("CacheManagementFactory", () => {
         });
 
         it("should return IndexedDBCacheManagement on type = indexedDB", () => {
-            const cacheManagementFactory: CacheManagementFactory<ConfigDataInterface> = new CacheManagementFactory();
+            const cacheManagementFactory: CacheManagementFactory = new CacheManagementFactory();
 
-            const result = cacheManagementFactory.create("indexedDB");
+            const result = cacheManagementFactory.create<ConfigDataInterface>(
+                "indexedDB"
+            );
 
             expect(result).toBeInstanceOf(IndexedDBCacheManagement);
         });

@@ -6,14 +6,15 @@ import IndexedDBCacheManagement from "./indexeddb/indexedDBCacheManagement";
  *
  * @since 2.0.0
  */
-export default class CacheManagementFactory<T> {
+export default class CacheManagementFactory
+{
     /**
      * Create a new cache management instance with a specific type
      * of caching backend.
      *
      * @param type The type of caching backend to use
      */
-    public create(type: string): CacheManagementInterface<T> {
+    public create<T>(type: string): CacheManagementInterface<T> {
         switch (type) {
             case "indexedDB":
                 return new IndexedDBCacheManagement<T>();
