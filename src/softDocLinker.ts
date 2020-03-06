@@ -53,11 +53,24 @@ export default class SoftDocLinker implements SoftDocLinkerInterface {
         DocCollectionInterface
     >;
 
-    constructor() {
-        this._configDataProviderFactory = new ConfigDataProviderFactory();
-        this._cacheDataStorageFactory = new CacheDataStorageFactory();
-        this._cacheManagementFactory = new CacheManagementFactory();
-        this._docDataProviderFactory = new DocDataProviderFactory();
+    /**
+     * Constructor
+     *
+     * @param configDataProviderFactory
+     * @param cacheDataStorageFactory
+     * @param cacheManagementFactory
+     * @param docDataProviderFactory
+     */
+    constructor(
+        configDataProviderFactory: ConfigDataProviderFactory,
+        cacheDataStorageFactory: CacheDataStorageFactory,
+        cacheManagementFactory: CacheManagementFactory,
+        docDataProviderFactory: DocDataProviderFactory
+    ) {
+        this._configDataProviderFactory = configDataProviderFactory;
+        this._cacheDataStorageFactory = cacheDataStorageFactory;
+        this._cacheManagementFactory = cacheManagementFactory;
+        this._docDataProviderFactory = docDataProviderFactory;
     }
 
     /**
@@ -66,7 +79,7 @@ export default class SoftDocLinker implements SoftDocLinkerInterface {
     public async getConfigDataRepository(): Promise<
         DataRepositoryInterface<ConfigDataInterface>
     > {
-        if (this._configDataRepository !== undefined) {
+        debugger;if (this._configDataRepository !== undefined) {
             return this._configDataRepository;
         }
 
@@ -90,22 +103,13 @@ export default class SoftDocLinker implements SoftDocLinkerInterface {
         }
 
         const configDataRepository: DataRepositoryInterface<ConfigDataInterface> = await this.getConfigDataRepository();
+        const configDataInterface: ConfigDataInterface = await configDataRepository.load(
+            ConfigDataRepository.CONFIG_KEY
+        );
 
         this._docCollectionDataRepository = new DocCollectionDataRepository(
-            this._docDataProviderFactory.create(
-                (
-                    await configDataRepository.load(
-                        ConfigDataRepository.CONFIG_KEY
-                    )
-                ).backend
-            ),
-            this._cacheManagementFactory.create(
-                (
-                    await configDataRepository.load(
-                        ConfigDataRepository.CONFIG_KEY
-                    )
-                ).cache
-            ),
+            this._docDataProviderFactory.create(configDataInterface.backend),
+            this._cacheManagementFactory.create(configDataInterface.cache),
             this._cacheDataStorageFactory
         );
 
