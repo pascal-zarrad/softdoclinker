@@ -18,18 +18,15 @@ export default class ConfigDataRepository extends AbstractDataRepository<
      * @inheritdoc
      */
     public async load(key: string): Promise<ConfigDataInterface> {
-        if (await this.cacheManagement.isValid(key)) {
-            return (await this.cacheManagement.load(key)).data;
+        if (await this._cacheManagement.isValid(key)) {
+            return (await this._cacheManagement.load(key)).data;
         }
 
-        const configData: ConfigDataInterface = await this.dataProvider.load();
+        const configData: ConfigDataInterface = await this._dataProvider.load();
 
-        const cacheItem = this.cacheDataStorageFactory.create(
-            ConfigDataRepository.CONFIG_KEY,
-            configData
-        );
+        const cacheItem = this._cacheDataStorageFactory.create(key, configData);
 
-        this.cacheManagement.update(cacheItem);
+        this._cacheManagement.update(cacheItem);
 
         return configData;
     }

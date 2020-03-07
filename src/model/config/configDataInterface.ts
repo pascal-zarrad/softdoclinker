@@ -9,4 +9,10 @@ export default interface ConfigDataInterface {
      * Currently available options: JSON
      */
     backend: string;
+
+    /**
+     * The backend to use for caching.
+     * Currently available options: indexedDB
+     */
+    cache: string;
 }

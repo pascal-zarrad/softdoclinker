@@ -90,18 +90,13 @@ describe("IndexedDBCacheManagement", () => {
 
             jest.spyOn(Date, "now").mockReturnValue(expectedTime);
 
-            indexedDBCacheManagement.load = jest.fn();
-            (indexedDBCacheManagement.load as jest.Mock).mockImplementation(
-                () => {
-                    return new Promise(function(resolve) {
-                        const testDate: Date = new Date();
-                        testDate.setTime(expectedTime);
-                        resolve(
-                            new CacheDataStorage<number>("Test", 42, testDate)
-                        );
-                    });
-                }
-            );
+            indexedDBCacheManagement.load = jest.fn(() => {
+                return new Promise(function(resolve) {
+                    const testDate: Date = new Date();
+                    testDate.setTime(expectedTime);
+                    resolve(new CacheDataStorage<number>("Test", 42, testDate));
+                });
+            });
 
             expect.assertions(2);
 
@@ -117,16 +112,13 @@ describe("IndexedDBCacheManagement", () => {
             const expectedTime = 0;
             const indexedDBCacheManagement = new IndexedDBCacheManagement();
 
-            indexedDBCacheManagement.load = jest.fn();
-            (indexedDBCacheManagement.load as jest.Mock).mockImplementation(
-                () => {
-                    return new Promise(function(resolve) {
-                        const testDate: Date = new Date();
-                        testDate.setTime(expectedTime);
-                        resolve(undefined);
-                    });
-                }
-            );
+            indexedDBCacheManagement.load = jest.fn(() => {
+                return new Promise(function(resolve) {
+                    const testDate: Date = new Date();
+                    testDate.setTime(expectedTime);
+                    resolve(undefined);
+                });
+            });
 
             expect.assertions(2);
 
@@ -145,18 +137,13 @@ describe("IndexedDBCacheManagement", () => {
 
             jest.spyOn(Date, "now").mockReturnValue(expectedActualTime);
 
-            indexedDBCacheManagement.load = jest.fn();
-            (indexedDBCacheManagement.load as jest.Mock).mockImplementation(
-                () => {
-                    return new Promise(function(resolve) {
-                        const testDate: Date = new Date();
-                        testDate.setTime(expectedTime);
-                        resolve(
-                            new CacheDataStorage<number>("Test", 42, testDate)
-                        );
-                    });
-                }
-            );
+            indexedDBCacheManagement.load = jest.fn(() => {
+                return new Promise(function(resolve) {
+                    const testDate: Date = new Date();
+                    testDate.setTime(expectedTime);
+                    resolve(new CacheDataStorage<number>("Test", 42, testDate));
+                });
+            });
 
             expect.assertions(2);
 

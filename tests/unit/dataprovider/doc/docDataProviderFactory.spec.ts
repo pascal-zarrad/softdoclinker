@@ -19,7 +19,7 @@ describe("DocDataProviderFactory", () => {
             const docDataProviderFactory: DocDataProviderFactory = new DocDataProviderFactory();
 
             const result: DataProviderInterface<DocCollectionInterface> = docDataProviderFactory.create(
-                "42 is definitly not a real backend"
+                "42 is definitely not a real backend"
             );
 
             expect(result).toBeInstanceOf(DocAjaxDataProvider);

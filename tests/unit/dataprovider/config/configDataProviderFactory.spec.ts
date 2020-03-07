@@ -19,7 +19,7 @@ describe("ConfigDataProviderFactory", () => {
             const configDataProviderFactory: ConfigDataProviderFactory = new ConfigDataProviderFactory();
 
             const result: DataProviderInterface<ConfigDataInterface> = configDataProviderFactory.create(
-                "42 is definitly not a real backend"
+                "42 is definitely not a real backend"
             );
 
             expect(result).toBeInstanceOf(ConfigAjaxDataProvider);

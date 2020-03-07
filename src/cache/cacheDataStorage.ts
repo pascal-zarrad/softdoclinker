@@ -1,8 +1,8 @@
 /* istanbul ignore file */
 
 /**
- * A simple object that stores a simple key-value cache
- * object.
+ * A simple object that stores a key-value cache
+ * object with some meta information.
  *
  * @since 2.0.0
  */
