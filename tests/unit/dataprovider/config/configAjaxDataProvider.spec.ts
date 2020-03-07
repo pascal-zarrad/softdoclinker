@@ -5,16 +5,25 @@ jest.mock("axios");
 
 describe("ConfigAjaxDataProvider", () => {
     describe("load", () => {
-        it('should get "config/config.json" using axios', () => {
-            const expected = Promise.resolve();
+        it('should get "config/config.json" using axios', async () => {
+            const expected = {
+                data: {
+                    backend: "ajax",
+                    cache: "indexedDB"
+                }
+            };
 
             (Axios.get as jest.Mock).mockResolvedValue(expected);
 
-            const configAjaxDataProvider: ConfigAjaxDataProvider = new ConfigAjaxDataProvider();
-            const result = configAjaxDataProvider.load();
+            try {
+                const configAjaxDataProvider: ConfigAjaxDataProvider = new ConfigAjaxDataProvider();
+                const result = await configAjaxDataProvider.load();
 
-            expect(result).toBeInstanceOf(Promise);
-            expect(Axios.get).toHaveBeenCalledWith("config/config.json");
+                expect(result).toBe(expected.data);
+                expect(Axios.get).toHaveBeenCalledWith("config/config.json");
+            } catch (e) {
+                fail(e);
+            }
         });
     });
 });

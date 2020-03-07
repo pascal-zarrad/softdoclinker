@@ -61,6 +61,7 @@ export default class SoftDocLinker implements SoftDocLinkerInterface {
      * @param cacheManagementFactory
      * @param docDataProviderFactory
      */
+    /* istanbul ignore next */
     constructor(
         configDataProviderFactory: ConfigDataProviderFactory = new ConfigDataProviderFactory(),
         cacheDataStorageFactory: CacheDataStorageFactory = new CacheDataStorageFactory(),

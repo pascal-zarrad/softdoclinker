@@ -29,7 +29,11 @@ describe("IndexedDBCacheManagement", () => {
                 expect(key).toBe(expected);
             });
 
-            await indexedDBCacheManagement.load(expected);
+            try {
+                await indexedDBCacheManagement.load(expected);
+            } catch (e) {
+                fail(e);
+            }
 
             expect(get as jest.Mock).toHaveBeenCalled();
         });
@@ -56,7 +60,11 @@ describe("IndexedDBCacheManagement", () => {
                 }
             );
 
-            await indexedDBCacheManagement.update(expectedTestData);
+            try {
+                await indexedDBCacheManagement.update(expectedTestData);
+            } catch (e) {
+                fail(e);
+            }
 
             expect(set as jest.Mock).toHaveBeenCalled();
         });
@@ -74,7 +82,11 @@ describe("IndexedDBCacheManagement", () => {
                 expect(key).toBe(expected);
             });
 
-            indexedDBCacheManagement.invalidate(expected);
+            try {
+                await indexedDBCacheManagement.invalidate(expected);
+            } catch (e) {
+                fail(e);
+            }
 
             expect(del as jest.Mock).toHaveBeenCalled();
         });
@@ -100,31 +112,66 @@ describe("IndexedDBCacheManagement", () => {
 
             expect.assertions(2);
 
-            const result = await indexedDBCacheManagement.isValid(dummyKey);
-            expect(indexedDBCacheManagement.load).toHaveBeenCalled();
-            expect(result).toBe(expected);
+            try {
+                const result = await indexedDBCacheManagement.isValid(dummyKey);
+                expect(indexedDBCacheManagement.load).toHaveBeenCalled();
+                expect(result).toBe(expected);
+            } catch (e) {
+                fail(e);
+            }
         });
 
         it("should return false when a value is not cached", async () => {
             const expected = false;
 
             const dummyKey = "myExpectedKey";
-            const expectedTime = 0;
+            const expectedTime = 5000;
             const indexedDBCacheManagement = new IndexedDBCacheManagement();
 
             indexedDBCacheManagement.load = jest.fn(() => {
                 return new Promise(function(resolve) {
-                    const testDate: Date = new Date();
-                    testDate.setTime(expectedTime);
                     resolve(undefined);
                 });
             });
 
             expect.assertions(2);
 
-            const result = await indexedDBCacheManagement.isValid(dummyKey);
-            expect(indexedDBCacheManagement.load).toHaveBeenCalled();
-            expect(result).toBe(expected);
+            try {
+                const result = await indexedDBCacheManagement.isValid(dummyKey);
+                expect(indexedDBCacheManagement.load).toHaveBeenCalled();
+                expect(result).toBe(expected);
+            } catch (e) {
+                fail(e);
+            }
+        });
+
+        it("should return false when lastAccess is undefined", async () => {
+            const expected = false;
+
+            const dummyKey = "myExpectedKey";
+            const indexedDBCacheManagement = new IndexedDBCacheManagement();
+
+            indexedDBCacheManagement.load = jest.fn(() => {
+                return new Promise(function(resolve) {
+                    const testItem: CacheDataStorage<number> = new CacheDataStorage(
+                        "dummyKey",
+                        42
+                    );
+                    // Igore type checking to set Date to undefined
+                    (testItem as any).lastAccess = undefined;
+                    resolve(testItem);
+                });
+            });
+
+            expect.assertions(2);
+
+            try {
+                const result = await indexedDBCacheManagement.isValid(dummyKey);
+                expect(indexedDBCacheManagement.load).toHaveBeenCalled();
+                expect(result).toBe(expected);
+            } catch (e) {
+                fail(e);
+            }
         });
 
         it("should return true when a value is cached", async () => {
@@ -147,9 +194,13 @@ describe("IndexedDBCacheManagement", () => {
 
             expect.assertions(2);
 
-            const result = await indexedDBCacheManagement.isValid(dummyKey);
-            expect(indexedDBCacheManagement.load).toHaveBeenCalled();
-            expect(result).toBe(expected);
+            try {
+                const result = await indexedDBCacheManagement.isValid(dummyKey);
+                expect(indexedDBCacheManagement.load).toHaveBeenCalled();
+                expect(result).toBe(expected);
+            } catch (e) {
+                fail(e);
+            }
         });
     });
 });

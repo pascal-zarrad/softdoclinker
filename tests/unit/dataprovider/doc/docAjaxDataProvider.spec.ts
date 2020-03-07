@@ -5,16 +5,23 @@ jest.mock("axios");
 
 describe("DocAjaxDataProvider", () => {
     describe("load", () => {
-        it('should get "config/docs.json" using axios', () => {
-            const expected = Promise.resolve();
-
+        it('should get "config/docs.json" using axios', async () => {
+            const expected = {
+                data: {
+                    documentations: []
+                }
+            };
             (Axios.get as jest.Mock).mockResolvedValue(expected);
 
-            const docAjaxDataProvider: DocAjaxDataProvider = new DocAjaxDataProvider();
-            const result = docAjaxDataProvider.load();
+            try {
+                const docAjaxDataProvider: DocAjaxDataProvider = new DocAjaxDataProvider();
+                const result = await docAjaxDataProvider.load();
 
-            expect(result).toBeInstanceOf(Promise);
-            expect(Axios.get).toHaveBeenCalledWith("config/docs.json");
+                expect(result).toBe(expected.data);
+                expect(Axios.get).toHaveBeenCalledWith("config/docs.json");
+            } catch (e) {
+                fail(e);
+            }
         });
     });
 });

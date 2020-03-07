@@ -43,7 +43,7 @@ export default interface CacheManagementInterface<T> {
      *
      * @param key The key of the cache data storage to remove
      */
-    invalidate(key: string): void;
+    invalidate(key: string): Promise<void>;
 
     /**
      * Check if the cached data is valid
