@@ -4,43 +4,44 @@ import ConfigDataInterface from "@/model/config/configDataInterface";
 import CacheManagementInterface from "@/cache/cacheManagementInterface";
 import CacheDataStorageFactory from "@/cache/cacheDataStorageFactory";
 import CacheDataStorage from "@/cache/cacheDataStorage";
+import ConfigAjaxDataProvider from "@/dataprovider/config/configAjaxDataProvider";
+import IndexedDBCacheManagement from "@/cache/indexeddb/indexedDBCacheManagement";
+
+jest.mock("@/cache/cacheDataStorageFactory");
+jest.mock("@/dataprovider/config/configAjaxDataProvider");
+jest.mock("@/cache/indexeddb/indexedDBCacheManagement");
 
 describe("ConfigDataRepository", () => {
     describe("load", () => {
         it("should load a cached value if any is cached", async () => {
             const expectedKey = "myExpectedKey";
-            const expectedConfigData: CacheDataStorage<ConfigDataInterface> = {
-                data: {
-                    backend: "Test"
-                } as ConfigDataInterface
-            } as CacheDataStorage<ConfigDataInterface>;
+            const expectedConfigData: CacheDataStorage<ConfigDataInterface> = new CacheDataStorage(
+                "config",
+                {
+                    backend: "ajax",
+                    cache: "indexedDB"
+                }
+            );
 
-            const configDataProviderInterface: DataProviderInterface<ConfigDataInterface> = {} as DataProviderInterface<
-                ConfigDataInterface
-            >;
-            configDataProviderInterface.load = jest.fn();
+            const configDataProviderInterface: DataProviderInterface<ConfigDataInterface> = new ConfigAjaxDataProvider();
 
-            const configDataCacheManagement: CacheManagementInterface<ConfigDataInterface> = {} as CacheManagementInterface<
-                ConfigDataInterface
-            >;
-            configDataCacheManagement.load = jest.fn().mockReturnValue(
+            const configDataCacheManagement: CacheManagementInterface<ConfigDataInterface> = new IndexedDBCacheManagement();
+            (configDataCacheManagement.load as jest.Mock).mockReturnValue(
                 Promise.resolve(
                     new Promise(resolve => {
                         resolve(expectedConfigData);
                     })
                 )
             );
-            configDataCacheManagement.isValid = jest.fn().mockReturnValue(
+            (configDataCacheManagement.isValid as jest.Mock).mockReturnValue(
                 Promise.resolve(
                     new Promise(resolve => {
                         resolve(true);
                     })
                 )
             );
-            configDataCacheManagement.update = jest.fn();
 
-            const cacheDataStorageFactory: CacheDataStorageFactory = {} as CacheDataStorageFactory;
-            cacheDataStorageFactory.create = jest.fn();
+            const cacheDataStorageFactory: CacheDataStorageFactory = new CacheDataStorageFactory();
 
             const configDataRepository = new ConfigDataRepository(
                 configDataProviderInterface,
@@ -68,16 +69,16 @@ describe("ConfigDataRepository", () => {
 
         it("should create a new value if none is cached and cache it", async () => {
             const expectedKey = "myExpectedKey";
-            const expectedConfigData: CacheDataStorage<ConfigDataInterface> = {
-                data: {
-                    backend: "Test"
-                } as ConfigDataInterface
-            } as CacheDataStorage<ConfigDataInterface>;
+            const expectedConfigData: CacheDataStorage<ConfigDataInterface> = new CacheDataStorage(
+                "config",
+                {
+                    backend: "ajax",
+                    cache: "indexedDB"
+                }
+            );
 
-            const configDataProviderInterface: DataProviderInterface<ConfigDataInterface> = {} as DataProviderInterface<
-                ConfigDataInterface
-            >;
-            configDataProviderInterface.load = jest.fn().mockReturnValue(
+            const configDataProviderInterface: DataProviderInterface<ConfigDataInterface> = new ConfigAjaxDataProvider();
+            (configDataProviderInterface.load as jest.Mock).mockReturnValue(
                 Promise.resolve(
                     new Promise(resolve => {
                         resolve(expectedConfigData);
@@ -85,23 +86,19 @@ describe("ConfigDataRepository", () => {
                 )
             );
 
-            const configDataCacheManagement: CacheManagementInterface<ConfigDataInterface> = {} as CacheManagementInterface<
-                ConfigDataInterface
-            >;
-            configDataCacheManagement.load = jest.fn();
-            configDataCacheManagement.isValid = jest.fn().mockReturnValue(
+            const configDataCacheManagement: CacheManagementInterface<ConfigDataInterface> = new IndexedDBCacheManagement();
+            (configDataCacheManagement.isValid as jest.Mock).mockReturnValue(
                 Promise.resolve(
                     new Promise(resolve => {
                         resolve(false);
                     })
                 )
             );
-            configDataCacheManagement.update = jest.fn();
 
-            const cacheDataStorageFactory: CacheDataStorageFactory = {} as CacheDataStorageFactory;
-            cacheDataStorageFactory.create = jest
-                .fn()
-                .mockReturnValue(expectedConfigData);
+            const cacheDataStorageFactory: CacheDataStorageFactory = new CacheDataStorageFactory();
+            (cacheDataStorageFactory.create as jest.Mock).mockReturnValue(
+                expectedConfigData
+            );
 
             const configDataRepository = new ConfigDataRepository(
                 configDataProviderInterface,

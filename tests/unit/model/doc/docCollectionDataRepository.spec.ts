@@ -4,45 +4,43 @@ import DataProviderInterface from "@/dataprovider/dataProviderInterface";
 import CacheManagementInterface from "@/cache/cacheManagementInterface";
 import CacheDataStorageFactory from "@/cache/cacheDataStorageFactory";
 import DocCollectionDataRepository from "@/model/doc/docCollectionDataRepository";
+import DocAjaxDataProvider from "@/dataprovider/doc/docAjaxDataProvider";
+import IndexedDBCacheManagement from "@/cache/indexeddb/indexedDBCacheManagement";
+
+jest.mock("@/cache/cacheDataStorageFactory");
+jest.mock("@/dataprovider/doc/docAjaxDataProvider");
+jest.mock("@/dataprovider/doc/docAjaxDataProvider");
+jest.mock("@/cache/indexeddb/indexedDBCacheManagement");
 
 describe("DocCollectionDataRepository", () => {
     describe("load", () => {
         it("should load a cached value if any is cached", async () => {
             const expectedKey = "myExpectedKey";
-            const expectedDocCollectionData: CacheDataStorage<DocCollectionInterface> = {
-                data: {
-                    documentations: []
-                } as DocCollectionInterface
-            } as CacheDataStorage<DocCollectionInterface>;
-
-            const docCollectionDataProviderInterface: DataProviderInterface<DocCollectionInterface> = {} as DataProviderInterface<
+            const expectedDocCollectionData: CacheDataStorage<DocCollectionInterface> = new CacheDataStorage<
                 DocCollectionInterface
-            >;
-            docCollectionDataProviderInterface.load = jest.fn();
+            >("docs", {
+                documentations: []
+            });
 
-            const docCollectionDataCacheManagement: CacheManagementInterface<DocCollectionInterface> = {} as CacheManagementInterface<
-                DocCollectionInterface
-            >;
-            docCollectionDataCacheManagement.load = jest.fn().mockReturnValue(
+            const docCollectionDataProviderInterface: DataProviderInterface<DocCollectionInterface> = new DocAjaxDataProvider();
+
+            const docCollectionDataCacheManagement: CacheManagementInterface<DocCollectionInterface> = new IndexedDBCacheManagement();
+            (docCollectionDataCacheManagement.load as jest.Mock).mockReturnValue(
                 Promise.resolve(
                     new Promise(resolve => {
                         resolve(expectedDocCollectionData);
                     })
                 )
             );
-            docCollectionDataCacheManagement.isValid = jest
-                .fn()
-                .mockReturnValue(
-                    Promise.resolve(
-                        new Promise(resolve => {
-                            resolve(true);
-                        })
-                    )
-                );
-            docCollectionDataCacheManagement.update = jest.fn();
+            (docCollectionDataCacheManagement.isValid as jest.Mock).mockReturnValue(
+                Promise.resolve(
+                    new Promise(resolve => {
+                        resolve(true);
+                    })
+                )
+            );
 
-            const cacheDataStorageFactory: CacheDataStorageFactory = {} as CacheDataStorageFactory;
-            cacheDataStorageFactory.create = jest.fn();
+            const cacheDataStorageFactory: CacheDataStorageFactory = new CacheDataStorageFactory();
 
             const docCollectionDataRepository = new DocCollectionDataRepository(
                 docCollectionDataProviderInterface,
@@ -74,16 +72,14 @@ describe("DocCollectionDataRepository", () => {
 
         it("should create a new value if none is cached and cache it", async () => {
             const expectedKey = "myExpectedKey";
-            const expectedDocCollectionData: CacheDataStorage<DocCollectionInterface> = {
-                data: {
-                    documentations: []
-                } as DocCollectionInterface
-            } as CacheDataStorage<DocCollectionInterface>;
-
-            const docCollectionDataProviderInterface: DataProviderInterface<DocCollectionInterface> = {} as DataProviderInterface<
+            const expectedDocCollectionData: CacheDataStorage<DocCollectionInterface> = new CacheDataStorage<
                 DocCollectionInterface
-            >;
-            docCollectionDataProviderInterface.load = jest.fn().mockReturnValue(
+            >("docs", {
+                documentations: []
+            });
+
+            const docCollectionDataProviderInterface: DataProviderInterface<DocCollectionInterface> = new DocAjaxDataProvider();
+            (docCollectionDataProviderInterface.load as jest.Mock).mockReturnValue(
                 Promise.resolve(
                     new Promise(resolve => {
                         resolve(expectedDocCollectionData);
@@ -91,25 +87,20 @@ describe("DocCollectionDataRepository", () => {
                 )
             );
 
-            const docCollectionDataCacheManagement: CacheManagementInterface<DocCollectionInterface> = {} as CacheManagementInterface<
-                DocCollectionInterface
-            >;
-            docCollectionDataCacheManagement.load = jest.fn();
-            docCollectionDataCacheManagement.isValid = jest
-                .fn()
-                .mockReturnValue(
-                    Promise.resolve(
-                        new Promise(resolve => {
-                            resolve(false);
-                        })
-                    )
-                );
+            const docCollectionDataCacheManagement: CacheManagementInterface<DocCollectionInterface> = new IndexedDBCacheManagement();
+            (docCollectionDataCacheManagement.isValid as jest.Mock).mockReturnValue(
+                Promise.resolve(
+                    new Promise(resolve => {
+                        resolve(false);
+                    })
+                )
+            );
             docCollectionDataCacheManagement.update = jest.fn();
 
-            const cacheDataStorageFactory: CacheDataStorageFactory = {} as CacheDataStorageFactory;
-            cacheDataStorageFactory.create = jest
-                .fn()
-                .mockReturnValue(expectedDocCollectionData);
+            const cacheDataStorageFactory: CacheDataStorageFactory = new CacheDataStorageFactory();
+            (cacheDataStorageFactory.create as jest.Mock).mockReturnValue(
+                expectedDocCollectionData
+            );
 
             const docCollectionDataRepository = new DocCollectionDataRepository(
                 docCollectionDataProviderInterface,

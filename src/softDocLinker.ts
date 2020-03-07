@@ -79,7 +79,8 @@ export default class SoftDocLinker implements SoftDocLinkerInterface {
     public async getConfigDataRepository(): Promise<
         DataRepositoryInterface<ConfigDataInterface>
     > {
-        debugger;if (this._configDataRepository !== undefined) {
+        debugger;
+        if (this._configDataRepository !== undefined) {
             return this._configDataRepository;
         }
 
