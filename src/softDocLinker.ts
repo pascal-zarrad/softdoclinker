@@ -61,11 +61,12 @@ export default class SoftDocLinker implements SoftDocLinkerInterface {
      * @param cacheManagementFactory
      * @param docDataProviderFactory
      */
+    /* istanbul ignore next */
     constructor(
-        configDataProviderFactory: ConfigDataProviderFactory,
-        cacheDataStorageFactory: CacheDataStorageFactory,
-        cacheManagementFactory: CacheManagementFactory,
-        docDataProviderFactory: DocDataProviderFactory
+        configDataProviderFactory: ConfigDataProviderFactory = new ConfigDataProviderFactory(),
+        cacheDataStorageFactory: CacheDataStorageFactory = new CacheDataStorageFactory(),
+        cacheManagementFactory: CacheManagementFactory = new CacheManagementFactory(),
+        docDataProviderFactory: DocDataProviderFactory = new DocDataProviderFactory()
     ) {
         this._configDataProviderFactory = configDataProviderFactory;
         this._cacheDataStorageFactory = cacheDataStorageFactory;
@@ -79,7 +80,6 @@ export default class SoftDocLinker implements SoftDocLinkerInterface {
     public async getConfigDataRepository(): Promise<
         DataRepositoryInterface<ConfigDataInterface>
     > {
-        debugger;
         if (this._configDataRepository !== undefined) {
             return this._configDataRepository;
         }

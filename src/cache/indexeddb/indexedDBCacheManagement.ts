@@ -43,7 +43,7 @@ export default class IndexedDBCacheManagement<
     /**
      * @inheritdoc
      */
-    invalidate(key: string): void {
-        del(key);
+    invalidate(key: string): Promise<void> {
+        return del(key);
     }
 }

@@ -34,11 +34,20 @@ export default class CacheDataStorage<T> {
     }
 
     /**
+     * Called by all getters and setters to update the date
+     * when this CacheDataStorage was last accessed/modified
+     */
+    protected accessed(): void {
+        this._lastAccess = new Date();
+    }
+
+    /**
      * Getter: _key
      *
      * Will set _lastAccess to the current date when called.
      */
     public get key(): string {
+        this.accessed();
         return this._key;
     }
 
@@ -48,6 +57,7 @@ export default class CacheDataStorage<T> {
      * Will set _lastAccess to the current date when called.
      */
     public set key(value: string) {
+        this.accessed();
         this._key = value;
     }
 
@@ -57,6 +67,7 @@ export default class CacheDataStorage<T> {
      * Will set _lastAccess to the current date when called.
      */
     public get data(): T {
+        this.accessed();
         return this._data;
     }
 
@@ -66,6 +77,7 @@ export default class CacheDataStorage<T> {
      * Will set _lastAccess to the current date when called.
      */
     public set data(value: T) {
+        this.accessed();
         this._data = value;
     }
 
@@ -73,6 +85,14 @@ export default class CacheDataStorage<T> {
      * Getter: _lastAccess
      */
     public get lastAccess(): Date {
+        // if ()
         return this._lastAccess;
+    }
+
+    /**
+     * Setter: _lastAccess
+     */
+    public set lastAccess(value: Date) {
+        this._lastAccess = value;
     }
 }

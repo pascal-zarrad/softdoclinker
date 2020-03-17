@@ -50,24 +50,30 @@ describe("DocCollectionDataRepository", () => {
 
             expect.assertions(6);
 
-            const result = await docCollectionDataRepository.load(expectedKey);
+            try {
+                const result = await docCollectionDataRepository.load(
+                    expectedKey
+                );
 
-            expect(
-                docCollectionDataCacheManagement.isValid
-            ).toHaveBeenCalledWith(expectedKey);
-            expect(docCollectionDataCacheManagement.load).toHaveBeenCalledWith(
-                expectedKey
-            );
-            expect(result).toBe(expectedDocCollectionData.data);
+                expect(
+                    docCollectionDataCacheManagement.isValid
+                ).toHaveBeenCalledWith(expectedKey);
+                expect(
+                    docCollectionDataCacheManagement.load
+                ).toHaveBeenCalledWith(expectedKey);
+                expect(result).toBe(expectedDocCollectionData.data);
 
-            // When we have data cached, we don't want to waste resources
-            expect(
-                docCollectionDataProviderInterface.load
-            ).toHaveBeenCalledTimes(0);
-            expect(cacheDataStorageFactory.create).toHaveBeenCalledTimes(0);
-            expect(
-                docCollectionDataCacheManagement.update
-            ).toHaveBeenCalledTimes(0);
+                // When we have data cached, we don't want to waste resources
+                expect(
+                    docCollectionDataProviderInterface.load
+                ).toHaveBeenCalledTimes(0);
+                expect(cacheDataStorageFactory.create).toHaveBeenCalledTimes(0);
+                expect(
+                    docCollectionDataCacheManagement.update
+                ).toHaveBeenCalledTimes(0);
+            } catch (e) {
+                fail(e);
+            }
         });
 
         it("should create a new value if none is cached and cache it", async () => {
@@ -110,25 +116,33 @@ describe("DocCollectionDataRepository", () => {
 
             expect.assertions(6);
 
-            const result = await docCollectionDataRepository.load(expectedKey);
+            try {
+                const result = await docCollectionDataRepository.load(
+                    expectedKey
+                );
 
-            expect(
-                docCollectionDataCacheManagement.isValid
-            ).toHaveBeenCalledWith(expectedKey);
-            expect(
-                docCollectionDataCacheManagement.update
-            ).toHaveBeenCalledWith(expectedDocCollectionData);
-            expect(cacheDataStorageFactory.create).toHaveBeenCalledWith(
-                expectedKey,
-                expectedDocCollectionData
-            );
-            expect(docCollectionDataProviderInterface.load).toHaveBeenCalled();
-            expect(result).toBe(expectedDocCollectionData);
+                expect(
+                    docCollectionDataCacheManagement.isValid
+                ).toHaveBeenCalledWith(expectedKey);
+                expect(
+                    docCollectionDataCacheManagement.update
+                ).toHaveBeenCalledWith(expectedDocCollectionData);
+                expect(cacheDataStorageFactory.create).toHaveBeenCalledWith(
+                    expectedKey,
+                    expectedDocCollectionData
+                );
+                expect(
+                    docCollectionDataProviderInterface.load
+                ).toHaveBeenCalled();
+                expect(result).toBe(expectedDocCollectionData);
 
-            // When we have data cached, we don't want to waste resources
-            expect(docCollectionDataCacheManagement.load).toHaveBeenCalledTimes(
-                0
-            );
+                // When we have data cached, we don't want to waste resources
+                expect(
+                    docCollectionDataCacheManagement.load
+                ).toHaveBeenCalledTimes(0);
+            } catch (e) {
+                fail(e);
+            }
         });
     });
 });

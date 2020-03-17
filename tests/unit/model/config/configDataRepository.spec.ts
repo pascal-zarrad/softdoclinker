@@ -51,20 +51,28 @@ describe("ConfigDataRepository", () => {
 
             expect.assertions(6);
 
-            const result = await configDataRepository.load(expectedKey);
+            try {
+                const result = await configDataRepository.load(expectedKey);
 
-            expect(configDataCacheManagement.isValid).toHaveBeenCalledWith(
-                expectedKey
-            );
-            expect(configDataCacheManagement.load).toHaveBeenCalledWith(
-                expectedKey
-            );
-            expect(result).toBe(expectedConfigData.data);
+                expect(configDataCacheManagement.isValid).toHaveBeenCalledWith(
+                    expectedKey
+                );
+                expect(configDataCacheManagement.load).toHaveBeenCalledWith(
+                    expectedKey
+                );
+                expect(result).toBe(expectedConfigData.data);
 
-            // When we have data cached, we don't want to waste resources
-            expect(configDataProviderInterface.load).toHaveBeenCalledTimes(0);
-            expect(cacheDataStorageFactory.create).toHaveBeenCalledTimes(0);
-            expect(configDataCacheManagement.update).toHaveBeenCalledTimes(0);
+                // When we have data cached, we don't want to waste resources
+                expect(configDataProviderInterface.load).toHaveBeenCalledTimes(
+                    0
+                );
+                expect(cacheDataStorageFactory.create).toHaveBeenCalledTimes(0);
+                expect(configDataCacheManagement.update).toHaveBeenCalledTimes(
+                    0
+                );
+            } catch (e) {
+                fail(e);
+            }
         });
 
         it("should create a new value if none is cached and cache it", async () => {
@@ -108,23 +116,27 @@ describe("ConfigDataRepository", () => {
 
             expect.assertions(6);
 
-            const result = await configDataRepository.load(expectedKey);
+            try {
+                const result = await configDataRepository.load(expectedKey);
 
-            expect(configDataCacheManagement.isValid).toHaveBeenCalledWith(
-                expectedKey
-            );
-            expect(configDataCacheManagement.update).toHaveBeenCalledWith(
-                expectedConfigData
-            );
-            expect(cacheDataStorageFactory.create).toHaveBeenCalledWith(
-                expectedKey,
-                expectedConfigData
-            );
-            expect(configDataProviderInterface.load).toHaveBeenCalled();
-            expect(result).toBe(expectedConfigData);
+                expect(configDataCacheManagement.isValid).toHaveBeenCalledWith(
+                    expectedKey
+                );
+                expect(configDataCacheManagement.update).toHaveBeenCalledWith(
+                    expectedConfigData
+                );
+                expect(cacheDataStorageFactory.create).toHaveBeenCalledWith(
+                    expectedKey,
+                    expectedConfigData
+                );
+                expect(configDataProviderInterface.load).toHaveBeenCalled();
+                expect(result).toBe(expectedConfigData);
 
-            // When we have data cached, we don't want to waste resources
-            expect(configDataCacheManagement.load).toHaveBeenCalledTimes(0);
+                // When we have data cached, we don't want to waste resources
+                expect(configDataCacheManagement.load).toHaveBeenCalledTimes(0);
+            } catch (e) {
+                fail(e);
+            }
         });
     });
 });

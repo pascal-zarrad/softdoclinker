@@ -41,22 +41,26 @@ export default abstract class AbstractCacheManagement<T>
     /**
      * @inheritdoc
      */
-    public abstract invalidate(key: string): void;
+    public abstract invalidate(key: string): Promise<void>;
 
     /**
      * @inheritdoc
      */
     public async isValid(key: string): Promise<boolean> {
-        let cacheItem: CacheDataStorage<T> | undefined = await this.load(key);
-        if (cacheItem === undefined) {
+        try {
+            let cacheItem: CacheDataStorage<T> = await this.load(key);
+            if (cacheItem === undefined) {
+                return false;
+            }
+
+            const lastAccessDelta = Date.now() - cacheItem.lastAccess.getTime();
+            if (lastAccessDelta > this._lifetime) {
+                return false;
+            }
+
+            return true;
+        } catch (e) {
             return false;
         }
-
-        const lastAccessDelta = Date.now() - cacheItem.lastAccess.getTime();
-        if (lastAccessDelta > this._lifetime) {
-            return false;
-        }
-
-        return true;
     }
 }
