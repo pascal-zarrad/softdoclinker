@@ -6,6 +6,7 @@ import CacheDataStorageFactory from "@/cache/cacheDataStorageFactory";
 import CacheDataStorage from "@/cache/cacheDataStorage";
 import ConfigAjaxDataProvider from "@/dataprovider/config/configAjaxDataProvider";
 import IndexedDBCacheManagement from "@/cache/indexeddb/indexedDBCacheManagement";
+import DefaultConfigData from "@/model/config/defaultConfigData";
 
 jest.mock("@/cache/cacheDataStorageFactory");
 jest.mock("@/dataprovider/config/configAjaxDataProvider");
@@ -17,10 +18,7 @@ describe("ConfigDataRepository", () => {
             const expectedKey = "myExpectedKey";
             const expectedConfigData: CacheDataStorage<ConfigDataInterface> = new CacheDataStorage(
                 "config",
-                {
-                    backend: "ajax",
-                    cache: "indexedDB"
-                }
+                new DefaultConfigData()
             );
 
             const configDataProviderInterface: DataProviderInterface<ConfigDataInterface> = new ConfigAjaxDataProvider();
@@ -79,10 +77,7 @@ describe("ConfigDataRepository", () => {
             const expectedKey = "myExpectedKey";
             const expectedConfigData: CacheDataStorage<ConfigDataInterface> = new CacheDataStorage(
                 "config",
-                {
-                    backend: "ajax",
-                    cache: "indexedDB"
-                }
+                new DefaultConfigData()
             );
 
             const configDataProviderInterface: DataProviderInterface<ConfigDataInterface> = new ConfigAjaxDataProvider();

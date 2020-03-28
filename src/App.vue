@@ -1,26 +1,36 @@
 <template>
-    <v-app>
-        <navigation-component />
+    <v-app id="softdoclinker-app">
+        <v-navigation-drawer :clipped="$vuetify.breakpoint.lgAndUp" app>
+            <v-list dense />
+        </v-navigation-drawer>
+
+        <navigation-component :sharedState="sharedState" />
 
         <v-content>
-            <loading-component />
+            <v-container class="fill-height" fluid>
+                <v-row align="center" justify="center" />
+            </v-container>
         </v-content>
+        <refresh-data-component
+            :sharedState="sharedState"
+        ></refresh-data-component>
     </v-app>
 </template>
 
 <script lang="ts">
 import Vue from "vue";
-import LoadingComponent from "@/components/LoadingComponent.vue";
+import RefreshDataComponent from "@/components/RefreshDataComponent.vue";
 import NavigationComponent from "@/components/NavigationComponent.vue";
+import SOFT_DOC_LINKER from "@/softDocLinker";
 
 export default Vue.extend({
     name: "App",
     components: {
-        LoadingComponent,
-        NavigationComponent
+        NavigationComponent,
+        RefreshDataComponent
     },
     data: () => ({
-        overlay: false
+        sharedState: SOFT_DOC_LINKER.sharedState
     })
 });
 </script>

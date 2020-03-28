@@ -5,6 +5,11 @@
  */
 export default interface ConfigDataInterface {
     /**
+     * The name of the current SoftDocLinker instance
+     */
+    instanceName: string;
+
+    /**
      * The backend that should be used
      * Currently available options: JSON
      */
@@ -15,4 +20,10 @@ export default interface ConfigDataInterface {
      * Currently available options: indexedDB
      */
     cache: string;
+
+    /**
+     * The time until SoftDocLinker considers cached data as invalid.
+     * Default:
+     */
+    cacheLifetime: number;
 }
