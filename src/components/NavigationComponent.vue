@@ -1,33 +1,25 @@
 <template>
-    <v-app-bar app color="primary" dark>
-        <div class="d-flex align-center">
-            <v-img
-                alt="Vuetify Logo"
-                class="shrink mr-2"
-                contain
-                src="https://cdn.vuetifyjs.com/images/logos/vuetify-logo-dark.png"
-                transition="scale-transition"
-                width="40"
-            />
-
-            {{ instanceName }}
-        </div>
-
-        <v-spacer></v-spacer>
-
-        <v-btn
-            href="https://github.com/vuetifyjs/vuetify/releases/latest"
-            target="_blank"
-            text
-        >
-            <span class="mr-2">Latest Release</span>
-            <v-icon>mdi-open-in-new</v-icon>
-        </v-btn>
+    <v-app-bar
+        :clipped-left="$vuetify.breakpoint.lgAndUp"
+        app
+        color="blue darken-3"
+        dark
+    >
+        <v-toolbar-title style="width: 300px" class="ml-0 pl-4">
+            <span class="hidden-sm-and-down">
+                {{ sharedState.currentConfig.instanceName }}
+            </span>
+        </v-toolbar-title>
+        <v-spacer />
+        <navigation-custom-button-component />
     </v-app-bar>
 </template>
 
 <script lang="ts">
 import { Component, Prop, Vue } from "vue-property-decorator";
+import NavigationCustomButtonComponent from "@/components/element/NavigationCustomButtonComponent.vue";
+import SoftDocLinkerDataStateInterface from "@/model/softDocLinkerDataStateInterface";
+import SOFT_DOC_LINKER from "../softDocLinker";
 
 /**
  * Component that provides a navigation bar
@@ -35,9 +27,17 @@ import { Component, Prop, Vue } from "vue-property-decorator";
  *
  * @since 2.0.0
  */
-@Component
+@Component({
+    name: "NavigationComponent",
+    components: {
+        NavigationCustomButtonComponent
+    }
+})
 export default class NavigationComponent extends Vue {
-    @Prop({ default: "SoftDocLinker" })
-    instanceName: string = "SoftDocLinker";
+    /**
+     * Brand displayed on navigation bar.
+     */
+    @Prop({ default: SOFT_DOC_LINKER })
+    sharedState?: SoftDocLinkerDataStateInterface;
 }
 </script>

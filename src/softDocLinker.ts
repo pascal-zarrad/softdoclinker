@@ -8,6 +8,8 @@ import ConfigDataProviderFactory from "./dataprovider/config/configDataProviderF
 import CacheManagementFactory from "./cache/cacheManagementFactory";
 import CacheDataStorageFactory from "./cache/cacheDataStorageFactory";
 import DocDataProviderFactory from "./dataprovider/doc/docDataProviderFactory";
+import SoftDocLinkerDataStateInterface from "./model/softDocLinkerDataStateInterface";
+import DefaultSoftDocLinkerSharedState from "./model/defaultSoftDocLinkerSharedState";
 
 /**
  * Is responsible to compose the data management together and
@@ -15,7 +17,7 @@ import DocDataProviderFactory from "./dataprovider/doc/docDataProviderFactory";
  *
  * @since 2.0.0
  */
-export default class SoftDocLinker implements SoftDocLinkerInterface {
+export class SoftDocLinker implements SoftDocLinkerInterface {
     /**
      * The CacheManagementFactory used to create
      * CacheManagementInterface instances.
@@ -35,7 +37,7 @@ export default class SoftDocLinker implements SoftDocLinkerInterface {
     protected _configDataProviderFactory: ConfigDataProviderFactory;
 
     /**
-     *
+     * The DocDataProviderFactory used to create new DocDataProviders
      */
     protected _docDataProviderFactory: DocDataProviderFactory;
 
@@ -54,6 +56,11 @@ export default class SoftDocLinker implements SoftDocLinkerInterface {
     >;
 
     /**
+     * Shared state that contains all the required data.
+     */
+    public sharedState: SoftDocLinkerDataStateInterface;
+
+    /**
      * Constructor
      *
      * @param configDataProviderFactory
@@ -66,12 +73,14 @@ export default class SoftDocLinker implements SoftDocLinkerInterface {
         configDataProviderFactory: ConfigDataProviderFactory = new ConfigDataProviderFactory(),
         cacheDataStorageFactory: CacheDataStorageFactory = new CacheDataStorageFactory(),
         cacheManagementFactory: CacheManagementFactory = new CacheManagementFactory(),
-        docDataProviderFactory: DocDataProviderFactory = new DocDataProviderFactory()
+        docDataProviderFactory: DocDataProviderFactory = new DocDataProviderFactory(),
+        initialSharedState: SoftDocLinkerDataStateInterface = new DefaultSoftDocLinkerSharedState()
     ) {
         this._configDataProviderFactory = configDataProviderFactory;
         this._cacheDataStorageFactory = cacheDataStorageFactory;
         this._cacheManagementFactory = cacheManagementFactory;
         this._docDataProviderFactory = docDataProviderFactory;
+        this.sharedState = initialSharedState;
     }
 
     /**
@@ -117,3 +126,8 @@ export default class SoftDocLinker implements SoftDocLinkerInterface {
         return this._docCollectionDataRepository;
     }
 }
+
+// Export single instance of SoftDocLinker
+
+const SOFT_DOC_LINKER: SoftDocLinkerInterface = new SoftDocLinker();
+export default SOFT_DOC_LINKER;

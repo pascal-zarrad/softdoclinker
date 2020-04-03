@@ -1,4 +1,4 @@
-import SoftDocLinker from "@/softDocLinker";
+import { SoftDocLinker } from "@/softDocLinker";
 import ConfigDataProviderFactory from "@/dataprovider/config/configDataProviderFactory";
 import CacheManagementFactory from "@/cache/cacheManagementFactory";
 import CacheDataStorageFactory from "@/cache/cacheDataStorageFactory";
@@ -11,6 +11,7 @@ import ConfigDataRepository from "@/model/config/configDataRepository";
 import DataRepositoryInterface from "@/model/dataRepositoryInterface";
 import ConfigAjaxDataProvider from "@/dataprovider/config/configAjaxDataProvider";
 import IndexedDBCacheManagement from "@/cache/indexeddb/indexedDBCacheManagement";
+import DefaultConfigData from "@/model/config/defaultConfigData";
 
 jest.mock("@/dataprovider/config/configDataProviderFactory");
 jest.mock("@/cache/cacheDataStorageFactory");
@@ -82,10 +83,7 @@ describe("SoftDocLinker", () => {
                 return (jest.fn() as unknown) as DataProviderInterface<DocCollectionInterface>;
             });
 
-            const configDataInterface: ConfigDataInterface = {
-                backend: "ajax",
-                cache: "indexedDB"
-            };
+            const configDataInterface: ConfigDataInterface = new DefaultConfigData();
 
             const configDataProvider: DataProviderInterface<ConfigDataInterface> = new ConfigAjaxDataProvider();
             const configCacheManagementInterface: CacheManagementInterface<ConfigDataInterface> = new IndexedDBCacheManagement();

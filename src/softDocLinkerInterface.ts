@@ -1,6 +1,7 @@
 import DataRepositoryInterface from "./model/dataRepositoryInterface";
 import ConfigDataInterface from "./model/config/configDataInterface";
 import DocCollectionInterface from "./model/doc/docCollectionInterface";
+import SoftDocLinkerDataStateInterface from "./model/softDocLinkerDataStateInterface";
 
 /**
  * Defines the interface between our Vue components and
@@ -9,6 +10,11 @@ import DocCollectionInterface from "./model/doc/docCollectionInterface";
  * @since 2.0.0
  */
 export default interface SoftDocLinkerInterface {
+    /**
+     * Shared state that holds the data that should be shared through all components.
+     */
+    sharedState: SoftDocLinkerDataStateInterface;
+
     /**
      * Get the repository that manages the config data.
      * As the repository can depend on external configuration
