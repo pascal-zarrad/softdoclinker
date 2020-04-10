@@ -1,4 +1,4 @@
-import DocInfoDataInterface from "./docVersionDataInterface";
+import DocInfoDataInterface from "@/model/doc/docVersionDataInterface";
 
 /**
  * An interface to store a documentation

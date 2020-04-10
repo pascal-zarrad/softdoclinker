@@ -1,5 +1,5 @@
-import CacheManagementInterface from "./cacheManagementInterface";
-import IndexedDBCacheManagement from "./indexeddb/indexedDBCacheManagement";
+import CacheManagementInterface from "@/cache/cacheManagementInterface";
+import IndexedDBCacheManagement from "@/cache/indexeddb/indexedDBCacheManagement";
 
 /**
  * Factory class to create cache management instances.

@@ -1,6 +1,6 @@
-import CacheDataStorage from "../cacheDataStorage";
-import { set, get, del } from "idb-keyval";
-import AbstractCacheManagement from "../abstractCacheManagement";
+import AbstractCacheManagement from "@/cache/abstractCacheManagement";
+import CacheDataStorage from "@/cache/cacheDataStorage";
+import { del, get, set } from "idb-keyval";
 
 /**
  * A cache manager that utilizes IndexedDB to store data local

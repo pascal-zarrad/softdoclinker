@@ -18,10 +18,10 @@
 </template>
 
 <script lang="ts">
-import Vue from "vue";
-import RefreshDataComponent from "@/components/RefreshDataComponent.vue";
 import NavigationComponent from "@/components/NavigationComponent.vue";
+import RefreshDataComponent from "@/components/RefreshDataComponent.vue";
 import SOFT_DOC_LINKER from "@/softDocLinker";
+import Vue from "vue";
 
 export default Vue.extend({
     name: "App",

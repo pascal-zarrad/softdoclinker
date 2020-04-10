@@ -6,8 +6,8 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from "vue-property-decorator";
 import SoftDocLinkerDataStateInterface from "@/model/softDocLinkerDataStateInterface";
+import { Component, Prop, Vue } from "vue-property-decorator";
 
 /**
  * Component that provides a navigation bar

@@ -1,11 +1,11 @@
 import CacheDataStorage from "@/cache/cacheDataStorage";
-import DocCollectionInterface from "@/model/doc/docCollectionInterface";
-import DataProviderInterface from "@/dataprovider/dataProviderInterface";
-import CacheManagementInterface from "@/cache/cacheManagementInterface";
 import CacheDataStorageFactory from "@/cache/cacheDataStorageFactory";
-import DocCollectionDataRepository from "@/model/doc/docCollectionDataRepository";
-import DocAjaxDataProvider from "@/dataprovider/doc/docAjaxDataProvider";
+import CacheManagementInterface from "@/cache/cacheManagementInterface";
 import IndexedDBCacheManagement from "@/cache/indexeddb/indexedDBCacheManagement";
+import DataProviderInterface from "@/dataprovider/dataProviderInterface";
+import DocAjaxDataProvider from "@/dataprovider/doc/docAjaxDataProvider";
+import DocCollectionDataRepository from "@/model/doc/docCollectionDataRepository";
+import DocCollectionInterface from "@/model/doc/docCollectionInterface";
 
 jest.mock("@/cache/cacheDataStorageFactory");
 jest.mock("@/dataprovider/doc/docAjaxDataProvider");

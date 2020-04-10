@@ -1,5 +1,5 @@
-import Axios from "axios";
 import ConfigAjaxDataProvider from "@/dataprovider/config/configAjaxDataProvider";
+import Axios from "axios";
 
 jest.mock("axios");
 

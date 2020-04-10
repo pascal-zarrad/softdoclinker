@@ -1,6 +1,6 @@
-import DataProviderInterface from "../dataProviderInterface";
+import DataProviderInterface from "@/dataprovider/dataProviderInterface";
+import DocAjaxDataProvider from "@/dataprovider/doc/docAjaxDataProvider";
 import DocCollectionInterface from "@/model/doc/docCollectionInterface";
-import DocAjaxDataProvider from "./docAjaxDataProvider";
 
 /**
  * A factory that creates ConfigDataProviders

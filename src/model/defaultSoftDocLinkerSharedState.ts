@@ -1,8 +1,8 @@
-import SoftDocLinkerDataStateInterface from "./softDocLinkerDataStateInterface";
-import ConfigDataInterface from "./config/configDataInterface";
-import DefaultConfigData from "./config/defaultConfigData";
-import DocDataInterface from "./doc/docDataInterface";
-import DefaultDocData from "./doc/defaultDocData";
+import ConfigDataInterface from "@/model/config/configDataInterface";
+import DefaultConfigData from "@/model/config/defaultConfigData";
+import DefaultDocData from "@/model/doc/defaultDocData";
+import DocDataInterface from "@/model/doc/docDataInterface";
+import SoftDocLinkerDataStateInterface from "@/model/softDocLinkerDataStateInterface";
 
 /**
  * Data class that provides a default state for the application.

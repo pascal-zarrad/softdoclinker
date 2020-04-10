@@ -1,7 +1,7 @@
-import DataProviderInterface from "@/dataprovider/dataProviderInterface";
-import DataRepositoryInterface from "./dataRepositoryInterface";
-import CacheManagementInterface from "@/cache/cacheManagementInterface";
 import CacheDataStorageFactory from "@/cache/cacheDataStorageFactory";
+import CacheManagementInterface from "@/cache/cacheManagementInterface";
+import DataProviderInterface from "@/dataprovider/dataProviderInterface";
+import DataRepositoryInterface from "@/model/dataRepositoryInterface";
 
 /**
  * Abstract data repository that can be implemented get

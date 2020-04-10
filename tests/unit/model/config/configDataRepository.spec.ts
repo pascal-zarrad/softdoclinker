@@ -1,11 +1,11 @@
-import ConfigDataRepository from "@/model/config/configDataRepository";
+import CacheDataStorage from "@/cache/cacheDataStorage";
+import CacheDataStorageFactory from "@/cache/cacheDataStorageFactory";
+import CacheManagementInterface from "@/cache/cacheManagementInterface";
+import IndexedDBCacheManagement from "@/cache/indexeddb/indexedDBCacheManagement";
+import ConfigAjaxDataProvider from "@/dataprovider/config/configAjaxDataProvider";
 import DataProviderInterface from "@/dataprovider/dataProviderInterface";
 import ConfigDataInterface from "@/model/config/configDataInterface";
-import CacheManagementInterface from "@/cache/cacheManagementInterface";
-import CacheDataStorageFactory from "@/cache/cacheDataStorageFactory";
-import CacheDataStorage from "@/cache/cacheDataStorage";
-import ConfigAjaxDataProvider from "@/dataprovider/config/configAjaxDataProvider";
-import IndexedDBCacheManagement from "@/cache/indexeddb/indexedDBCacheManagement";
+import ConfigDataRepository from "@/model/config/configDataRepository";
 import DefaultConfigData from "@/model/config/defaultConfigData";
 
 jest.mock("@/cache/cacheDataStorageFactory");
