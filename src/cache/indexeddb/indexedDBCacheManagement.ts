@@ -46,4 +46,25 @@ export default class IndexedDBCacheManagement<
     invalidate(key: string): Promise<void> {
         return del(key);
     }
+
+    /**
+     * @inheritdoc
+     */
+    public async isValid(key: string): Promise<boolean> {
+        try {
+            let cacheItem: CacheDataStorage<T> = await this.load(key);
+            if (cacheItem === undefined) {
+                return false;
+            }
+
+            const lastAccessDelta = Date.now() - cacheItem.lastAccess.getTime();
+            if (lastAccessDelta > this._lifetime) {
+                return false;
+            }
+
+            return true;
+        } catch (e) {
+            return false;
+        }
+    }
 }
