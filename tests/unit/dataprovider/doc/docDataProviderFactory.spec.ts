@@ -1,7 +1,7 @@
-import DocDataProviderFactory from "@/dataprovider/doc/docDataProviderFactory";
 import DataProviderInterface from "@/dataprovider/dataProviderInterface";
-import DocCollectionInterface from "@/model/doc/docCollectionInterface";
 import DocAjaxDataProvider from "@/dataprovider/doc/docAjaxDataProvider";
+import DocDataProviderFactory from "@/dataprovider/doc/docDataProviderFactory";
+import DocCollectionInterface from "@/model/doc/docCollectionInterface";
 
 describe("DocDataProviderFactory", () => {
     describe("create", () => {

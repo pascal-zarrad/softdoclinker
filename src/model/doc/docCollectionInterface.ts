@@ -1,4 +1,4 @@
-import DocDataInterface from "./docDataInterface";
+import DocDataInterface from "@/model/doc/docDataInterface";
 
 /**
  * An interface that represents a collection of documentations

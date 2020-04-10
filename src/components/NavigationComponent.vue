@@ -16,10 +16,10 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from "vue-property-decorator";
 import NavigationCustomButtonComponent from "@/components/element/NavigationCustomButtonComponent.vue";
+import SOFT_DOC_LINKER from "@/softDocLinker";
 import SoftDocLinkerDataStateInterface from "@/model/softDocLinkerDataStateInterface";
-import SOFT_DOC_LINKER from "../softDocLinker";
+import { Component, Prop, Vue } from "vue-property-decorator";
 
 /**
  * Component that provides a navigation bar

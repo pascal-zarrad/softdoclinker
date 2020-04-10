@@ -1,5 +1,5 @@
-import CacheManagementInterface from "./cacheManagementInterface";
-import CacheDataStorage from "./cacheDataStorage";
+import CacheDataStorage from "@/cache/cacheDataStorage";
+import CacheManagementInterface from "@/cache/cacheManagementInterface";
 
 /**
  * Provides an abstract base with some default methods
@@ -46,21 +46,13 @@ export default abstract class AbstractCacheManagement<T>
     /**
      * @inheritdoc
      */
-    public async isValid(key: string): Promise<boolean> {
-        try {
-            let cacheItem: CacheDataStorage<T> = await this.load(key);
-            if (cacheItem === undefined) {
-                return false;
-            }
+    public abstract async isValid(key: string): Promise<boolean>;
 
-            const lastAccessDelta = Date.now() - cacheItem.lastAccess.getTime();
-            if (lastAccessDelta > this._lifetime) {
-                return false;
-            }
-
-            return true;
-        } catch (e) {
-            return false;
-        }
+    /**
+     * Getter: _lifetime
+     */
+    /* istanbul ignore next */
+    public get lifetime_1(): number {
+        return this._lifetime;
     }
 }

@@ -1,17 +1,17 @@
-import { SoftDocLinker } from "@/softDocLinker";
-import ConfigDataProviderFactory from "@/dataprovider/config/configDataProviderFactory";
-import CacheManagementFactory from "@/cache/cacheManagementFactory";
 import CacheDataStorageFactory from "@/cache/cacheDataStorageFactory";
+import CacheManagementFactory from "@/cache/cacheManagementFactory";
+import CacheManagementInterface from "@/cache/cacheManagementInterface";
+import IndexedDBCacheManagement from "@/cache/indexeddb/indexedDBCacheManagement";
+import ConfigAjaxDataProvider from "@/dataprovider/config/configAjaxDataProvider";
+import ConfigDataProviderFactory from "@/dataprovider/config/configDataProviderFactory";
+import DataProviderInterface from "@/dataprovider/dataProviderInterface";
 import DocDataProviderFactory from "@/dataprovider/doc/docDataProviderFactory";
 import ConfigDataInterface from "@/model/config/configDataInterface";
-import DataProviderInterface from "@/dataprovider/dataProviderInterface";
-import CacheManagementInterface from "@/cache/cacheManagementInterface";
-import DocCollectionInterface from "@/model/doc/docCollectionInterface";
 import ConfigDataRepository from "@/model/config/configDataRepository";
-import DataRepositoryInterface from "@/model/dataRepositoryInterface";
-import ConfigAjaxDataProvider from "@/dataprovider/config/configAjaxDataProvider";
-import IndexedDBCacheManagement from "@/cache/indexeddb/indexedDBCacheManagement";
 import DefaultConfigData from "@/model/config/defaultConfigData";
+import DataRepositoryInterface from "@/model/dataRepositoryInterface";
+import DocCollectionInterface from "@/model/doc/docCollectionInterface";
+import { SoftDocLinker } from "@/softDocLinker";
 
 jest.mock("@/dataprovider/config/configDataProviderFactory");
 jest.mock("@/cache/cacheDataStorageFactory");

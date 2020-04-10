@@ -1,5 +1,5 @@
-import DocDataInterface from "./docDataInterface";
-import DocVersionDataInterface from "./docVersionDataInterface";
+import DocDataInterface from "@/model/doc/docDataInterface";
+import DocVersionDataInterface from "@/model/doc/docVersionDataInterface";
 
 /**
  * Data class that provides the default doc data of SoftDocLinker.

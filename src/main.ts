@@ -1,7 +1,7 @@
-import "../node_modules/vuetify/dist/vuetify.min.css";
-import Vue from "vue";
-import App from "./App.vue";
+import App from "@/App.vue";
 import Vuetify from "@/plugins/vuetify";
+import Vue from "vue";
+import "../node_modules/vuetify/dist/vuetify.min.css";
 
 new Vue({
     vuetify: Vuetify,

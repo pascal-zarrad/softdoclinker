@@ -1,5 +1,5 @@
-import CacheDataStorageFactory from "@/cache/cacheDataStorageFactory";
 import CacheDataStorage from "@/cache/cacheDataStorage";
+import CacheDataStorageFactory from "@/cache/cacheDataStorageFactory";
 
 describe("CacheDataStorageFactory", () => {
     describe("create", () => {

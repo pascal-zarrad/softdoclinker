@@ -1,4 +1,4 @@
-import CacheDataStorage from "./cacheDataStorage";
+import CacheDataStorage from "@/cache/cacheDataStorage";
 
 /**
  * Factory class for CacheDataStorage.

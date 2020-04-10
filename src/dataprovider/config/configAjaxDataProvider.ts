@@ -1,6 +1,6 @@
-import Axios from "axios";
+import DataProviderInterface from "@/dataprovider/dataProviderInterface";
 import ConfigDataInterface from "@/model/config/configDataInterface";
-import DataProviderInterface from "../dataProviderInterface";
+import Axios from "axios";
 
 /**
  * A data provider to load the base configuration of

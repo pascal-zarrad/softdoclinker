@@ -1,6 +1,6 @@
-import Axios from "axios";
+import DataProviderInterface from "@/dataprovider/dataProviderInterface";
 import DocCollectionInterface from "@/model/doc/docCollectionInterface";
-import DataProviderInterface from "../dataProviderInterface";
+import Axios from "axios";
 
 /**
  * A data provider that gains its data from a json configuration file

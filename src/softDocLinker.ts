@@ -1,15 +1,15 @@
-import SoftDocLinkerInterface from "./softDocLinkerInterface";
-import DataRepositoryInterface from "./model/dataRepositoryInterface";
-import ConfigDataInterface from "./model/config/configDataInterface";
-import DocCollectionInterface from "./model/doc/docCollectionInterface";
-import DocCollectionDataRepository from "./model/doc/docCollectionDataRepository";
-import ConfigDataRepository from "./model/config/configDataRepository";
-import ConfigDataProviderFactory from "./dataprovider/config/configDataProviderFactory";
-import CacheManagementFactory from "./cache/cacheManagementFactory";
-import CacheDataStorageFactory from "./cache/cacheDataStorageFactory";
-import DocDataProviderFactory from "./dataprovider/doc/docDataProviderFactory";
-import SoftDocLinkerDataStateInterface from "./model/softDocLinkerDataStateInterface";
-import DefaultSoftDocLinkerSharedState from "./model/defaultSoftDocLinkerSharedState";
+import CacheDataStorageFactory from "@/cache/cacheDataStorageFactory";
+import CacheManagementFactory from "@/cache/cacheManagementFactory";
+import ConfigDataProviderFactory from "@/dataprovider/config/configDataProviderFactory";
+import DocDataProviderFactory from "@/dataprovider/doc/docDataProviderFactory";
+import ConfigDataInterface from "@/model/config/configDataInterface";
+import ConfigDataRepository from "@/model/config/configDataRepository";
+import DataRepositoryInterface from "@/model/dataRepositoryInterface";
+import DefaultSoftDocLinkerSharedState from "@/model/defaultSoftDocLinkerSharedState";
+import DocCollectionDataRepository from "@/model/doc/docCollectionDataRepository";
+import DocCollectionInterface from "@/model/doc/docCollectionInterface";
+import SoftDocLinkerDataStateInterface from "@/model/softDocLinkerDataStateInterface";
+import SoftDocLinkerInterface from "@/softDocLinkerInterface";
 
 /**
  * Is responsible to compose the data management together and

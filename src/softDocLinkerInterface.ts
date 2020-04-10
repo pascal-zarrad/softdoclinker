@@ -1,7 +1,7 @@
-import DataRepositoryInterface from "./model/dataRepositoryInterface";
-import ConfigDataInterface from "./model/config/configDataInterface";
-import DocCollectionInterface from "./model/doc/docCollectionInterface";
-import SoftDocLinkerDataStateInterface from "./model/softDocLinkerDataStateInterface";
+import ConfigDataInterface from "@/model/config/configDataInterface";
+import DataRepositoryInterface from "@/model/dataRepositoryInterface";
+import DocCollectionInterface from "@/model/doc/docCollectionInterface";
+import SoftDocLinkerDataStateInterface from "@/model/softDocLinkerDataStateInterface";
 
 /**
  * Defines the interface between our Vue components and
