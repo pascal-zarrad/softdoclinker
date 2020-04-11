@@ -1,3 +1,4 @@
+/* istanbul ignore file */
 import App from "@/App.vue";
 import Vuetify from "@/plugins/vuetify";
 import Vue from "vue";

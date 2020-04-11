@@ -1,3 +1,4 @@
+/* istanbul ignore file */
 import CacheManagementInterface from "@/cache/cacheManagementInterface";
 import IndexedDBCacheManagement from "@/cache/indexeddb/indexedDBCacheManagement";
 
