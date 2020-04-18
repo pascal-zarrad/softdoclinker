@@ -21,10 +21,10 @@
 import NavigationComponent from "@/components/NavigationComponent.vue";
 import RefreshDataComponent from "@/components/RefreshDataComponent.vue";
 import DefaultSharedState from "@/model/defaultSharedState";
+import SharedStateInterface from "@/model/sharedStateInterface";
+import StateManagementInterface from "@/model/stateManagementInterface";
 import SOFT_DOC_LINKER from "@/softDocLinker";
 import Vue from "vue";
-import SharedStateInterface from "./model/sharedStateInterface";
-import StateManagementInterface from "./model/stateManagementInterface";
 
 export default Vue.extend({
     name: "App",
@@ -37,7 +37,7 @@ export default Vue.extend({
     }),
     mounted() {
         const self = this;
-        SOFT_DOC_LINKER.getSharedStateManagement().then(
+        SOFT_DOC_LINKER.getStateManagement().then(
             (value: StateManagementInterface): void => {
                 self.sharedState = value.getState();
             }

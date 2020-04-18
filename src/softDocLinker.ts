@@ -125,7 +125,7 @@ export class SoftDocLinker implements SoftDocLinkerInterface {
     /**
      * @inheritdoc
      */
-    public async getDocDataRepository(): Promise<
+    public async getDocCollectionDataRepository(): Promise<
         DataRepositoryInterface<DocCollectionInterface>
     > {
         if (this._docCollectionDataRepository !== undefined) {
@@ -151,14 +151,14 @@ export class SoftDocLinker implements SoftDocLinkerInterface {
     /**
      * @inheritdoc
      */
-    public async getSharedStateManagement(): Promise<StateManagementInterface> {
+    public async getStateManagement(): Promise<StateManagementInterface> {
         if (this._stateManagement !== undefined) {
             return this._stateManagement;
         }
 
         this._stateManagement = this._stateManagementFactory.create(
             await this.getConfigDataRepository(),
-            await this.getDocDataRepository()
+            await this.getDocCollectionDataRepository()
         );
 
         return this._stateManagement;

@@ -28,7 +28,7 @@ export default interface SoftDocLinkerInterface {
      * application to grab the data from the server
      * before providing the requested repository.
      */
-    getDocDataRepository(): Promise<
+    getDocCollectionDataRepository(): Promise<
         DataRepositoryInterface<DocCollectionInterface>
     >;
 
@@ -36,5 +36,5 @@ export default interface SoftDocLinkerInterface {
      * Get the state management that handles data fetching and
      * the sharing of the applications state.
      */
-    getSharedStateManagement(): Promise<StateManagementInterface>;
+    getStateManagement(): Promise<StateManagementInterface>;
 }
