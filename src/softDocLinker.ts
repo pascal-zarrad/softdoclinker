@@ -134,7 +134,8 @@ export class SoftDocLinker implements SoftDocLinkerInterface {
 
         const configDataRepository: DataRepositoryInterface<ConfigDataInterface> = await this.getConfigDataRepository();
         const configDataInterface: ConfigDataInterface = await configDataRepository.load(
-            ConfigDataRepository.CONFIG_KEY
+            ConfigDataRepository.CONFIG_KEY,
+            false
         );
 
         this._docCollectionDataRepository = this._docCollectionDataRepositoryFactory.create(

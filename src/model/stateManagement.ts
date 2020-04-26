@@ -4,6 +4,8 @@ import DefaultSharedState from "@/model/defaultSharedState";
 import SharedStateInterface from "@/model/sharedStateInterface";
 import StateManagementInterface from "@/model/stateManagementInterface";
 import DocCollectionInterface from "@/model/doc/docCollectionInterface";
+import ConfigDataRepository from "./config/configDataRepository";
+import DocCollectionDataRepository from "./doc/docCollectionDataRepository";
 
 /**
  * State management that manages the data used by the rendering.
@@ -28,7 +30,13 @@ export default class StateManagement implements StateManagementInterface {
     /**
      * The shared state of SoftDocLinker
      */
-    protected _sharedState: SharedStateInterface;
+    private _sharedState: SharedStateInterface;
+    protected get sharedState(): SharedStateInterface {
+        return this._sharedState;
+    }
+    protected set sharedState(value: SharedStateInterface) {
+        this._sharedState = value;
+    }
 
     /**
      * Constructor
@@ -50,14 +58,33 @@ export default class StateManagement implements StateManagementInterface {
     /**
      * @inheritdoc
      */
-    update(forceRefresh: boolean): Promise<SharedStateInterface> {
-        throw new Error("Method not implemented.");
+    public async update(forceRefresh: boolean): Promise<SharedStateInterface> {
+        this._sharedState.currentConfig = await this._configDataRepository.load(
+            ConfigDataRepository.CONFIG_KEY,
+            forceRefresh
+        );
+
+        this._sharedState.currentDocData = await this._docDataRepository.load(
+            DocCollectionDataRepository.DOC_KEY,
+            forceRefresh
+        );
+
+        return this._sharedState;
     }
 
     /**
      * @inheritdoc
      */
+    /* istanbul ignore next */
     getState(): SharedStateInterface {
         return this._sharedState;
+    }
+
+    /**
+     * @inheritdoc
+     */
+    /* istanbul ignore next */
+    setState(sharedState: SharedStateInterface): void {
+        this._sharedState = sharedState;
     }
 }

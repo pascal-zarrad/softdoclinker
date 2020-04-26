@@ -1,5 +1,6 @@
 import AbstractCacheManagement from "@/cache/abstractCacheManagement";
 import CacheDataStorage from "@/cache/cacheDataStorage";
+import CacheDataStorageDataStructureInterface from "@/cache/indexeddb/cacheDataStorageDataStructureInterface";
 import { del, get, set } from "idb-keyval";
 
 /**
@@ -11,6 +12,10 @@ import { del, get, set } from "idb-keyval";
  *
  * IndexedDB is used as a k-v store here. Not best practice
  * and will maybe change it in the future.
+ *
+ * The cache management converts the data to a simpler format
+ * and throws away the cache key from the CacheDataStorage to
+ * minimize saved data.
  *
  * @since 2.0.0
  */
@@ -26,18 +31,27 @@ export default class IndexedDBCacheManagement<
     initialize(): Promise<void> {
         return Promise.resolve();
     }
+
     /**
      * @inheritdoc
      */
-    load(key: string): Promise<CacheDataStorage<T>> {
-        return get(key);
+    async load(key: string): Promise<CacheDataStorage<T>> {
+        const data: CacheDataStorageDataStructureInterface<T> = (await get(
+            key
+        )) as CacheDataStorageDataStructureInterface<T>;
+
+        return new CacheDataStorage<T>(key, data.data, data.lastAccess);
     }
 
     /**
      * @inheritdoc
      */
     update(data: CacheDataStorage<T>): Promise<void> {
-        return set(data.key, data);
+        const simplifiedCacheData: CacheDataStorageDataStructureInterface<T> = {
+            data: data.data,
+            lastAccess: data.lastAccess
+        };
+        return set(data.key, simplifiedCacheData);
     }
 
     /**

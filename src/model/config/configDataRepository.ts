@@ -17,8 +17,11 @@ export default class ConfigDataRepository extends AbstractDataRepository<
     /**
      * @inheritdoc
      */
-    public async load(key: string): Promise<ConfigDataInterface> {
-        if (await this._cacheManagement.isValid(key)) {
+    public async load(
+        key: string,
+        forceRefresh: boolean
+    ): Promise<ConfigDataInterface> {
+        if ((await this._cacheManagement.isValid(key)) && !forceRefresh) {
             return (await this._cacheManagement.load(key)).data;
         }
 
@@ -26,8 +29,7 @@ export default class ConfigDataRepository extends AbstractDataRepository<
 
         const cacheItem = this._cacheDataStorageFactory.create(key, configData);
 
-        this._cacheManagement.update(cacheItem);
-
+        await this._cacheManagement.update(cacheItem);
         return configData;
     }
 }

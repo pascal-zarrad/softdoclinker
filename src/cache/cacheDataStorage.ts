@@ -85,7 +85,6 @@ export default class CacheDataStorage<T> {
      * Getter: _lastAccess
      */
     public get lastAccess(): Date {
-        // if ()
         return this._lastAccess;
     }
 

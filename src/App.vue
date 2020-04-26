@@ -32,14 +32,19 @@ export default Vue.extend({
         NavigationComponent,
         RefreshDataComponent
     },
-    data: () => ({
-        sharedState: new DefaultSharedState()
-    }),
+    data: function() {
+        return {
+            sharedState: new DefaultSharedState()
+        };
+    },
     mounted() {
         const self = this;
         SOFT_DOC_LINKER.getStateManagement().then(
-            (value: StateManagementInterface): void => {
-                self.sharedState = value.getState();
+            (
+                stateManagement: StateManagementInterface
+            ): Promise<SharedStateInterface> => {
+                stateManagement.setState(self.sharedState);
+                return stateManagement.update(false);
             }
         );
     }

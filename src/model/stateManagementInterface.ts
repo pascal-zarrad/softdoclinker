@@ -26,4 +26,9 @@ export default interface StateManagementInterface {
      * Getter: Get the current state of the application
      */
     getState(): SharedStateInterface;
+
+    /**
+     * Setter: Set the current state of the application
+     */
+    setState(sharedState: SharedStateInterface): void;
 }
