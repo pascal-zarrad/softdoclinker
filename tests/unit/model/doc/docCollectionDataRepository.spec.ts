@@ -52,7 +52,8 @@ describe("DocCollectionDataRepository", () => {
 
             try {
                 const result = await docCollectionDataRepository.load(
-                    expectedKey
+                    expectedKey,
+                    false
                 );
 
                 expect(
@@ -118,7 +119,78 @@ describe("DocCollectionDataRepository", () => {
 
             try {
                 const result = await docCollectionDataRepository.load(
-                    expectedKey
+                    expectedKey,
+                    false
+                );
+
+                expect(
+                    docCollectionDataCacheManagement.isValid
+                ).toHaveBeenCalledWith(expectedKey);
+                expect(
+                    docCollectionDataCacheManagement.update
+                ).toHaveBeenCalledWith(expectedDocCollectionData);
+                expect(cacheDataStorageFactory.create).toHaveBeenCalledWith(
+                    expectedKey,
+                    expectedDocCollectionData
+                );
+                expect(
+                    docCollectionDataProviderInterface.load
+                ).toHaveBeenCalled();
+                expect(result).toBe(expectedDocCollectionData);
+
+                // When we have data cached, we don't want to waste resources
+                expect(
+                    docCollectionDataCacheManagement.load
+                ).toHaveBeenCalledTimes(0);
+            } catch (e) {
+                fail(e);
+            }
+        });
+
+        it("should create a new value if forceRefresh is true", async () => {
+            const expectedKey = "myExpectedKey";
+            const expectedDocCollectionData: CacheDataStorage<DocCollectionInterface> = new CacheDataStorage<
+                DocCollectionInterface
+            >("docs", {
+                documentations: []
+            });
+
+            const docCollectionDataProviderInterface: DataProviderInterface<DocCollectionInterface> = new DocAjaxDataProvider();
+            (docCollectionDataProviderInterface.load as jest.Mock).mockReturnValue(
+                Promise.resolve(
+                    new Promise(resolve => {
+                        resolve(expectedDocCollectionData);
+                    })
+                )
+            );
+
+            const docCollectionDataCacheManagement: CacheManagementInterface<DocCollectionInterface> = new IndexedDBCacheManagement();
+            (docCollectionDataCacheManagement.isValid as jest.Mock).mockReturnValue(
+                Promise.resolve(
+                    new Promise(resolve => {
+                        resolve(true);
+                    })
+                )
+            );
+            docCollectionDataCacheManagement.update = jest.fn();
+
+            const cacheDataStorageFactory: CacheDataStorageFactory = new CacheDataStorageFactory();
+            (cacheDataStorageFactory.create as jest.Mock).mockReturnValue(
+                expectedDocCollectionData
+            );
+
+            const docCollectionDataRepository = new DocCollectionDataRepository(
+                docCollectionDataProviderInterface,
+                docCollectionDataCacheManagement,
+                cacheDataStorageFactory
+            );
+
+            expect.assertions(6);
+
+            try {
+                const result = await docCollectionDataRepository.load(
+                    expectedKey,
+                    true
                 );
 
                 expect(

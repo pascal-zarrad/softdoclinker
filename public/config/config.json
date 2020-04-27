@@ -1,5 +1,5 @@
 {
-    "instanceName": "BBBBBBBB",
+    "instanceName": "SoftDocLinker",
     "backend": "JSON",
     "cache": "indexedDB",
     "cacheLifetime": 86400,

@@ -4,8 +4,8 @@ import DefaultSharedState from "@/model/defaultSharedState";
 import SharedStateInterface from "@/model/sharedStateInterface";
 import StateManagementInterface from "@/model/stateManagementInterface";
 import DocCollectionInterface from "@/model/doc/docCollectionInterface";
-import ConfigDataRepository from "./config/configDataRepository";
-import DocCollectionDataRepository from "./doc/docCollectionDataRepository";
+import ConfigDataRepository from "@/model/config/configDataRepository";
+import DocCollectionDataRepository from "@/model/doc/docCollectionDataRepository";
 
 /**
  * State management that manages the data used by the rendering.
@@ -31,12 +31,6 @@ export default class StateManagement implements StateManagementInterface {
      * The shared state of SoftDocLinker
      */
     private _sharedState: SharedStateInterface;
-    protected get sharedState(): SharedStateInterface {
-        return this._sharedState;
-    }
-    protected set sharedState(value: SharedStateInterface) {
-        this._sharedState = value;
-    }
 
     /**
      * Constructor
@@ -86,5 +80,15 @@ export default class StateManagement implements StateManagementInterface {
     /* istanbul ignore next */
     setState(sharedState: SharedStateInterface): void {
         this._sharedState = sharedState;
+    }
+
+    /* istanbul ignore next */
+    protected get sharedState(): SharedStateInterface {
+        return this._sharedState;
+    }
+
+    /* istanbul ignore next */
+    protected set sharedState(value: SharedStateInterface) {
+        this._sharedState = value;
     }
 }
