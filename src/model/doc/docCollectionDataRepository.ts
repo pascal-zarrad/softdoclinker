@@ -19,8 +19,11 @@ export default class DocCollectionDataRepository extends AbstractDataRepository<
     /**
      * @inheritdoc
      */
-    public async load(key: string): Promise<DocCollectionInterface> {
-        if (await this._cacheManagement.isValid(key)) {
+    public async load(
+        key: string,
+        forceRefresh: boolean
+    ): Promise<DocCollectionInterface> {
+        if ((await this._cacheManagement.isValid(key)) && !forceRefresh) {
             return (await this._cacheManagement.load(key)).data;
         }
 

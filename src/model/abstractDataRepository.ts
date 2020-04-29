@@ -42,5 +42,5 @@ export default abstract class AbstractDataRepository<T>
     /**
      * @inheritdoc
      */
-    abstract async load(key: string): Promise<T>;
+    abstract async load(key: string, forceRefresh: boolean): Promise<T>;
 }

@@ -1,12 +1,12 @@
 import DataProviderInterface from "@/dataprovider/dataProviderInterface";
 import DocAjaxDataProvider from "@/dataprovider/doc/docAjaxDataProvider";
-import DocDataProviderFactory from "@/dataprovider/doc/docDataProviderFactory";
+import DocCollectionDataProviderFactory from "@/dataprovider/doc/docCollectionDataProviderFactory";
 import DocCollectionInterface from "@/model/doc/docCollectionInterface";
 
 describe("DocDataProviderFactory", () => {
     describe("create", () => {
         it("should return DocAjaxDataProvider with backend = ajax", () => {
-            const docDataProviderFactory: DocDataProviderFactory = new DocDataProviderFactory();
+            const docDataProviderFactory: DocCollectionDataProviderFactory = new DocCollectionDataProviderFactory();
 
             const result: DataProviderInterface<DocCollectionInterface> = docDataProviderFactory.create(
                 "ajax"
@@ -16,7 +16,7 @@ describe("DocDataProviderFactory", () => {
         });
 
         it("should return DocAjaxDataProvider on unknown backend values", () => {
-            const docDataProviderFactory: DocDataProviderFactory = new DocDataProviderFactory();
+            const docDataProviderFactory: DocCollectionDataProviderFactory = new DocCollectionDataProviderFactory();
 
             const result: DataProviderInterface<DocCollectionInterface> = docDataProviderFactory.create(
                 "42 is definitely not a real backend"

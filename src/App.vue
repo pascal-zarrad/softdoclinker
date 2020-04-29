@@ -20,6 +20,9 @@
 <script lang="ts">
 import NavigationComponent from "@/components/NavigationComponent.vue";
 import RefreshDataComponent from "@/components/RefreshDataComponent.vue";
+import DefaultSharedState from "@/model/defaultSharedState";
+import SharedStateInterface from "@/model/sharedStateInterface";
+import StateManagementInterface from "@/model/stateManagementInterface";
 import SOFT_DOC_LINKER from "@/softDocLinker";
 import Vue from "vue";
 
@@ -29,8 +32,21 @@ export default Vue.extend({
         NavigationComponent,
         RefreshDataComponent
     },
-    data: () => ({
-        sharedState: SOFT_DOC_LINKER.sharedState
-    })
+    data: function() {
+        return {
+            sharedState: new DefaultSharedState()
+        };
+    },
+    mounted() {
+        const self = this;
+        SOFT_DOC_LINKER.getStateManagement().then(
+            (
+                stateManagement: StateManagementInterface
+            ): Promise<SharedStateInterface> => {
+                stateManagement.setState(self.sharedState);
+                return stateManagement.update(false);
+            }
+        );
+    }
 });
 </script>

@@ -1,16 +1,17 @@
+/* istanbul ignore file */
+
 import ConfigDataInterface from "@/model/config/configDataInterface";
 import DefaultConfigData from "@/model/config/defaultConfigData";
-import DefaultDocData from "@/model/doc/defaultDocData";
-import DocDataInterface from "@/model/doc/docDataInterface";
-import SoftDocLinkerDataStateInterface from "@/model/softDocLinkerDataStateInterface";
+import DefaultDocCollectionData from "@/model/doc/defaultDocCollectionData";
+import DocCollectionInterface from "@/model/doc/docCollectionInterface";
+import SharedStateInterface from "@/model/sharedStateInterface";
 
 /**
  * Data class that provides a default state for the application.
  *
  * @since 2.0.0
  */
-export default class DefaultSoftDocLinkerSharedState
-    implements SoftDocLinkerDataStateInterface {
+export default class DefaultSharedState implements SharedStateInterface {
     /**
      * @inheritdoc
      */
@@ -24,5 +25,5 @@ export default class DefaultSoftDocLinkerSharedState
     /**
      * @inheritdoc
      */
-    public currentDocData: DocDataInterface = new DefaultDocData();
+    public currentDocData: DocCollectionInterface = new DefaultDocCollectionData();
 }

@@ -50,7 +50,10 @@ describe("ConfigDataRepository", () => {
             expect.assertions(6);
 
             try {
-                const result = await configDataRepository.load(expectedKey);
+                const result = await configDataRepository.load(
+                    expectedKey,
+                    false
+                );
 
                 expect(configDataCacheManagement.isValid).toHaveBeenCalledWith(
                     expectedKey
@@ -112,7 +115,74 @@ describe("ConfigDataRepository", () => {
             expect.assertions(6);
 
             try {
-                const result = await configDataRepository.load(expectedKey);
+                const result = await configDataRepository.load(
+                    expectedKey,
+                    false
+                );
+
+                expect(configDataCacheManagement.isValid).toHaveBeenCalledWith(
+                    expectedKey
+                );
+                expect(configDataCacheManagement.update).toHaveBeenCalledWith(
+                    expectedConfigData
+                );
+                expect(cacheDataStorageFactory.create).toHaveBeenCalledWith(
+                    expectedKey,
+                    expectedConfigData
+                );
+                expect(configDataProviderInterface.load).toHaveBeenCalled();
+                expect(result).toBe(expectedConfigData);
+
+                // When we have data cached, we don't want to waste resources
+                expect(configDataCacheManagement.load).toHaveBeenCalledTimes(0);
+            } catch (e) {
+                fail(e);
+            }
+        });
+
+        it("should create a new value if forceRefresh is true", async () => {
+            const expectedKey = "myExpectedKey";
+            const expectedConfigData: CacheDataStorage<ConfigDataInterface> = new CacheDataStorage(
+                "config",
+                new DefaultConfigData()
+            );
+
+            const configDataProviderInterface: DataProviderInterface<ConfigDataInterface> = new ConfigAjaxDataProvider();
+            (configDataProviderInterface.load as jest.Mock).mockReturnValue(
+                Promise.resolve(
+                    new Promise(resolve => {
+                        resolve(expectedConfigData);
+                    })
+                )
+            );
+
+            const configDataCacheManagement: CacheManagementInterface<ConfigDataInterface> = new IndexedDBCacheManagement();
+            (configDataCacheManagement.isValid as jest.Mock).mockReturnValue(
+                Promise.resolve(
+                    new Promise(resolve => {
+                        resolve(true);
+                    })
+                )
+            );
+
+            const cacheDataStorageFactory: CacheDataStorageFactory = new CacheDataStorageFactory();
+            (cacheDataStorageFactory.create as jest.Mock).mockReturnValue(
+                expectedConfigData
+            );
+
+            const configDataRepository = new ConfigDataRepository(
+                configDataProviderInterface,
+                configDataCacheManagement,
+                cacheDataStorageFactory
+            );
+
+            expect.assertions(6);
+
+            try {
+                const result = await configDataRepository.load(
+                    expectedKey,
+                    true
+                );
 
                 expect(configDataCacheManagement.isValid).toHaveBeenCalledWith(
                     expectedKey

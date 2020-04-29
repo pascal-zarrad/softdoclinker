@@ -1,3 +1,4 @@
+/* istanbul ignore file */
 import DataProviderInterface from "@/dataprovider/dataProviderInterface";
 import DocAjaxDataProvider from "@/dataprovider/doc/docAjaxDataProvider";
 import DocCollectionInterface from "@/model/doc/docCollectionInterface";
@@ -8,7 +9,7 @@ import DocCollectionInterface from "@/model/doc/docCollectionInterface";
  *
  * @since 2.0.0
  */
-export default class DocDataProviderFactory {
+export default class DocCollectionDataProviderFactory {
     /**
      * Create a new DataProvider for a specific backend.
      * If the specified backend does not exist, a

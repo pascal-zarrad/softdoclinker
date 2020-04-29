@@ -7,9 +7,12 @@ import ConfigDataInterface from "@/model/config/configDataInterface";
  */
 export default class DefaultConfigData implements ConfigDataInterface {
     /**
+     * The default value leaves the value empty,
+     * to not display a wrong title for some milliseconds.
+     *
      * @inheritdoc
      */
-    public instanceName: string = "SoftDocLinker";
+    public instanceName: string = "";
 
     /**
      * @inheritdoc

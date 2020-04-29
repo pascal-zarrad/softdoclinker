@@ -1,5 +1,6 @@
 import CacheDataStorage from "@/cache/cacheDataStorage";
 import IndexedDBCacheManagement from "@/cache/indexeddb/indexedDBCacheManagement";
+import CacheDataStorageDataStructureInterface from "@/cache/indexeddb/cacheDataStorageDataStructureInterface";
 import { del, get, set } from "idb-keyval";
 
 jest.mock("idb-keyval");
@@ -19,18 +20,33 @@ describe("IndexedDBCacheManagement", () => {
 
     describe("load", () => {
         it("should call idb-keyval -> get with the provided key", async () => {
-            const expected = "myExpectedKey";
+            const expectedKey: string = "myExpectedKey";
+            const expectedData: number = 42;
+            const expectedDate: Date = new Date();
+
+            const cacheDataStorageDataStructureInterface: CacheDataStorageDataStructureInterface<number> = {
+                data: expectedData,
+                lastAccess: expectedDate
+            };
+
+            const cacheDataStorage: CacheDataStorage<number> = new CacheDataStorage<
+                number
+            >(expectedKey, expectedData, expectedDate);
 
             const indexedDBCacheManagement = new IndexedDBCacheManagement();
 
-            expect.assertions(2);
+            expect.assertions(3);
 
             (get as jest.Mock).mockImplementation((key: string) => {
-                expect(key).toBe(expected);
+                expect(key).toBe(expectedKey);
+
+                return cacheDataStorageDataStructureInterface;
             });
 
             try {
-                await indexedDBCacheManagement.load(expected);
+                const result = await indexedDBCacheManagement.load(expectedKey);
+
+                expect(result).toEqual(cacheDataStorage);
             } catch (e) {
                 fail(e);
             }
@@ -43,10 +59,17 @@ describe("IndexedDBCacheManagement", () => {
         it("should call idb-keyval -> set with the specified key", async () => {
             const expectedKey = "myExpectedKey";
             const expectedData = 42;
+            const expectedDate = new Date();
 
-            const expectedTestData = new CacheDataStorage<number>(
+            const expectedTestData: CacheDataStorageDataStructureInterface<number> = {
+                data: expectedData,
+                lastAccess: expectedDate
+            };
+
+            const cacheDataStorage: CacheDataStorage<number> = new CacheDataStorage(
                 expectedKey,
-                expectedData
+                expectedData,
+                expectedDate
             );
 
             const indexedDBCacheManagement = new IndexedDBCacheManagement();
@@ -55,13 +78,13 @@ describe("IndexedDBCacheManagement", () => {
 
             (set as jest.Mock).mockImplementation(
                 (key: string, data: number) => {
-                    expect(key).toBe(expectedKey);
-                    expect(data).toBe(expectedTestData);
+                    expect(key).toEqual(expectedKey);
+                    expect(data).toEqual(expectedTestData);
                 }
             );
 
             try {
-                await indexedDBCacheManagement.update(expectedTestData);
+                await indexedDBCacheManagement.update(cacheDataStorage);
             } catch (e) {
                 fail(e);
             }
