@@ -1,0 +1,13 @@
+version: '3'
+
+services:
+  node:
+    build:
+      context: '.docker/node'
+    volumes:
+      - ./:/srv/softdoclinker
+    networks:
+      - 'softdoclinker'
+
+networks:
+  softdoclinker:

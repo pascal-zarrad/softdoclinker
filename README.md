@@ -17,31 +17,38 @@ The target of v2.0.0 is to use modern technologies and improvements which includ
 
 The README will change from time to time, so stay tuned!
 
-## Current command setup
+## Local development environment
+To simplify the setup of the project and provide a uniform environment for everyone.
+So, please ensure that you have Docker and docker-compose installed on your system.
 
-### Project setup
+### Installing dependencies
+As yarn is the package manager used in this project, you first have to install
+the JS dependencies of the project before you first start the development 
+web server.
 ```
-yarn install
-```
-
-### Compiles and hot-reloads for development
-```
-yarn serve
-```
-
-### Compiles and minifies for production
-```
-yarn build
+docker-compose run node yarn install
 ```
 
-### Run your unit tests
+### Starting the development web server
+Simply starting the Docker stack will launch the development web server
+that automatically re-compiles changed files.
 ```
-yarn test:unit
+docker-compose up -d
 ```
 
-### Lints and fixes files
+### Compiling and minifying for production
 ```
-yarn lint
+docker-compose run node yarn build
+```
+
+### Running unit tests
+```
+docker-compose run node yarn test:unit
+```
+
+### Linting and fixing files
+```
+docker-compose run node yarn lint
 ```
 
 ## Contributing
