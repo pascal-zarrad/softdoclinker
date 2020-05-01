@@ -1,4 +1,4 @@
-import ConfigDataInterface from "@/model/config/configDataInterface";
+import ConfigDataInterface from "@/model/config/ConfigDataInterface";
 
 /**
  * Data class that provides the default configuration of SoftDocLinker

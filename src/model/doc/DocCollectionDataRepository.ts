@@ -1,6 +1,6 @@
-import CacheDataStorage from "@/cache/cacheDataStorage";
-import AbstractDataRepository from "@/model/abstractDataRepository";
-import DocCollectionInterface from "@/model/doc/docCollectionInterface";
+import CacheDataStorage from "@/cache/CacheDataStorage";
+import AbstractDataRepository from "@/model/AbstractDataRepository";
+import DocCollectionInterface from "@/model/doc/DocCollectionInterface";
 
 /**
  * Data repository that is used to get the data of the available

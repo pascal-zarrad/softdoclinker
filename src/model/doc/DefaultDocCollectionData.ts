@@ -1,7 +1,7 @@
 /* istanbul ignore file */
 
-import DocDataInterface from "@/model/doc/docDataInterface";
-import DocCollectionInterface from "@/model/doc/docCollectionInterface";
+import DocDataInterface from "@/model/doc/DocDataInterface";
+import DocCollectionInterface from "@/model/doc/DocCollectionInterface";
 
 /**
  * Data class that provides the default doc data of SoftDocLinker.

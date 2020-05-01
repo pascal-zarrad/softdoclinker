@@ -1,19 +1,19 @@
-import StateManagement from "@/model/stateManagement";
-import SharedStateInterface from "@/model/sharedStateInterface";
-import ConfigDataRepository from "@/model/config/configDataRepository";
-import ConfigAjaxDataProvider from "@/dataprovider/config/configAjaxDataProvider";
-import IndexedDBCacheManagement from "@/cache/indexeddb/indexedDBCacheManagement";
-import ConfigDataInterface from "@/model/config/configDataInterface";
-import CacheDataStorageFactory from "@/cache/cacheDataStorageFactory";
-import DocCollectionDataRepository from "@/model/doc/docCollectionDataRepository";
-import DocAjaxDataProvider from "@/dataprovider/doc/docAjaxDataProvider";
-import DocCollectionInterface from "@/model/doc/docCollectionInterface";
-import DefaultSharedState from "@/model/defaultSharedState";
+import StateManagement from "@/model/StateManagement";
+import SharedStateInterface from "@/model/SharedStateInterface";
+import ConfigDataRepository from "@/model/config/ConfigDataRepository";
+import ConfigAjaxDataProvider from "@/dataprovider/config/ConfigAjaxDataProvider";
+import IndexedDBCacheManagement from "@/cache/indexeddb/IndexedDBCacheManagement";
+import ConfigDataInterface from "@/model/config/ConfigDataInterface";
+import CacheDataStorageFactory from "@/cache/CacheDataStorageFactory";
+import DocCollectionDataRepository from "@/model/doc/DocCollectionDataRepository";
+import DocAjaxDataProvider from "@/dataprovider/doc/DocAjaxDataProvider";
+import DocCollectionInterface from "@/model/doc/DocCollectionInterface";
+import DefaultSharedState from "@/model/DefaultSharedState";
 
-jest.mock("@/model/config/configDataRepository");
-jest.mock("@/dataprovider/config/configAjaxDataProvider");
-jest.mock("@/cache/cacheDataStorageFactory");
-jest.mock("@/model/doc/docCollectionDataRepository");
+jest.mock("@/model/config/ConfigDataRepository");
+jest.mock("@/dataprovider/config/ConfigAjaxDataProvider");
+jest.mock("@/cache/CacheDataStorageFactory");
+jest.mock("@/model/doc/DocCollectionDataRepository");
 
 describe("StateManagement", () => {
     describe("update", () => {

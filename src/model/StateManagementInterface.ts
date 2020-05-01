@@ -1,4 +1,4 @@
-import SharedStateInterface from "@/model/sharedStateInterface";
+import SharedStateInterface from "@/model/SharedStateInterface";
 
 /**
  * Interface that handles the state of SoftDocLinker.

@@ -1,6 +1,6 @@
-import CacheDataStorage from "@/cache/cacheDataStorage";
-import IndexedDBCacheManagement from "@/cache/indexeddb/indexedDBCacheManagement";
-import CacheDataStorageDataStructureInterface from "@/cache/indexeddb/cacheDataStorageDataStructureInterface";
+import CacheDataStorage from "@/cache/CacheDataStorage";
+import IndexedDBCacheManagement from "@/cache/indexeddb/IndexedDBCacheManagement";
+import CacheDataStorageDataStructureInterface from "@/cache/indexeddb/CacheDataStorageDataStructureInterface";
 import { del, get, set } from "idb-keyval";
 
 jest.mock("idb-keyval");

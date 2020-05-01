@@ -1,10 +1,10 @@
 /* istanbul ignore file */
 
-import ConfigDataInterface from "@/model/config/configDataInterface";
-import DataRepositoryInterface from "@/model/dataRepositoryInterface";
-import DocCollectionInterface from "@/model/doc/docCollectionInterface";
-import StateManagement from "@/model/stateManagement";
-import StateManagementInterface from "@/model/stateManagementInterface";
+import ConfigDataInterface from "@/model/config/ConfigDataInterface";
+import DataRepositoryInterface from "@/model/DataRepositoryInterface";
+import DocCollectionInterface from "@/model/doc/DocCollectionInterface";
+import StateManagement from "@/model/StateManagement";
+import StateManagementInterface from "@/model/StateManagementInterface";
 
 export default class StateManagementFactory {
     public create(

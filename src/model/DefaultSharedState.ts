@@ -1,10 +1,10 @@
 /* istanbul ignore file */
 
-import ConfigDataInterface from "@/model/config/configDataInterface";
-import DefaultConfigData from "@/model/config/defaultConfigData";
-import DefaultDocCollectionData from "@/model/doc/defaultDocCollectionData";
-import DocCollectionInterface from "@/model/doc/docCollectionInterface";
-import SharedStateInterface from "@/model/sharedStateInterface";
+import ConfigDataInterface from "@/model/config/ConfigDataInterface";
+import DefaultConfigData from "@/model/config/DefaultConfigData";
+import DefaultDocCollectionData from "@/model/doc/DefaultDocCollectionData";
+import DocCollectionInterface from "@/model/doc/DocCollectionInterface";
+import SharedStateInterface from "@/model/SharedStateInterface";
 
 /**
  * Data class that provides a default state for the application.

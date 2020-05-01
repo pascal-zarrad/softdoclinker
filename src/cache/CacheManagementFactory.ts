@@ -1,6 +1,6 @@
 /* istanbul ignore file */
-import CacheManagementInterface from "@/cache/cacheManagementInterface";
-import IndexedDBCacheManagement from "@/cache/indexeddb/indexedDBCacheManagement";
+import CacheManagementInterface from "@/cache/CacheManagementInterface";
+import IndexedDBCacheManagement from "@/cache/indexeddb/IndexedDBCacheManagement";
 
 /**
  * Factory class to create cache management instances.

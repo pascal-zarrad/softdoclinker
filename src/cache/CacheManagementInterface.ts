@@ -1,4 +1,4 @@
-import CacheDataStorage from "@/cache/cacheDataStorage";
+import CacheDataStorage from "@/cache/CacheDataStorage";
 
 /**
  * An interface that can be used to implement caching

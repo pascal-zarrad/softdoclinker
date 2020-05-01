@@ -1,6 +1,6 @@
-import CacheManagementFactory from "@/cache/cacheManagementFactory";
-import ConfigDataInterface from "@/model/config/configDataInterface";
-import IndexedDBCacheManagement from "@/cache/indexeddb/indexedDBCacheManagement";
+import CacheManagementFactory from "@/cache/CacheManagementFactory";
+import ConfigDataInterface from "@/model/config/ConfigDataInterface";
+import IndexedDBCacheManagement from "@/cache/indexeddb/IndexedDBCacheManagement";
 
 describe("CacheManagementFactory", () => {
     describe("create", () => {

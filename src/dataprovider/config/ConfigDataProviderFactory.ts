@@ -1,7 +1,7 @@
 /* istanbul ignore file */
-import ConfigAjaxDataProvider from "@/dataprovider/config/configAjaxDataProvider";
-import DataProviderInterface from "@/dataprovider/dataProviderInterface";
-import ConfigDataInterface from "@/model/config/configDataInterface";
+import ConfigAjaxDataProvider from "@/dataprovider/config/ConfigAjaxDataProvider";
+import DataProviderInterface from "@/dataprovider/DataProviderInterface";
+import ConfigDataInterface from "@/model/config/ConfigDataInterface";
 
 /**
  * A factory that creates ConfigDataProviders

@@ -1,16 +1,16 @@
-import CacheDataStorage from "@/cache/cacheDataStorage";
-import CacheDataStorageFactory from "@/cache/cacheDataStorageFactory";
-import CacheManagementInterface from "@/cache/cacheManagementInterface";
-import IndexedDBCacheManagement from "@/cache/indexeddb/indexedDBCacheManagement";
-import ConfigAjaxDataProvider from "@/dataprovider/config/configAjaxDataProvider";
-import DataProviderInterface from "@/dataprovider/dataProviderInterface";
-import ConfigDataInterface from "@/model/config/configDataInterface";
-import ConfigDataRepository from "@/model/config/configDataRepository";
-import DefaultConfigData from "@/model/config/defaultConfigData";
+import CacheDataStorage from "@/cache/CacheDataStorage";
+import CacheDataStorageFactory from "@/cache/CacheDataStorageFactory";
+import CacheManagementInterface from "@/cache/CacheManagementInterface";
+import IndexedDBCacheManagement from "@/cache/indexeddb/IndexedDBCacheManagement";
+import ConfigAjaxDataProvider from "@/dataprovider/config/ConfigAjaxDataProvider";
+import DataProviderInterface from "@/dataprovider/DataProviderInterface";
+import ConfigDataInterface from "@/model/config/ConfigDataInterface";
+import ConfigDataRepository from "@/model/config/ConfigDataRepository";
+import DefaultConfigData from "@/model/config/DefaultConfigData";
 
-jest.mock("@/cache/cacheDataStorageFactory");
-jest.mock("@/dataprovider/config/configAjaxDataProvider");
-jest.mock("@/cache/indexeddb/indexedDBCacheManagement");
+jest.mock("@/cache/CacheDataStorageFactory");
+jest.mock("@/dataprovider/config/ConfigAjaxDataProvider");
+jest.mock("@/cache/indexeddb/IndexedDBCacheManagement");
 
 describe("ConfigDataRepository", () => {
     describe("load", () => {

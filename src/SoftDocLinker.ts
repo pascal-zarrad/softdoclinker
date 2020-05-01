@@ -1,16 +1,16 @@
-import CacheDataStorageFactory from "@/cache/cacheDataStorageFactory";
-import CacheManagementFactory from "@/cache/cacheManagementFactory";
-import ConfigDataProviderFactory from "@/dataprovider/config/configDataProviderFactory";
-import DocCollectionDataProviderFactory from "@/dataprovider/doc/docCollectionDataProviderFactory";
-import ConfigDataInterface from "@/model/config/configDataInterface";
-import ConfigDataRepository from "@/model/config/configDataRepository";
-import ConfigDataRepositoryFactory from "@/model/config/configDataRepositoryFactory";
-import DataRepositoryInterface from "@/model/dataRepositoryInterface";
-import DocCollectionDataRepositoryFactory from "@/model/doc/docCollectionDataRepositoryFactory";
-import DocCollectionInterface from "@/model/doc/docCollectionInterface";
-import StateManagementFactory from "@/model/stateManagementFactory";
-import StateManagementInterface from "@/model/stateManagementInterface";
-import SoftDocLinkerInterface from "@/softDocLinkerInterface";
+import CacheDataStorageFactory from "@/cache/CacheDataStorageFactory";
+import CacheManagementFactory from "@/cache/CacheManagementFactory";
+import ConfigDataProviderFactory from "@/dataprovider/config/ConfigDataProviderFactory";
+import DocCollectionDataProviderFactory from "@/dataprovider/doc/DocCollectionDataProviderFactory";
+import ConfigDataInterface from "@/model/config/ConfigDataInterface";
+import ConfigDataRepository from "@/model/config/ConfigDataRepository";
+import ConfigDataRepositoryFactory from "@/model/config/ConfigDataRepositoryFactory";
+import DataRepositoryInterface from "@/model/DataRepositoryInterface";
+import DocCollectionDataRepositoryFactory from "@/model/doc/DocCollectionDataRepositoryFactory";
+import DocCollectionInterface from "@/model/doc/DocCollectionInterface";
+import StateManagementFactory from "@/model/StateManagementFactory";
+import StateManagementInterface from "@/model/StateManagementInterface";
+import SoftDocLinkerInterface from "@/SoftDocLinkerInterface";
 
 /**
  * Is responsible to compose the data management together and

@@ -1,5 +1,5 @@
-import ConfigDataInterface from "@/model/config/configDataInterface";
-import DocCollectionInterface from "@/model/doc/docCollectionInterface";
+import ConfigDataInterface from "@/model/config/ConfigDataInterface";
+import DocCollectionInterface from "@/model/doc/DocCollectionInterface";
 
 /**
  * Interface that defines the applications state.

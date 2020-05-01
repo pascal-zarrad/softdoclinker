@@ -1,7 +1,7 @@
-import ConfigAjaxDataProvider from "@/dataprovider/config/configAjaxDataProvider";
-import ConfigDataProviderFactory from "@/dataprovider/config/configDataProviderFactory";
-import DataProviderInterface from "@/dataprovider/dataProviderInterface";
-import ConfigDataInterface from "@/model/config/configDataInterface";
+import ConfigAjaxDataProvider from "@/dataprovider/config/ConfigAjaxDataProvider";
+import ConfigDataProviderFactory from "@/dataprovider/config/ConfigDataProviderFactory";
+import DataProviderInterface from "@/dataprovider/DataProviderInterface";
+import ConfigDataInterface from "@/model/config/ConfigDataInterface";
 
 describe("ConfigDataProviderFactory", () => {
     describe("create", () => {

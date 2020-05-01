@@ -1,5 +1,5 @@
-import CacheDataStorage from "@/cache/cacheDataStorage";
-import CacheManagementInterface from "@/cache/cacheManagementInterface";
+import CacheDataStorage from "@/cache/CacheDataStorage";
+import CacheManagementInterface from "@/cache/CacheManagementInterface";
 
 /**
  * Provides an abstract base with some default methods

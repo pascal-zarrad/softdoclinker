@@ -1,11 +1,11 @@
 /* istanbul ignore file */
 
-import CacheDataStorageFactory from "@/cache/cacheDataStorageFactory";
-import CacheManagementInterface from "@/cache/cacheManagementInterface";
-import DataProviderInterface from "@/dataprovider/dataProviderInterface";
-import ConfigDataInterface from "@/model/config/configDataInterface";
-import ConfigDataRepository from "@/model/config/configDataRepository";
-import DataRepositoryInterface from "@/model/dataRepositoryInterface";
+import CacheDataStorageFactory from "@/cache/CacheDataStorageFactory";
+import CacheManagementInterface from "@/cache/CacheManagementInterface";
+import DataProviderInterface from "@/dataprovider/DataProviderInterface";
+import ConfigDataInterface from "@/model/config/ConfigDataInterface";
+import ConfigDataRepository from "@/model/config/ConfigDataRepository";
+import DataRepositoryInterface from "@/model/DataRepositoryInterface";
 
 /**
  * Factory to create DataRepository for ConfigData instances.

@@ -10,7 +10,7 @@
 </template>
 
 <script lang="ts">
-import SoftDocLinkerDataStateInterface from "@/model/sharedStateInterface";
+import SoftDocLinkerDataStateInterface from "@/model/SharedStateInterface";
 import { Component, Prop, Vue } from "vue-property-decorator";
 
 /**

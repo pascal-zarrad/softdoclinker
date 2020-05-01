@@ -1,5 +1,5 @@
-import AbstractDataRepository from "@/model/abstractDataRepository";
-import ConfigDataInterface from "@/model/config/configDataInterface";
+import AbstractDataRepository from "@/model/AbstractDataRepository";
+import ConfigDataInterface from "@/model/config/ConfigDataInterface";
 
 /**
  * Data repository that is used to get base config data.

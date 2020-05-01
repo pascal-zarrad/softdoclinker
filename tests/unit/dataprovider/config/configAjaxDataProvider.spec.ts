@@ -1,4 +1,4 @@
-import ConfigAjaxDataProvider from "@/dataprovider/config/configAjaxDataProvider";
+import ConfigAjaxDataProvider from "@/dataprovider/config/ConfigAjaxDataProvider";
 import Axios from "axios";
 
 jest.mock("axios");

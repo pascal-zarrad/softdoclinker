@@ -1,5 +1,5 @@
 /* istanbul ignore file */
-import CacheDataStorage from "@/cache/cacheDataStorage";
+import CacheDataStorage from "@/cache/CacheDataStorage";
 
 /**
  * Factory class for CacheDataStorage.

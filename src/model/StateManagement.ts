@@ -1,11 +1,11 @@
-import ConfigDataInterface from "@/model/config/configDataInterface";
-import DataRepositoryInterface from "@/model/dataRepositoryInterface";
-import DefaultSharedState from "@/model/defaultSharedState";
-import SharedStateInterface from "@/model/sharedStateInterface";
-import StateManagementInterface from "@/model/stateManagementInterface";
-import DocCollectionInterface from "@/model/doc/docCollectionInterface";
-import ConfigDataRepository from "@/model/config/configDataRepository";
-import DocCollectionDataRepository from "@/model/doc/docCollectionDataRepository";
+import ConfigDataInterface from "@/model/config/ConfigDataInterface";
+import DataRepositoryInterface from "@/model/DataRepositoryInterface";
+import DefaultSharedState from "@/model/DefaultSharedState";
+import SharedStateInterface from "@/model/SharedStateInterface";
+import StateManagementInterface from "@/model/StateManagementInterface";
+import DocCollectionInterface from "@/model/doc/DocCollectionInterface";
+import ConfigDataRepository from "@/model/config/ConfigDataRepository";
+import DocCollectionDataRepository from "@/model/doc/DocCollectionDataRepository";
 
 /**
  * State management that manages the data used by the rendering.

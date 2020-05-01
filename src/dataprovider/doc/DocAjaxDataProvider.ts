@@ -1,5 +1,5 @@
-import DataProviderInterface from "@/dataprovider/dataProviderInterface";
-import DocCollectionInterface from "@/model/doc/docCollectionInterface";
+import DataProviderInterface from "@/dataprovider/DataProviderInterface";
+import DocCollectionInterface from "@/model/doc/DocCollectionInterface";
 import Axios from "axios";
 
 /**

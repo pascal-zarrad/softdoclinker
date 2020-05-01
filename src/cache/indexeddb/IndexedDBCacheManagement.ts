@@ -1,6 +1,6 @@
-import AbstractCacheManagement from "@/cache/abstractCacheManagement";
-import CacheDataStorage from "@/cache/cacheDataStorage";
-import CacheDataStorageDataStructureInterface from "@/cache/indexeddb/cacheDataStorageDataStructureInterface";
+import AbstractCacheManagement from "@/cache/AbstractCacheManagement";
+import CacheDataStorage from "@/cache/CacheDataStorage";
+import CacheDataStorageDataStructureInterface from "@/cache/indexeddb/CacheDataStorageDataStructureInterface";
 import { del, get, set } from "idb-keyval";
 
 /**

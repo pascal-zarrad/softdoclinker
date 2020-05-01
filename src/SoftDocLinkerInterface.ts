@@ -1,7 +1,7 @@
-import ConfigDataInterface from "@/model/config/configDataInterface";
-import DataRepositoryInterface from "@/model/dataRepositoryInterface";
-import DocCollectionInterface from "@/model/doc/docCollectionInterface";
-import StateManagementInterface from "@/model/stateManagementInterface";
+import ConfigDataInterface from "@/model/config/ConfigDataInterface";
+import DataRepositoryInterface from "@/model/DataRepositoryInterface";
+import DocCollectionInterface from "@/model/doc/DocCollectionInterface";
+import StateManagementInterface from "@/model/StateManagementInterface";
 
 /**
  * Defines the interface between our Vue components and
