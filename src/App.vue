@@ -20,10 +20,10 @@
 <script lang="ts">
 import NavigationComponent from "@/components/NavigationComponent.vue";
 import RefreshDataComponent from "@/components/RefreshDataComponent.vue";
-import DefaultSharedState from "@/model/defaultSharedState";
-import SharedStateInterface from "@/model/sharedStateInterface";
-import StateManagementInterface from "@/model/stateManagementInterface";
-import SOFT_DOC_LINKER from "@/softDocLinker";
+import DefaultSharedState from "@/model/DefaultSharedState";
+import SharedStateInterface from "@/model/SharedStateInterface";
+import StateManagementInterface from "@/model/StateManagementInterface";
+import SOFT_DOC_LINKER from "@/SoftDocLinker";
 import Vue from "vue";
 
 export default Vue.extend({

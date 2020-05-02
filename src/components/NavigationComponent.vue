@@ -17,8 +17,8 @@
 
 <script lang="ts">
 import NavigationCustomButtonComponent from "@/components/element/NavigationCustomButtonComponent.vue";
-import SOFT_DOC_LINKER from "@/softDocLinker";
-import SoftDocLinkerDataStateInterface from "@/model/sharedStateInterface";
+import SOFT_DOC_LINKER from "@/SoftDocLinker";
+import SoftDocLinkerDataStateInterface from "@/model/SharedStateInterface";
 import { Component, Prop, Vue } from "vue-property-decorator";
 
 /**
