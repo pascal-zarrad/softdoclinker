@@ -23,7 +23,10 @@ describe("StateManagement", () => {
                 instanceName: "Test",
                 backend: "ajax",
                 cache: "json",
-                cacheLifetime: 84000
+                cacheLifetime: 84000,
+                navigation: {
+                    links: []
+                }
             };
 
             const dummyDocCollectionDataInterface: DocCollectionInterface = {
@@ -109,7 +112,10 @@ describe("StateManagement", () => {
                 instanceName: "Test",
                 backend: "ajax",
                 cache: "json",
-                cacheLifetime: 84000
+                cacheLifetime: 84000,
+                navigation: {
+                    links: []
+                }
             };
 
             const dummyDocCollectionDataInterface: DocCollectionInterface = {

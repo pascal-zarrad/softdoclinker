@@ -5,7 +5,7 @@ import ConfigDataInterface from "@/model/config/ConfigDataInterface";
  *
  * @since 2.0.0
  */
-export default function defaultConfig(): ConfigDataInterface {
+export default function defaultConfigData(): ConfigDataInterface {
     return {
         /**
          * The default value leaves the value empty,
@@ -28,6 +28,13 @@ export default function defaultConfig(): ConfigDataInterface {
         /**
          * @inheritdoc
          */
-        cacheLifetime: 86400
-    }
+        cacheLifetime: 86400,
+
+        /**
+         * @inheritdoc
+         */
+        navigation: {
+            links: []
+        }
+    };
 }
