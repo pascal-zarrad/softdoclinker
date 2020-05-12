@@ -7,7 +7,7 @@
         "links": [
             {
                 "displayText": " Back to Home",
-                "icon": "fa-home",
+                "icon": "mdi-home",
                 "target": "https://github.com/PlayerForceHD/SoftDocLinker"
             }
         ]
