@@ -1,6 +1,6 @@
 import ConfigDataInterface from "@/model/config/ConfigDataInterface";
 import DataRepositoryInterface from "@/model/DataRepositoryInterface";
-import DefaultSharedState from "@/model/DefaultSharedState";
+import defaultSharedState from "@/model/defaultSharedState";
 import SharedStateInterface from "@/model/SharedStateInterface";
 import StateManagementInterface from "@/model/StateManagementInterface";
 import DocCollectionInterface from "@/model/doc/DocCollectionInterface";
@@ -42,7 +42,7 @@ export default class StateManagement implements StateManagementInterface {
     constructor(
         configDataRepository: DataRepositoryInterface<ConfigDataInterface>,
         docDataRepository: DataRepositoryInterface<DocCollectionInterface>,
-        sharedState: SharedStateInterface = new DefaultSharedState()
+        sharedState: SharedStateInterface = defaultSharedState()
     ) {
         this._configDataRepository = configDataRepository;
         this._docDataRepository = docDataRepository;
@@ -53,15 +53,23 @@ export default class StateManagement implements StateManagementInterface {
      * @inheritdoc
      */
     public async update(forceRefresh: boolean): Promise<SharedStateInterface> {
-        this._sharedState.currentConfig = await this._configDataRepository.load(
-            ConfigDataRepository.CONFIG_KEY,
-            forceRefresh
-        );
+        try {
+            this._sharedState.loading = true;
 
-        this._sharedState.currentDocData = await this._docDataRepository.load(
-            DocCollectionDataRepository.DOC_KEY,
-            forceRefresh
-        );
+            this._sharedState.currentConfig = await this._configDataRepository.load(
+                ConfigDataRepository.CONFIG_KEY,
+                forceRefresh
+            );
+
+            this._sharedState.currentDocData = await this._docDataRepository.load(
+                DocCollectionDataRepository.DOC_KEY,
+                forceRefresh
+            );
+        } catch (error) {
+            throw error;
+        } finally {
+            this._sharedState.loading = false;
+        }
 
         return this._sharedState;
     }
@@ -69,26 +77,14 @@ export default class StateManagement implements StateManagementInterface {
     /**
      * @inheritdoc
      */
-    /* istanbul ignore next */
-    getState(): SharedStateInterface {
+    public get sharedState(): SharedStateInterface {
         return this._sharedState;
     }
 
     /**
      * @inheritdoc
      */
-    /* istanbul ignore next */
-    setState(sharedState: SharedStateInterface): void {
+    public set sharedState(sharedState: SharedStateInterface) {
         this._sharedState = sharedState;
-    }
-
-    /* istanbul ignore next */
-    protected get sharedState(): SharedStateInterface {
-        return this._sharedState;
-    }
-
-    /* istanbul ignore next */
-    protected set sharedState(value: SharedStateInterface) {
-        this._sharedState = value;
     }
 }

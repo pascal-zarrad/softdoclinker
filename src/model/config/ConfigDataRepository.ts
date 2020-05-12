@@ -30,6 +30,7 @@ export default class ConfigDataRepository extends AbstractDataRepository<
         const cacheItem = this._cacheDataStorageFactory.create(key, configData);
 
         await this._cacheManagement.update(cacheItem);
+
         return configData;
     }
 }

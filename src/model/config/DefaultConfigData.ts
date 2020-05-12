@@ -1,31 +1,33 @@
 import ConfigDataInterface from "@/model/config/ConfigDataInterface";
 
 /**
- * Data class that provides the default configuration of SoftDocLinker
+ * Returns a fresh object containing the default config of SoftDocLinker
  *
  * @since 2.0.0
  */
-export default class DefaultConfigData implements ConfigDataInterface {
-    /**
-     * The default value leaves the value empty,
-     * to not display a wrong title for some milliseconds.
-     *
-     * @inheritdoc
-     */
-    public instanceName: string = "";
+export default function defaultConfig(): ConfigDataInterface {
+    return {
+        /**
+         * The default value leaves the value empty,
+         * to not display a wrong title for some milliseconds.
+         *
+         * @inheritdoc
+         */
+        instanceName: "",
 
-    /**
-     * @inheritdoc
-     */
-    public backend: string = "JSON";
+        /**
+         * @inheritdoc
+         */
+        backend: "JSON",
 
-    /**
-     * @inheritdoc
-     */
-    public cache: string = "indexedDB";
+        /**
+         * @inheritdoc
+         */
+        cache: "indexedDB",
 
-    /**
-     * @inheritdoc
-     */
-    public cacheLifetime: number = 86400;
+        /**
+         * @inheritdoc
+         */
+        cacheLifetime: 86400
+    }
 }

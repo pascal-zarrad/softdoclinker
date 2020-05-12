@@ -72,7 +72,7 @@ export default class IndexedDBCacheManagement<
             }
 
             const lastAccessDelta = Date.now() - cacheItem.lastAccess.getTime();
-            if (lastAccessDelta > this._lifetime) {
+            if (lastAccessDelta / 1000 > this._lifetime) {
                 return false;
             }
 

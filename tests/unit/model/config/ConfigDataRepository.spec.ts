@@ -6,7 +6,7 @@ import ConfigAjaxDataProvider from "@/dataprovider/config/ConfigAjaxDataProvider
 import DataProviderInterface from "@/dataprovider/DataProviderInterface";
 import ConfigDataInterface from "@/model/config/ConfigDataInterface";
 import ConfigDataRepository from "@/model/config/ConfigDataRepository";
-import DefaultConfigData from "@/model/config/DefaultConfigData";
+import defaultConfigData from "@/model/config/defaultConfigData";
 
 jest.mock("@/cache/CacheDataStorageFactory");
 jest.mock("@/dataprovider/config/ConfigAjaxDataProvider");
@@ -18,7 +18,7 @@ describe("ConfigDataRepository", () => {
             const expectedKey = "myExpectedKey";
             const expectedConfigData: CacheDataStorage<ConfigDataInterface> = new CacheDataStorage(
                 "config",
-                new DefaultConfigData()
+                defaultConfigData()
             );
 
             const configDataProviderInterface: DataProviderInterface<ConfigDataInterface> = new ConfigAjaxDataProvider();
@@ -80,7 +80,7 @@ describe("ConfigDataRepository", () => {
             const expectedKey = "myExpectedKey";
             const expectedConfigData: CacheDataStorage<ConfigDataInterface> = new CacheDataStorage(
                 "config",
-                new DefaultConfigData()
+                defaultConfigData()
             );
 
             const configDataProviderInterface: DataProviderInterface<ConfigDataInterface> = new ConfigAjaxDataProvider();
@@ -144,7 +144,7 @@ describe("ConfigDataRepository", () => {
             const expectedKey = "myExpectedKey";
             const expectedConfigData: CacheDataStorage<ConfigDataInterface> = new CacheDataStorage(
                 "config",
-                new DefaultConfigData()
+                defaultConfigData()
             );
 
             const configDataProviderInterface: DataProviderInterface<ConfigDataInterface> = new ConfigAjaxDataProvider();

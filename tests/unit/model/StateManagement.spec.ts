@@ -8,7 +8,6 @@ import CacheDataStorageFactory from "@/cache/CacheDataStorageFactory";
 import DocCollectionDataRepository from "@/model/doc/DocCollectionDataRepository";
 import DocAjaxDataProvider from "@/dataprovider/doc/DocAjaxDataProvider";
 import DocCollectionInterface from "@/model/doc/DocCollectionInterface";
-import DefaultSharedState from "@/model/DefaultSharedState";
 
 jest.mock("@/model/config/ConfigDataRepository");
 jest.mock("@/dataprovider/config/ConfigAjaxDataProvider");

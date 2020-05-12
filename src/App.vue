@@ -20,7 +20,7 @@
 <script lang="ts">
 import NavigationComponent from "@/components/NavigationComponent.vue";
 import RefreshDataComponent from "@/components/RefreshDataComponent.vue";
-import DefaultSharedState from "@/model/DefaultSharedState";
+import defaultSharedState from "@/model/defaultSharedState";
 import SharedStateInterface from "@/model/SharedStateInterface";
 import StateManagementInterface from "@/model/StateManagementInterface";
 import SOFT_DOC_LINKER from "@/SoftDocLinker";
@@ -34,16 +34,15 @@ export default Vue.extend({
     },
     data: function() {
         return {
-            sharedState: new DefaultSharedState()
+            sharedState: defaultSharedState()
         };
     },
     mounted() {
-        const self = this;
         SOFT_DOC_LINKER.getStateManagement().then(
             (
                 stateManagement: StateManagementInterface
             ): Promise<SharedStateInterface> => {
-                stateManagement.setState(self.sharedState);
+                stateManagement.sharedState = this.sharedState;
                 return stateManagement.update(false);
             }
         );

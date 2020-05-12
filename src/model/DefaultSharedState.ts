@@ -1,29 +1,29 @@
 /* istanbul ignore file */
 
-import ConfigDataInterface from "@/model/config/ConfigDataInterface";
-import DefaultConfigData from "@/model/config/DefaultConfigData";
-import DefaultDocCollectionData from "@/model/doc/DefaultDocCollectionData";
-import DocCollectionInterface from "@/model/doc/DocCollectionInterface";
+import defaultConfigData from "@/model/config/defaultConfigData";
+import defaultDocCollectionData from "@/model/doc/defaultDocCollectionData";
 import SharedStateInterface from "@/model/SharedStateInterface";
 
 /**
- * Data class that provides a default state for the application.
+ * Returns a fresh object containing the default shared state
  *
  * @since 2.0.0
  */
-export default class DefaultSharedState implements SharedStateInterface {
-    /**
-     * @inheritdoc
-     */
-    public loading: boolean = true;
+export default function defaultSharedState(): SharedStateInterface {
+    return {
+        /**
+         * @inheritdoc
+         */
+        loading: true,
 
-    /**
-     * @inheritdoc
-     */
-    public currentConfig: ConfigDataInterface = new DefaultConfigData();
+        /**
+         * @inheritdoc
+         */
+        currentConfig: defaultConfigData(),
 
-    /**
-     * @inheritdoc
-     */
-    public currentDocData: DocCollectionInterface = new DefaultDocCollectionData();
+        /**
+         * @inheritdoc
+         */
+        currentDocData: defaultDocCollectionData()
+    };
 }
