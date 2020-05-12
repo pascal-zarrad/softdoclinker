@@ -20,7 +20,12 @@ describe("ConfigAjaxDataProvider", () => {
                 const result = await configAjaxDataProvider.load();
 
                 expect(result).toBe(expected.data);
-                expect(Axios.get).toHaveBeenCalledWith("config/config.json");
+                expect(Axios.get).toHaveBeenCalledWith("config/config.json", {
+                    headers: {
+                        "Cache-Control": "no-cache",
+                        "Content-type": "application/json"
+                    }
+                });
             } catch (e) {
                 fail(e);
             }

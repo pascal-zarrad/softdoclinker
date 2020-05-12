@@ -14,6 +14,13 @@ export default class DocAjaxDataProvider
      * @inheritdoc
      */
     public async load(): Promise<DocCollectionInterface> {
-        return await (await Axios.get("config/docs.json")).data;
+        return await (
+            await Axios.get("config/docs.json", {
+                headers: {
+                    "Cache-Control": "no-cache",
+                    "Content-type": "application/json"
+                }
+            })
+        ).data;
     }
 }
