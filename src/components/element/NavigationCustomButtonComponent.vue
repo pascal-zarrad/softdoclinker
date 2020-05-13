@@ -1,5 +1,5 @@
 <template>
-    <v-btn text href="href" target="target">
+    <v-btn text :href="href" :target="target">
         <v-icon>{{ icon }}</v-icon>
         <span>{{ text }}</span>
     </v-btn>
@@ -40,7 +40,7 @@ export default class NavigationCustomButtonComponent extends Vue {
     /**
      * Defines where the target URL should be opened (for example: new tab)
      */
-    @Prop({ default: "_self" })
+    @Prop({ default: "_blank" })
     target?: string;
 }
 </script>

@@ -8,7 +8,8 @@
             {
                 "displayText": " Back to Home",
                 "icon": "mdi-home",
-                "target": "https://github.com/PlayerForceHD/SoftDocLinker"
+                "href": "https://github.com/PlayerForceHD/SoftDocLinker",
+                "target": "_self"
             }
         ]
     }

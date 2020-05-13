@@ -1,4 +1,4 @@
-import LinkInterface from "./LinkInterface";
+import LinkInterface from "@/model/config/navigation/LinkInterface";
 
 /**
  * AN interface that defines the configuration of the navigation
