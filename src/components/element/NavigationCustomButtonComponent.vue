@@ -22,13 +22,13 @@ export default class NavigationCustomButtonComponent extends Vue {
     /**
      * Icon displayed in front of the button
      */
-    @Prop({ default: "mdi-home" })
+    @Prop({ default: "" })
     icon?: string;
 
     /**
      * The text displayed by the button
      */
-    @Prop({ default: "Home" })
+    @Prop({ default: "" })
     text?: string;
 
     /**
@@ -40,7 +40,7 @@ export default class NavigationCustomButtonComponent extends Vue {
     /**
      * Defines where the target URL should be opened (for example: new tab)
      */
-    @Prop({ default: "_blank" })
+    @Prop({ default: "_self" })
     target?: string;
 }
 </script>
