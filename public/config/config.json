@@ -7,8 +7,9 @@
         "links": [
             {
                 "displayText": " Back to Home",
-                "icon": "fa-home",
-                "target": "https://github.com/PlayerForceHD/SoftDocLinker"
+                "icon": "mdi-home",
+                "href": "https://github.com/PlayerForceHD/SoftDocLinker",
+                "target": "_self"
             }
         ]
     }

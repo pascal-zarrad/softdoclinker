@@ -14,6 +14,13 @@ export default class ConfigAjaxDataProvider
      * @inheritdoc
      */
     public async load(): Promise<ConfigDataInterface> {
-        return (await Axios.get("config/config.json")).data;
+        return (
+            await Axios.get("config/config.json", {
+                headers: {
+                    "Cache-Control": "no-cache",
+                    "Content-type": "application/json"
+                }
+            })
+        ).data;
     }
 }

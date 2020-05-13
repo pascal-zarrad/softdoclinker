@@ -11,14 +11,21 @@
             </span>
         </v-toolbar-title>
         <v-spacer />
-        <navigation-custom-button-component />
+        <navigation-custom-button-component
+            v-for="customButton in sharedState.currentConfig.navigation.links"
+            v-bind:key="customButton.id"
+            :icon="customButton.icon"
+            :text="customButton.displayText"
+            :href="customButton.href"
+            :target="customButton.target"
+        />
     </v-app-bar>
 </template>
 
 <script lang="ts">
 import NavigationCustomButtonComponent from "@/components/element/NavigationCustomButtonComponent.vue";
 import SOFT_DOC_LINKER from "@/SoftDocLinker";
-import SoftDocLinkerDataStateInterface from "@/model/SharedStateInterface";
+import SharedStateInterface from "@/model/SharedStateInterface";
 import { Component, Prop, Vue } from "vue-property-decorator";
 
 /**
@@ -37,7 +44,7 @@ export default class NavigationComponent extends Vue {
     /**
      * Brand displayed on navigation bar.
      */
-    @Prop({ default: SOFT_DOC_LINKER })
-    sharedState?: SoftDocLinkerDataStateInterface;
+    @Prop()
+    sharedState!: SharedStateInterface;
 }
 </script>

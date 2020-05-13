@@ -1,5 +1,5 @@
 <template>
-    <v-btn text href="href" target="target">
+    <v-btn text :href="href" :target="target">
         <v-icon>{{ icon }}</v-icon>
         <span>{{ text }}</span>
     </v-btn>
@@ -22,13 +22,13 @@ export default class NavigationCustomButtonComponent extends Vue {
     /**
      * Icon displayed in front of the button
      */
-    @Prop({ default: "mdi-home" })
+    @Prop({ default: "" })
     icon?: string;
 
     /**
      * The text displayed by the button
      */
-    @Prop({ default: "Home" })
+    @Prop({ default: "" })
     text?: string;
 
     /**

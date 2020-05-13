@@ -8,7 +8,7 @@ import DataProviderInterface from "@/dataprovider/DataProviderInterface";
 import DocCollectionDataProviderFactory from "@/dataprovider/doc/DocCollectionDataProviderFactory";
 import ConfigDataInterface from "@/model/config/ConfigDataInterface";
 import ConfigDataRepository from "@/model/config/ConfigDataRepository";
-import DefaultConfigData from "@/model/config/DefaultConfigData";
+import defaultConfigData from "@/model/config/defaultConfigData";
 import DataRepositoryInterface from "@/model/DataRepositoryInterface";
 import DocCollectionInterface from "@/model/doc/DocCollectionInterface";
 import { SoftDocLinker } from "@/SoftDocLinker";
@@ -138,7 +138,7 @@ describe("SoftDocLinker", () => {
                 return docCollectionDataRepository;
             });
 
-            const configDataInterface: ConfigDataInterface = new DefaultConfigData();
+            const configDataInterface: ConfigDataInterface = defaultConfigData();
 
             const configDataProvider: DataProviderInterface<ConfigDataInterface> = new ConfigAjaxDataProvider();
             const configCacheManagementInterface: CacheManagementInterface<ConfigDataInterface> = new IndexedDBCacheManagement();

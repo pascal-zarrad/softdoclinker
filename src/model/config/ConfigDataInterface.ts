@@ -1,3 +1,5 @@
+import NavigationInterface from "@/model/config/navigation/NavigationInterface";
+
 /**
  * An interface that defines the base configuration of SoftDocLinker
  *
@@ -23,7 +25,12 @@ export default interface ConfigDataInterface {
 
     /**
      * The time until SoftDocLinker considers cached data as invalid.
-     * Default:
+     * Default: 86400
      */
     cacheLifetime: number;
+
+    /**
+     * The configurable navigation of SoftDocLinker.
+     */
+    navigation: NavigationInterface;
 }

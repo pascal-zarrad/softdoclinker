@@ -201,8 +201,8 @@ describe("IndexedDBCacheManagement", () => {
             const expected = false;
 
             const dummyKey = "myExpectedKey";
-            const expectedTime = 0;
-            const expectedActualTime = 101;
+            const expectedTime = 42;
+            const expectedActualTime = 20000000;
             const indexedDBCacheManagement = new IndexedDBCacheManagement(100);
 
             jest.spyOn(Date, "now").mockReturnValue(expectedActualTime);

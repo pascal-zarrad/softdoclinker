@@ -18,7 +18,12 @@ describe("DocAjaxDataProvider", () => {
                 const result = await docAjaxDataProvider.load();
 
                 expect(result).toBe(expected.data);
-                expect(Axios.get).toHaveBeenCalledWith("config/docs.json");
+                expect(Axios.get).toHaveBeenCalledWith("config/docs.json", {
+                    headers: {
+                        "Cache-Control": "no-cache",
+                        "Content-type": "application/json"
+                    }
+                });
             } catch (e) {
                 fail(e);
             }
