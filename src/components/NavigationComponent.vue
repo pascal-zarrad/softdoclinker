@@ -5,6 +5,7 @@
         color="blue darken-3"
         dark
     >
+        <v-app-bar-nav-icon @click="toggleDrawer"></v-app-bar-nav-icon>
         <v-toolbar-title style="width: 300px" class="ml-0 pl-4">
             <span class="hidden-sm-and-down">
                 {{ sharedState.currentConfig.instanceName }}
@@ -46,5 +47,9 @@ export default class NavigationComponent extends Vue {
      */
     @Prop()
     sharedState!: SharedStateInterface;
+
+    public toggleDrawer(): void {
+        this.$emit("toggleDrawer");
+    }
 }
 </script>
