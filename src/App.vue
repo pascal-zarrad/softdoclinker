@@ -1,10 +1,18 @@
 <template>
     <v-app id="softdoclinker-app">
-        <v-navigation-drawer :clipped="$vuetify.breakpoint.lgAndUp" app>
+        <v-navigation-drawer
+            :clipped="$vuetify.breakpoint.lgAndUp"
+            v-model="drawer"
+            app
+        >
             <v-list dense />
         </v-navigation-drawer>
 
-        <navigation-component :sharedState="sharedState" />
+        <navigation-component
+            :sharedState="sharedState"
+            :drawer="drawer"
+            @toggleDrawer="toggleDrawer"
+        />
 
         <v-content>
             <v-container class="fill-height" fluid>
@@ -34,7 +42,8 @@ export default Vue.extend({
     },
     data: function() {
         return {
-            sharedState: defaultSharedState()
+            sharedState: defaultSharedState(),
+            drawer: true
         };
     },
     mounted() {
@@ -46,6 +55,11 @@ export default Vue.extend({
                 return stateManagement.update(false);
             }
         );
+    },
+    methods: {
+        toggleDrawer() {
+            this.drawer = !this.drawer;
+        }
     }
 });
 </script>
