@@ -1,3 +1,5 @@
+/* istanbul ignore file */
+
 /**
  * Notification type that provides different types for notifications
  * to categorize them.

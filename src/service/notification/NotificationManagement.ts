@@ -1,4 +1,4 @@
-import NotificationManagementInterface from "@/management/notification/NotificationManagementInterface";
+import NotificationManagementInterface from "@/service/notification/NotificationManagementInterface";
 import NotificationInterface from "@/model/notification/NotificationInterface";
 
 /**
@@ -55,6 +55,7 @@ export default class NotificationManagement
             })) !== -1
         ) {
             this.removeNotificationByIndex(currentIndex);
+            atLeastRemovedOne = true;
         }
 
         return atLeastRemovedOne;

@@ -2,6 +2,7 @@ import ConfigDataInterface from "@/model/config/ConfigDataInterface";
 import DataRepositoryInterface from "@/model/DataRepositoryInterface";
 import DocCollectionInterface from "@/model/doc/DocCollectionInterface";
 import StateManagementInterface from "@/model/StateManagementInterface";
+import NotificationManagementInterface from "@/service/notification/NotificationManagementInterface";
 
 /**
  * Defines the interface between our Vue components and
@@ -37,4 +38,12 @@ export default interface SoftDocLinkerInterface {
      * the sharing of the applications state.
      */
     getStateManagement(): Promise<StateManagementInterface>;
+
+    /**
+     * Get the notification management that is currently used by SoftDocLinker to
+     * handle the shown notifications.
+     *
+     * Should be implemented using a get accessor in implementations.
+     */
+    readonly notificationManagement: NotificationManagementInterface;
 }

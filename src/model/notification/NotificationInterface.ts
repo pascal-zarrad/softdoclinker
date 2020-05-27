@@ -1,3 +1,5 @@
+/* istanbul ignore file */
+
 /**
  * Model of the data required to display a notification.
  *

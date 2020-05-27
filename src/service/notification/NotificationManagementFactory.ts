@@ -8,7 +8,7 @@ import NotificationManagement from "./NotificationManagement";
  *
  * @since 2.0.0
  */
-export default class NotificationManagementFactoryFactory {
+export default class NotificationManagementFactory {
     /***
      * Create a new notification management instance.
      *
