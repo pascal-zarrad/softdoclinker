@@ -1,4 +1,4 @@
-# SoftDocLinker [![Build Status](https://travis-ci.org/pascal-zarrad/softdoclinker.svg?branch=develop)](https://travis-ci.org/pascal-zarrad/softdoclinker)
+# SoftDocLinker ![CI](https://github.com/pascal-zarrad/softdoclinker/workflows/CI/badge.svg?branch=develop)
 
 SoftDocLinker (Software Documentation Linker) is a place where all relevant software documentation can be linked together.
 It can be hard to maintain dozens of documentation for different projects while providing a central place to view them.
