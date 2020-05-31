@@ -15,5 +15,19 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
-    - run: yarn --frozen-lockfile
-    - run: yarn run test
+    - name: Install dependencies
+      run: yarn --frozen-lockfile
+    - name: Run tests
+      run: yarn run test:coverage
+    - name: Run build
+      run: yarn build
+    - name: Upload build artifacts
+      uses: actions/upload-artifact@v2
+      with:
+        name: dist
+        path: dist
+    - name: Upload coverage report
+      uses: actions/upload-artifact@v2
+      with:
+        name: code-coverage-report
+        path: coverage
