@@ -36,6 +36,7 @@ The following things should be noted when working with issues:
  - Always use the matching template when you create new issues.
  - Keep the issue up to date with your current progress.
  - Do not create duplicates.
+ - If you report a security issue, first visit our [security guidelines](SECURITY.md).
 
 If you don't follow this guidelines, your issue will be closed and labeled as invalid or duplicate.
 
