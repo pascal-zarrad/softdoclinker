@@ -17,4 +17,9 @@ export default interface NotificationInterface {
      * @see ./NotificationType
      */
     type: string;
+
+    /**
+     * State of thid notification should be shown in the frontend.
+     */
+    show: boolean;
 }

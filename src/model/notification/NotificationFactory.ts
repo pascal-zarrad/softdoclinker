@@ -18,7 +18,8 @@ export default class NotificationFactory {
     public create(type: string, message: string): NotificationInterface {
         return {
             type: type,
-            message: message
+            message: message,
+            show: false
         };
     }
 }

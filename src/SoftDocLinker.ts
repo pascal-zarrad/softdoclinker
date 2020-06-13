@@ -111,6 +111,11 @@ export class SoftDocLinker implements SoftDocLinkerInterface {
         this._docCollectionDataRepositoryFactory = docCollectionDataRepositoryFactory;
         this._stateManagementFactory = stateManagementFactory;
         this._notificationManagement = notificationManagement;
+        this.notificationManagement.notify({
+            message: "Test",
+            type: "Test",
+            show: false
+        });
     }
 
     /**

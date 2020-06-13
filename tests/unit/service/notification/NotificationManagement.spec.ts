@@ -7,7 +7,8 @@ describe("NotificationManagement", () => {
         it("should add a notification", () => {
             const notificationMock: NotificationInterface = {
                 type: NotificationType.INFO,
-                message: "Test"
+                message: "Test",
+                show: false
             };
 
             const notificationManagement: NotificationManagement = new NotificationManagement();
@@ -30,7 +31,8 @@ describe("NotificationManagement", () => {
         it("should remove exactly one of the specified notification from the notifications", () => {
             const notificationMock: NotificationInterface = {
                 type: NotificationType.INFO,
-                message: "Test"
+                message: "Test",
+                show: false
             };
 
             const notificationManagement: NotificationManagement = new NotificationManagement();
@@ -49,7 +51,8 @@ describe("NotificationManagement", () => {
         it("should return false if there is not notification qual to the specified", () => {
             const notificationMock: NotificationInterface = {
                 type: NotificationType.INFO,
-                message: "Test"
+                message: "Test",
+                show: false
             };
 
             const notificationManagement: NotificationManagement = new NotificationManagement();
@@ -67,7 +70,8 @@ describe("NotificationManagement", () => {
         it("should remove exactly one of the specified notification from the notifications", () => {
             const notificationMock: NotificationInterface = {
                 type: NotificationType.INFO,
-                message: "Test"
+                message: "Test",
+                show: false
             };
 
             const notificationManagement: NotificationManagement = new NotificationManagement();
@@ -86,7 +90,8 @@ describe("NotificationManagement", () => {
         it("should return false if there is not notification qual to the specified", () => {
             const notificationMock: NotificationInterface = {
                 type: NotificationType.INFO,
-                message: "Test"
+                message: "Test",
+                show: false
             };
 
             const notificationManagement: NotificationManagement = new NotificationManagement();
@@ -104,7 +109,8 @@ describe("NotificationManagement", () => {
         it("should clear up all notifications", () => {
             const notificationMock: NotificationInterface = {
                 type: NotificationType.INFO,
-                message: "Test"
+                message: "Test",
+                show: false
             };
 
             const notificationManagement: NotificationManagement = new NotificationManagement();
@@ -115,6 +121,6 @@ describe("NotificationManagement", () => {
             notificationManagement.purge();
 
             expect(notificationManagement.notifications.length).toBe(0);
-        })
+        });
     });
 });

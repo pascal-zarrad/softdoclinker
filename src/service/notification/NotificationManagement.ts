@@ -1,5 +1,6 @@
 import NotificationManagementInterface from "@/service/notification/NotificationManagementInterface";
 import NotificationInterface from "@/model/notification/NotificationInterface";
+import Vue from "vue";
 
 /**
  * Simple notification management that is used to add and remove
@@ -13,13 +14,31 @@ export default class NotificationManagement
     /**
      * @inheritdoc
      */
-    protected _notifications: NotificationInterface[] = [];
+    protected _notifications: NotificationInterface[] = Vue.observable([]);
+
+    /**
+     * The timeout how long a single notification is shown.
+     */
+    protected timeout: number;
+
+    /**
+     * Constructor
+     *
+     * @param timeout The timeout how long a single notification is shown.
+     */
+    constructor(timeout: number = 3000) {
+        this.timeout = timeout;
+    }
 
     /**
      * @inheritdoc
      */
     public notify(notification: NotificationInterface): boolean {
         this._notifications.push(notification);
+        notification.show = true;
+        setTimeout(() => {
+            notification.show = false;
+        }, this.timeout);
 
         return true;
     }
@@ -57,7 +76,7 @@ export default class NotificationManagement
             this.removeNotificationByIndex(currentIndex);
             atLeastRemovedOne = true;
         }
-
+        atLeastRemovedOne;
         return atLeastRemovedOne;
     }
 

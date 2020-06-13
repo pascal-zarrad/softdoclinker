@@ -1,5 +1,9 @@
 <template>
     <v-app id="softdoclinker-app">
+        <!-- Notification management -->
+        <notifications-component />
+
+        <!-- Drawer for documentation view  -->
         <v-navigation-drawer
             :clipped="$vuetify.breakpoint.lgAndUp"
             v-model="drawer"
@@ -10,6 +14,7 @@
 
         <navigation-component :drawer="drawer" @toggleDrawer="toggleDrawer" />
 
+        <!-- Content area for loaded documentation -->
         <v-content>
             <v-container class="fill-height" fluid>
                 <v-row align="center" justify="center" />
@@ -22,6 +27,7 @@
 <script lang="ts">
 import NavigationComponent from "@/components/NavigationComponent.vue";
 import RefreshDataComponent from "@/components/RefreshDataComponent.vue";
+import NotificationsComponent from "@/components/NotificationsComponent.vue";
 import defaultSharedState from "@/model/defaultSharedState";
 import SharedStateInterface from "@/model/SharedStateInterface";
 import StateManagementInterface from "@/model/StateManagementInterface";
@@ -31,7 +37,8 @@ export default Vue.extend({
     name: "App",
     components: {
         NavigationComponent,
-        RefreshDataComponent
+        RefreshDataComponent,
+        NotificationsComponent
     },
     data: function() {
         return {
