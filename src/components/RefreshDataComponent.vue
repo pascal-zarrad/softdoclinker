@@ -1,7 +1,7 @@
 <template>
     <v-btn color="blue" @click="onClick" bottom dark fab fixed right>
         <v-progress-circular
-            v-if="sharedState.loading"
+            v-if="this.$sharedState.loading"
             indeterminate
             size="24"
         />
@@ -11,9 +11,8 @@
 
 <script lang="ts">
 import SoftDocLinkerDataStateInterface from "@/model/SharedStateInterface";
-import SOFT_DOC_LINKER, { SoftDocLinker } from "@/SoftDocLinker";
 import StateManagement from "@/model/StateManagement";
-import { Component, Prop, Vue, Emit } from "vue-property-decorator";
+import { Component, Prop, Vue } from "vue-property-decorator";
 
 /**
  * Component that provides a refresh button to manually trigger
@@ -24,18 +23,12 @@ import { Component, Prop, Vue, Emit } from "vue-property-decorator";
 @Component
 export default class RefreshDataComponent extends Vue {
     /**
-     * Shared state of the application
-     */
-    @Prop()
-    sharedState?: SoftDocLinkerDataStateInterface;
-
-    /**
      * Listener for click event of the refresh button
      */
     onClick() {
-        SOFT_DOC_LINKER.getStateManagement().then(stateManagement =>
-            stateManagement.update(true)
-        );
+        this.$softDocLinker
+            .getStateManagement()
+            .then(stateManagement => stateManagement.update(true));
     }
 }
 </script>

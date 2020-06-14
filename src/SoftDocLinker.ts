@@ -11,6 +11,7 @@ import DocCollectionInterface from "@/model/doc/DocCollectionInterface";
 import StateManagementFactory from "@/model/StateManagementFactory";
 import StateManagementInterface from "@/model/StateManagementInterface";
 import SoftDocLinkerInterface from "@/SoftDocLinkerInterface";
+import Vue from "vue";
 
 /**
  * Is responsible to compose the data management together and
@@ -159,13 +160,10 @@ export class SoftDocLinker implements SoftDocLinkerInterface {
 
         this._stateManagement = this._stateManagementFactory.create(
             await this.getConfigDataRepository(),
-            await this.getDocCollectionDataRepository()
+            await this.getDocCollectionDataRepository(),
+            Vue.prototype.$sharedState
         );
 
         return this._stateManagement;
     }
 }
-
-// Export single instance of SoftDocLinker
-const SOFT_DOC_LINKER: SoftDocLinkerInterface = new SoftDocLinker();
-export default SOFT_DOC_LINKER;

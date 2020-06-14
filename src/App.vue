@@ -8,20 +8,14 @@
             <v-list dense />
         </v-navigation-drawer>
 
-        <navigation-component
-            :sharedState="sharedState"
-            :drawer="drawer"
-            @toggleDrawer="toggleDrawer"
-        />
+        <navigation-component :drawer="drawer" @toggleDrawer="toggleDrawer" />
 
         <v-content>
             <v-container class="fill-height" fluid>
                 <v-row align="center" justify="center" />
             </v-container>
         </v-content>
-        <refresh-data-component
-            :sharedState="sharedState"
-        ></refresh-data-component>
+        <refresh-data-component></refresh-data-component>
     </v-app>
 </template>
 
@@ -31,7 +25,6 @@ import RefreshDataComponent from "@/components/RefreshDataComponent.vue";
 import defaultSharedState from "@/model/defaultSharedState";
 import SharedStateInterface from "@/model/SharedStateInterface";
 import StateManagementInterface from "@/model/StateManagementInterface";
-import SOFT_DOC_LINKER from "@/SoftDocLinker";
 import Vue from "vue";
 
 export default Vue.extend({
@@ -42,16 +35,14 @@ export default Vue.extend({
     },
     data: function() {
         return {
-            sharedState: defaultSharedState(),
             drawer: true
         };
     },
     mounted() {
-        SOFT_DOC_LINKER.getStateManagement().then(
+        this.$softDocLinker.getStateManagement().then(
             (
                 stateManagement: StateManagementInterface
             ): Promise<SharedStateInterface> => {
-                stateManagement.sharedState = this.sharedState;
                 return stateManagement.update(false);
             }
         );

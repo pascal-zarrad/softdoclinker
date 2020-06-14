@@ -8,12 +8,13 @@
         <v-app-bar-nav-icon @click="toggleDrawer"></v-app-bar-nav-icon>
         <v-toolbar-title style="width: 300px" class="ml-0 pl-4">
             <span class="hidden-sm-and-down">
-                {{ sharedState.currentConfig.instanceName }}
+                {{ this.$sharedState.currentConfig.instanceName }}
             </span>
         </v-toolbar-title>
         <v-spacer />
         <navigation-custom-button-component
-            v-for="customButton in sharedState.currentConfig.navigation.links"
+            v-for="customButton in this.$sharedState.currentConfig.navigation
+                .links"
             v-bind:key="customButton.id"
             :icon="customButton.icon"
             :text="customButton.displayText"
@@ -25,7 +26,6 @@
 
 <script lang="ts">
 import NavigationCustomButtonComponent from "@/components/element/NavigationCustomButtonComponent.vue";
-import SOFT_DOC_LINKER from "@/SoftDocLinker";
 import SharedStateInterface from "@/model/SharedStateInterface";
 import { Component, Prop, Vue } from "vue-property-decorator";
 
@@ -43,11 +43,8 @@ import { Component, Prop, Vue } from "vue-property-decorator";
 })
 export default class NavigationComponent extends Vue {
     /**
-     * Brand displayed on navigation bar.
+     * Function that enables opening and closing of the drawer.
      */
-    @Prop()
-    sharedState!: SharedStateInterface;
-
     public toggleDrawer(): void {
         this.$emit("toggleDrawer");
     }
