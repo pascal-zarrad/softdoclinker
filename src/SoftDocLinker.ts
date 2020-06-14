@@ -165,7 +165,3 @@ export class SoftDocLinker implements SoftDocLinkerInterface {
         return this._stateManagement;
     }
 }
-
-// Export single instance of SoftDocLinker
-const SOFT_DOC_LINKER: SoftDocLinkerInterface = new SoftDocLinker();
-export default SOFT_DOC_LINKER;

@@ -31,7 +31,6 @@ import RefreshDataComponent from "@/components/RefreshDataComponent.vue";
 import defaultSharedState from "@/model/defaultSharedState";
 import SharedStateInterface from "@/model/SharedStateInterface";
 import StateManagementInterface from "@/model/StateManagementInterface";
-import SOFT_DOC_LINKER from "@/SoftDocLinker";
 import Vue from "vue";
 
 export default Vue.extend({
@@ -47,7 +46,7 @@ export default Vue.extend({
         };
     },
     mounted() {
-        SOFT_DOC_LINKER.getStateManagement().then(
+        this.$softDocLinker.getStateManagement().then(
             (
                 stateManagement: StateManagementInterface
             ): Promise<SharedStateInterface> => {
