@@ -1,7 +1,7 @@
 <template>
     <v-btn color="blue" @click="onClick" bottom dark fab fixed right>
         <v-progress-circular
-            v-if="sharedState.loading"
+            v-if="this.$sharedState.loading"
             indeterminate
             size="24"
         />
@@ -22,12 +22,6 @@ import { Component, Prop, Vue } from "vue-property-decorator";
  */
 @Component
 export default class RefreshDataComponent extends Vue {
-    /**
-     * Shared state of the application
-     */
-    @Prop()
-    sharedState?: SoftDocLinkerDataStateInterface;
-
     /**
      * Listener for click event of the refresh button
      */
