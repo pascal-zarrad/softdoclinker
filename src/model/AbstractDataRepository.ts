@@ -4,7 +4,7 @@ import DataProviderInterface from "@/dataprovider/DataProviderInterface";
 import DataRepositoryInterface from "@/model/DataRepositoryInterface";
 
 /**
- * Abstract data repository that can be implemented get
+ * Abstract data repository that can be implemented to get
  * data from a DataProviderInterface while using caching
  * mechanisms to improve performance.
  *

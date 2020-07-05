@@ -8,7 +8,7 @@ import defaultSharedState from "./model/defaultSharedState";
 
 // Set instance of data layer management with initial default values
 Vue.prototype.$softDocLinker = new SoftDocLinker();
-// Inilize shared state with default value
+// Initialize shared state with default value
 Vue.prototype.$sharedState = Vue.observable(defaultSharedState());
 
 new Vue({

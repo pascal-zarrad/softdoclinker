@@ -18,7 +18,7 @@ export default interface NotificationManagementInterface {
     /**
      * Play out a new notification that should be displayed.
      *
-     * @param notificationThe notification to add
+     * @param notification The notification to add
      * @returns The state if the notification has ben successfully added
      */
     notify(notification: NotificationInterface): boolean;

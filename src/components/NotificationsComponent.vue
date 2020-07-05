@@ -8,22 +8,18 @@
             v-model="notification.show"
         >
             {{ notification.message }}
-            <template v-slot:action="{ attrs }">
-                <v-btn
-                    color="blue"
-                    text
-                    v-bind="attrs"
-                    @click="notification.show = false"
-                >
-                    Close
-                </v-btn>
-            </template>
+            <v-btn
+                color="blue"
+                text
+                @click="submitCloseNotification(notification)"
+            >
+                Close
+            </v-btn>
         </v-snackbar>
     </div>
 </template>
 
 <script lang="ts">
-import SOFT_DOC_LINKER, { SoftDocLinker } from "@/SoftDocLinker";
 import NotificationInterface from "@/model/notification/NotificationInterface";
 import { Component, Vue } from "vue-property-decorator";
 
@@ -37,14 +33,27 @@ import { Component, Vue } from "vue-property-decorator";
     name: "NotificationsComponent"
 })
 export default class NotificationsComponent extends Vue {
-    snackbar: boolean = true;
     /**
      * A computed property that provides the notifications array
      * that provides all notifications that should be created by this component.
+     *
+     * @returns The (reactive) array that contains all visible notifications
      */
     get notifications(): NotificationInterface[] {
-        console.log(SOFT_DOC_LINKER.notificationManagement.notifications);
-        return SOFT_DOC_LINKER.notificationManagement.notifications;
+        return this.$softDocLinker.notificationManagement.notifications;
+    }
+
+    /**
+     * Called when a notification is being closed manually by clicking
+     * on the close button.
+     *
+     * @param notification The notification of which a close was triggered
+     */
+    private submitCloseNotification(notification: NotificationInterface): void {
+        notification.show = false;
+        this.$softDocLinker.notificationManagement.removeNotification(
+            notification
+        );
     }
 }
 </script>
