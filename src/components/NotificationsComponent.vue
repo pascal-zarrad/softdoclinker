@@ -3,7 +3,6 @@
         <v-snackbar
             v-for="notification in notifications"
             :key="notification.id"
-            :right="true"
             :bottom="true"
             v-model="notification.show"
         >
