@@ -4,14 +4,23 @@ import NotificationType from "@/model/notification/NotificationType";
 
 describe("NotificationManagement", () => {
     describe("notify", () => {
+        beforeEach(() => {
+            jest.useFakeTimers();
+        });
+
         it("should add a notification", () => {
+            const expectedTimeout = 1500;
+
             const notificationMock: NotificationInterface = {
                 type: NotificationType.INFO,
                 message: "Test",
                 show: false
             };
 
-            const notificationManagement: NotificationManagement = new NotificationManagement();
+            const notificationManagement: NotificationManagement = new NotificationManagement(
+                expectedTimeout
+            );
+            notificationManagement.removeNotification = jest.fn();
 
             expect(notificationManagement.notifications.length).toBe(0);
 
@@ -24,6 +33,23 @@ describe("NotificationManagement", () => {
             expect(notificationManagement.notifications[0]).toEqual(
                 notificationMock
             );
+
+            expect(notificationMock.show).toBe(true);
+            expect(
+                notificationManagement.removeNotification
+            ).toHaveBeenCalledTimes(0);
+
+            jest.runAllTimers();
+            expect(setTimeout).toHaveBeenCalled();
+            expect(setTimeout).toHaveBeenCalledWith(
+                expect.any(Function),
+                expectedTimeout
+            );
+
+            expect(notificationMock.show).toBe(false);
+            expect(
+                notificationManagement.removeNotification
+            ).toHaveBeenCalled();
         });
     });
 

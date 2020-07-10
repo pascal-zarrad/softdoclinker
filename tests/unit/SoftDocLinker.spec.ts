@@ -18,6 +18,8 @@ import StateManagementFactory from "@/model/StateManagementFactory";
 import DocCollectionDataRepository from "@/model/doc/DocCollectionDataRepository";
 import DocAjaxDataProvider from "@/dataprovider/doc/DocAjaxDataProvider";
 import StateManagement from "@/model/StateManagement";
+import NotificationManagement from "@/service/notification/NotificationManagement";
+import NotificationManagementInterface from "@/service/notification/NotificationManagementInterface";
 
 jest.mock("@/dataprovider/config/ConfigDataProviderFactory");
 jest.mock("@/cache/CacheDataStorageFactory");
@@ -33,6 +35,7 @@ jest.mock("@/dataprovider/config/ConfigAjaxDataProvider");
 jest.mock("@/dataprovider/doc/DocAjaxDataProvider");
 jest.mock("@/cache/indexeddb/IndexedDBCacheManagement");
 jest.mock("@/model/StateManagementFactory");
+jest.mock("@/service/notification/NotificationManagement");
 
 describe("SoftDocLinker", () => {
     describe("getConfigDataRepository", () => {
@@ -233,10 +236,12 @@ describe("SoftDocLinker", () => {
                 docCacheManagement,
                 cacheDataStorageFactory
             );
+            const notificationManagementMock: NotificationManagementInterface = new NotificationManagement();
 
             const stateManagement: StateManagement = new StateManagement(
                 configDataRepository,
-                docCollectionDataRepository
+                docCollectionDataRepository,
+                notificationManagementMock
             );
             const stateManagementFactory: StateManagementFactory = new StateManagementFactory();
             stateManagementFactory.create = jest.fn(() => {

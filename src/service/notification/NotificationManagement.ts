@@ -38,6 +38,7 @@ export default class NotificationManagement
         notification.show = true;
         setTimeout(() => {
             notification.show = false;
+            this.removeNotification(notification);
         }, this.timeout);
 
         return true;

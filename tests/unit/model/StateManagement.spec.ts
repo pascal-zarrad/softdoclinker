@@ -8,11 +8,13 @@ import CacheDataStorageFactory from "@/cache/CacheDataStorageFactory";
 import DocCollectionDataRepository from "@/model/doc/DocCollectionDataRepository";
 import DocAjaxDataProvider from "@/dataprovider/doc/DocAjaxDataProvider";
 import DocCollectionInterface from "@/model/doc/DocCollectionInterface";
+import NotificationManagement from "@/service/notification/NotificationManagement";
 
 jest.mock("@/model/config/ConfigDataRepository");
 jest.mock("@/dataprovider/config/ConfigAjaxDataProvider");
 jest.mock("@/cache/CacheDataStorageFactory");
 jest.mock("@/model/doc/DocCollectionDataRepository");
+jest.mock("@/service/notification/NotificationManagement");
 
 describe("StateManagement", () => {
     describe("update", () => {
@@ -74,9 +76,12 @@ describe("StateManagement", () => {
                     );
                 });
 
+            const notificationManagementMock: NotificationManagement = new NotificationManagement();
+
             const stateManagement: StateManagement = new StateManagement(
                 configDataRepositoryMock,
-                docCollectionDataRepositoryMock
+                docCollectionDataRepositoryMock,
+                notificationManagementMock
             );
 
             try {
@@ -162,10 +167,12 @@ describe("StateManagement", () => {
                         )
                     );
                 });
+            const notificationManagementMock: NotificationManagement = new NotificationManagement();
 
             const stateManagement: StateManagement = new StateManagement(
                 configDataRepositoryMock,
-                docCollectionDataRepositoryMock
+                docCollectionDataRepositoryMock,
+                notificationManagementMock
             );
 
             try {

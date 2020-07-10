@@ -6,7 +6,7 @@
             :bottom="true"
             v-model="notification.show"
         >
-            {{ notification.message }}
+            {{ notification.type }}: {{ notification.message }}
             <v-btn
                 color="blue"
                 text

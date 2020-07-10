@@ -8,6 +8,7 @@ import StateManagementInterface from "@/model/StateManagementInterface";
 import SharedStateInterface from "@/model/SharedStateInterface";
 import defaultSharedState from "@/model/defaultSharedState";
 import NotificationManagementInterface from "@/service/notification/NotificationManagementInterface";
+import NotificationFactory from "./notification/NotificationFactory";
 
 export default class StateManagementFactory {
     public create(
@@ -22,6 +23,7 @@ export default class StateManagementFactory {
             configDataRepository,
             docCollectionRepository,
             notificationManagement,
+            new NotificationFactory(),
             sharedState
         );
     }

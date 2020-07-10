@@ -10,15 +10,15 @@ export default class NotificationType {
     /**
      * Notification level: INFO
      */
-    public static readonly INFO = "info";
+    public static readonly INFO = "INFO";
 
     /**
      * Notification level: SUCCESS
      */
-    public static readonly SUCCESS = "success";
+    public static readonly SUCCESS = "SUCCESS";
 
     /**
      * Notification level: ERROR
      */
-    public static readonly ERROR = "error";
+    public static readonly ERROR = "ERROR";
 }
