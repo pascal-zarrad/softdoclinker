@@ -1,14 +1,14 @@
 import ConfigDataInterface from "@/model/config/ConfigDataInterface";
+import ConfigDataRepository from "@/model/config/ConfigDataRepository";
 import DataRepositoryInterface from "@/model/DataRepositoryInterface";
 import defaultSharedState from "@/model/defaultSharedState";
+import DocCollectionDataRepository from "@/model/doc/DocCollectionDataRepository";
+import DocCollectionInterface from "@/model/doc/DocCollectionInterface";
+import NotificationFactory from "@/model/notification/NotificationFactory";
+import NotificationType from "@/model/notification/NotificationType";
 import SharedStateInterface from "@/model/SharedStateInterface";
 import StateManagementInterface from "@/model/StateManagementInterface";
-import DocCollectionInterface from "@/model/doc/DocCollectionInterface";
-import ConfigDataRepository from "@/model/config/ConfigDataRepository";
-import DocCollectionDataRepository from "@/model/doc/DocCollectionDataRepository";
 import NotificationManagementInterface from "@/service/notification/NotificationManagementInterface";
-import NotificationType from "./notification/NotificationType";
-import NotificationFactory from "./notification/NotificationFactory";
 
 /**
  * State management that manages the data used by the rendering.
