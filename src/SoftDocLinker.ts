@@ -170,6 +170,7 @@ export class SoftDocLinker implements SoftDocLinkerInterface {
         this._stateManagement = this._stateManagementFactory.create(
             await this.getConfigDataRepository(),
             await this.getDocCollectionDataRepository(),
+            this.notificationManagement,
             Vue.prototype.$sharedState
         );
 

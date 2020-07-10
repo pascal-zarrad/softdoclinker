@@ -19,7 +19,7 @@ export default interface NotificationInterface {
     type: string;
 
     /**
-     * State of thid notification should be shown in the frontend.
+     * State of this notification should be shown in the frontend.
      */
     show: boolean;
 }
