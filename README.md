@@ -51,6 +51,11 @@ docker-compose run node yarn test:unit
 docker-compose run node yarn lint
 ```
 
+### Show build log
+```
+docker-compose logs -f node
+```
+
 ## Contributing
 
 You are welcome to contribute to SoftDocLinker if you have improvements or bug fixes.
