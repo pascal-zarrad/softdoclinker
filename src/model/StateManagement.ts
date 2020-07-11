@@ -1,11 +1,14 @@
 import ConfigDataInterface from "@/model/config/ConfigDataInterface";
+import ConfigDataRepository from "@/model/config/ConfigDataRepository";
 import DataRepositoryInterface from "@/model/DataRepositoryInterface";
 import defaultSharedState from "@/model/defaultSharedState";
+import DocCollectionDataRepository from "@/model/doc/DocCollectionDataRepository";
+import DocCollectionInterface from "@/model/doc/DocCollectionInterface";
+import NotificationFactory from "@/model/notification/NotificationFactory";
+import NotificationType from "@/model/notification/NotificationType";
 import SharedStateInterface from "@/model/SharedStateInterface";
 import StateManagementInterface from "@/model/StateManagementInterface";
-import DocCollectionInterface from "@/model/doc/DocCollectionInterface";
-import ConfigDataRepository from "@/model/config/ConfigDataRepository";
-import DocCollectionDataRepository from "@/model/doc/DocCollectionDataRepository";
+import NotificationManagementInterface from "@/service/notification/NotificationManagementInterface";
 
 /**
  * State management that manages the data used by the rendering.
@@ -28,6 +31,16 @@ export default class StateManagement implements StateManagementInterface {
     >;
 
     /**
+     * The notification management used to display notifications to the user
+     */
+    protected _notificationManagement: NotificationManagementInterface;
+
+    /**
+     * Factory used to build notifications.
+     */
+    protected _notificationFactory: NotificationFactory;
+
+    /**
      * The shared state of SoftDocLinker
      */
     private _sharedState: SharedStateInterface;
@@ -42,10 +55,14 @@ export default class StateManagement implements StateManagementInterface {
     constructor(
         configDataRepository: DataRepositoryInterface<ConfigDataInterface>,
         docDataRepository: DataRepositoryInterface<DocCollectionInterface>,
+        notificationManagement: NotificationManagementInterface,
+        notificationFactory: NotificationFactory = new NotificationFactory(),
         sharedState: SharedStateInterface = defaultSharedState()
     ) {
         this._configDataRepository = configDataRepository;
         this._docDataRepository = docDataRepository;
+        this._notificationManagement = notificationManagement;
+        this._notificationFactory = notificationFactory;
         this._sharedState = sharedState;
     }
 
@@ -66,7 +83,12 @@ export default class StateManagement implements StateManagementInterface {
                 forceRefresh
             );
         } catch (error) {
-            throw error;
+            this._notificationManagement.notify(
+                this._notificationFactory.create(
+                    "Failed to refresh data!",
+                    NotificationType.ERROR
+                )
+            );
         } finally {
             this._sharedState.loading = false;
         }

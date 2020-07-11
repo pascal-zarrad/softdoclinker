@@ -11,6 +11,8 @@ import DocCollectionInterface from "@/model/doc/DocCollectionInterface";
 import StateManagementFactory from "@/model/StateManagementFactory";
 import StateManagementInterface from "@/model/StateManagementInterface";
 import SoftDocLinkerInterface from "@/SoftDocLinkerInterface";
+import NotificationManagementInterface from "@/service/notification/NotificationManagementInterface";
+import NotificationManagementFactory from "@/service/notification/NotificationManagementFactory";
 import Vue from "vue";
 
 /**
@@ -78,6 +80,11 @@ export class SoftDocLinker implements SoftDocLinkerInterface {
     protected _stateManagement?: StateManagementInterface;
 
     /**
+     * Manager for notifications that are currently displayed
+     */
+    protected _notificationManagement: NotificationManagementInterface;
+
+    /**
      * Constructor
      *
      * @param configDataProviderFactory
@@ -93,7 +100,8 @@ export class SoftDocLinker implements SoftDocLinkerInterface {
         cacheManagementFactory: CacheManagementFactory = new CacheManagementFactory(),
         docCollectionDataProviderFactory: DocCollectionDataProviderFactory = new DocCollectionDataProviderFactory(),
         docCollectionDataRepositoryFactory: DocCollectionDataRepositoryFactory = new DocCollectionDataRepositoryFactory(),
-        stateManagementFactory: StateManagementFactory = new StateManagementFactory()
+        stateManagementFactory: StateManagementFactory = new StateManagementFactory(),
+        notificationManagement: NotificationManagementInterface = new NotificationManagementFactory().create()
     ) {
         this._configDataProviderFactory = configDataProviderFactory;
         this._configDataRepositoryFactory = configDataRepositoryFactory;
@@ -102,6 +110,7 @@ export class SoftDocLinker implements SoftDocLinkerInterface {
         this._docCollectionDataProviderFactory = docCollectionDataProviderFactory;
         this._docCollectionDataRepositoryFactory = docCollectionDataRepositoryFactory;
         this._stateManagementFactory = stateManagementFactory;
+        this._notificationManagement = notificationManagement;
     }
 
     /**
@@ -161,9 +170,23 @@ export class SoftDocLinker implements SoftDocLinkerInterface {
         this._stateManagement = this._stateManagementFactory.create(
             await this.getConfigDataRepository(),
             await this.getDocCollectionDataRepository(),
+            this.notificationManagement,
             Vue.prototype.$sharedState
         );
 
         return this._stateManagement;
+    }
+
+    /**
+     * Getter: _notificationManagement.
+     *
+     * Get the notification management instance used to manage the
+     * the current notifications.
+     *
+     * @inheritdoc
+     */
+    /* istanbul ignore next */
+    public get notificationManagement(): NotificationManagementInterface {
+        return this._notificationManagement;
     }
 }
