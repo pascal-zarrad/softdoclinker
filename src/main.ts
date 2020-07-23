@@ -1,12 +1,17 @@
 /* istanbul ignore file */
+
+import "reflect-metadata";
+import Vue from "vue";
+
 import App from "@/App.vue";
 import Vuetify from "@/plugins/vuetify";
 import { SoftDocLinker } from "@/SoftDocLinker";
 import defaultSharedState from "@/model/defaultSharedState";
+import ContainerManagement from "@/di/ContainerManagement";
 import "../node_modules/vuetify/dist/vuetify.min.css";
 
-import "reflect-metadata";
-import Vue from "vue";
+// Initialize dependency injection
+ContainerManagement.getContainerManagement().init();
 
 // Set instance of data layer management with initial default values
 Vue.prototype.$softDocLinker = new SoftDocLinker();

@@ -2,6 +2,7 @@ import AbstractCacheManagement from "@/cache/AbstractCacheManagement";
 import CacheDataStorage from "@/cache/CacheDataStorage";
 import CacheDataStorageDataStructureInterface from "@/cache/indexeddb/CacheDataStorageDataStructureInterface";
 import { del, get, set } from "idb-keyval";
+import { injectable } from "inversify";
 
 /**
  * A cache manager that utilizes IndexedDB to store data local
@@ -19,6 +20,7 @@ import { del, get, set } from "idb-keyval";
  *
  * @since 2.0.0
  */
+@injectable()
 export default class IndexedDBCacheManagement<
     T
 > extends AbstractCacheManagement<T> {

@@ -1,7 +1,9 @@
-import { Container, interfaces } from "inversify";
-import { buildProviderModule } from "inversify-binding-decorators";
 import ContainerManagementInterface from "@/di/ContainerManagementInterface";
-import applyTypeOverrides from "./types/inversify.types";
+import applyExtendedTypeOverrides from "@/di/types/extend/inversify.typesExtend";
+import applyTypeOverrides from "@/di/types/inversify.types";
+import ContainerAlreadyInitialized from "@/error/di/ContainerAlreadyInitializedError";
+import { Container, injectable, interfaces } from "inversify";
+import { buildProviderModule } from "inversify-binding-decorators";
 
 /**
  * Manages the Inversify IoC container and provides possibilities.
@@ -16,6 +18,7 @@ import applyTypeOverrides from "./types/inversify.types";
  *
  * @since 2.0.0
  */
+@injectable()
 export default class ContainerManagement
     implements ContainerManagementInterface {
     /**
@@ -29,6 +32,11 @@ export default class ContainerManagement
     private _container: Container;
 
     /**
+     * Specifies if the container management has been initialized
+     */
+    private _initialized: boolean = false;
+
+    /**
      * Constructor
      *
      * Call init and initializes the IoC container.
@@ -38,13 +46,20 @@ export default class ContainerManagement
     }
 
     /**
-     * Initializes the IoC container in a two step process:
-     *  - First Step: Initialize all decorator auto-bound types
-     *  - Second Step: Load manual type overrides
+     * @inheritdoc
      */
-    protected init(): void {
-        this.container.load(buildProviderModule());
-        applyTypeOverrides(this);
+    public init(): void {
+        if (!this._initialized) {
+            this.container.load(buildProviderModule());
+            applyTypeOverrides(this);
+            applyExtendedTypeOverrides(this);
+            this._initialized = true;
+            return;
+        }
+
+        throw new ContainerAlreadyInitialized(
+            "ContainerManagement already has been initialized!"
+        );
     }
 
     /**
@@ -85,10 +100,17 @@ export default class ContainerManagement
     }
 
     /**
-     * Getter: Container
+     * Getter: _container
      */
     public get container(): Container {
         return this._container;
+    }
+
+    /**
+     * Getter: _initialized
+     */
+    public get initialized(): boolean {
+        return this._initialized;
     }
 
     /**
@@ -97,7 +119,7 @@ export default class ContainerManagement
      * @return The the instance of the ContainerManagement
      */
     public static getContainerManagement(): ContainerManagementInterface {
-        if (ContainerManagement.containerManagementInstance === null) {
+        if (ContainerManagement.containerManagementInstance === undefined) {
             ContainerManagement.containerManagementInstance = new ContainerManagement();
         }
 
