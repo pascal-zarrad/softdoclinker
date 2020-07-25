@@ -1217,6 +1217,11 @@
     lodash.unescape "4.0.1"
     semver "5.5.0"
 
+"@vue-ioc/core@^0.2.0":
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/@vue-ioc/core/-/core-0.2.0.tgz#b04ff6a4e98455aa2480aabb3c0db349f502cc8d"
+  integrity sha512-E+tsJbKWQK1wLX3N4P88D+5xLeh0rubypVAiWsGXOS/iVSh5DgYR7FT99BfIc6dArxLVxoB4TcJiCW08MBnCiw==
+
 "@vue/babel-helper-vue-jsx-merge-props@^1.0.0":
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/@vue/babel-helper-vue-jsx-merge-props/-/babel-helper-vue-jsx-merge-props-1.0.0.tgz#048fe579958da408fb7a8b2a3ec050b50a661040"
