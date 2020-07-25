@@ -15,11 +15,11 @@
         <navigation-component :drawer="drawer" @toggleDrawer="toggleDrawer" />
 
         <!-- Content area for loaded documentation -->
-        <v-content>
+        <v-main>
             <v-container class="fill-height" fluid>
                 <v-row align="center" justify="center" />
             </v-container>
-        </v-content>
+        </v-main>
         <refresh-data-component></refresh-data-component>
     </v-app>
 </template>
