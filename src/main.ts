@@ -1,5 +1,16 @@
 /* istanbul ignore file */
 
+/*
+ * Entry point of SoftDocLinker.
+ *
+ * main.ts is responsible for the application bootstrapping.
+ * This includes:
+ *  - Initialize dependency injection
+ *  - Preparing Vue with the necessary reactive global state object
+ *  - Initialize VueJS
+ *
+ */
+
 import "reflect-metadata";
 import Vue from "vue";
 
@@ -9,6 +20,7 @@ import { SoftDocLinker } from "@/SoftDocLinker";
 import defaultSharedState from "@/model/defaultSharedState";
 import ContainerManagement from "@/di/ContainerManagement";
 import "../node_modules/vuetify/dist/vuetify.min.css";
+import { TYPES } from "./di/types/inversify.symbols";
 
 // Initialize dependency injection
 ContainerManagement.getContainerManagement().init();
@@ -16,7 +28,9 @@ ContainerManagement.getContainerManagement().init();
 // Set instance of data layer management with initial default values
 Vue.prototype.$softDocLinker = new SoftDocLinker();
 // Initialize shared state with default value
-Vue.prototype.$sharedState = Vue.observable(defaultSharedState());
+Vue.prototype.$sharedState = ContainerManagement.getContainerManagement().get(
+    TYPES.SharedStateInterface
+);
 
 new Vue({
     vuetify: Vuetify,

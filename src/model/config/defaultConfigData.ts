@@ -1,7 +1,8 @@
 import ConfigDataInterface from "@/model/config/ConfigDataInterface";
 
 /**
- * Returns a fresh object containing the default config of SoftDocLinker
+ * Returns a fresh object containing the default config of SoftDocLinker.
+ * Used to initialize the default shared state of the application.
  *
  * @since 2.0.0
  */

@@ -2,6 +2,7 @@
 
 import ContainerManagement from "@/di/ContainerManagement";
 import { TYPES } from "@/di/types/inversify.symbols";
+import defaultSharedState from "@/model/defaultSharedState";
 import { Container } from "inversify";
 
 /**
@@ -23,4 +24,9 @@ export default function applyTypeOverrides(
     container
         .bind(TYPES.ContainerManagementInterface)
         .toConstantValue(ContainerManagement.getContainerManagement());
+
+    // @/model
+    container
+        .bind(TYPES.SharedStateInterface)
+        .toConstantValue(defaultSharedState());
 }

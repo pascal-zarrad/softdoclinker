@@ -1,4 +1,5 @@
 import CacheDataStorage from "@/cache/CacheDataStorage";
+import CacheDataStorageInterface from "@/cache/CacheDataStorageInterface";
 
 /**
  * An interface that can be used to implement caching
@@ -35,7 +36,7 @@ export default interface CacheManagementInterface<T> {
      *
      * @param data The new or updated DataCacheStorage<T>
      */
-    update(data: CacheDataStorage<T>): Promise<void>;
+    update(data: CacheDataStorageInterface<T>): Promise<void>;
 
     /**
      * Manually invalidates the currently cached data with the specified key.

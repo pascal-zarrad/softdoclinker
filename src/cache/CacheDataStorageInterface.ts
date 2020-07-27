@@ -7,19 +7,19 @@
  *
  * @since 2.0.0
  */
-export default interface CacheDataStorageDataInterface<T> {
+export default interface CacheDataStorageInterface<T> {
     /**
      * The key of this cache data storage
      */
-    _key: string;
+    key: string;
 
     /**
      * The cached data
      */
-    _data: T;
+    data: T;
 
     /**
      * The last time this cache data storage has been accessed.
      */
-    _lastAccess: Date;
+    lastAccess: Date;
 }

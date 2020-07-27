@@ -1,7 +1,7 @@
+import { TYPES } from "@/di/types/inversify.symbols";
 import ConfigDataInterface from "@/model/config/ConfigDataInterface";
 import ConfigDataRepository from "@/model/config/ConfigDataRepository";
 import DataRepositoryInterface from "@/model/DataRepositoryInterface";
-import defaultSharedState from "@/model/defaultSharedState";
 import DocCollectionDataRepository from "@/model/doc/DocCollectionDataRepository";
 import DocCollectionInterface from "@/model/doc/DocCollectionInterface";
 import NotificationFactory from "@/model/notification/NotificationFactory";
@@ -9,6 +9,7 @@ import NotificationType from "@/model/notification/NotificationType";
 import SharedStateInterface from "@/model/SharedStateInterface";
 import StateManagementInterface from "@/model/StateManagementInterface";
 import NotificationManagementInterface from "@/service/notification/NotificationManagementInterface";
+import { inject } from "inversify";
 
 /**
  * State management that manages the data used by the rendering.
@@ -57,7 +58,7 @@ export default class StateManagement implements StateManagementInterface {
         docDataRepository: DataRepositoryInterface<DocCollectionInterface>,
         notificationManagement: NotificationManagementInterface,
         notificationFactory: NotificationFactory = new NotificationFactory(),
-        sharedState: SharedStateInterface = defaultSharedState()
+        @inject(TYPES.SharedStateInterface) sharedState: SharedStateInterface
     ) {
         this._configDataRepository = configDataRepository;
         this._docDataRepository = docDataRepository;

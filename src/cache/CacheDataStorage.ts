@@ -1,12 +1,18 @@
 /* istanbul ignore file */
 
+import CacheDataStorageInterface from "@/cache/CacheDataStorageInterface";
+import { TYPES } from "@/di/types/inversify.symbols";
+import { provide } from "inversify-binding-decorators";
+
 /**
  * A simple object that stores a key-value cache
  * object with some meta information.
  *
  * @since 2.0.0
  */
-export default class CacheDataStorage<T> {
+@provide(TYPES.CacheDataStorageInterface)
+export default class CacheDataStorage<T>
+    implements CacheDataStorageInterface<T> {
     /**
      * The key of this cache data storage
      */
@@ -27,7 +33,7 @@ export default class CacheDataStorage<T> {
      *
      * @param data The data that is cached by this CacheDataStorage object
      */
-    constructor(key: string, data: T, lastAccess: Date = new Date()) {
+    constructor(key: string, data: T, lastAccess: Date) {
         this._key = key;
         this._data = data;
         this._lastAccess = lastAccess;
