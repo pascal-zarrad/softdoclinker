@@ -15,6 +15,6 @@ export default class CacheDataStorageFactory {
      * @param data The data that the CacheDataStorage should store initially
      */
     public create<T>(key: string, data: T): CacheDataStorage<T> {
-        return new CacheDataStorage<T>(key, data);
+        return new CacheDataStorage<T>(key, data, new Date());
     }
 }

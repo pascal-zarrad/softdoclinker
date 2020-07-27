@@ -1,11 +1,13 @@
-import AbstractCacheManagement from "@/cache/AbstractCacheManagement";
 import CacheDataStorage from "@/cache/CacheDataStorage";
+import CacheDataStorageInterface from "@/cache/CacheDataStorageInterface";
+import CacheManagementBridge from "@/cache/CacheManagementBridge";
+import CacheManagementInterface from "@/cache/CacheManagementInterface";
 import CacheDataStorageDataStructureInterface from "@/cache/indexeddb/CacheDataStorageDataStructureInterface";
 import { TYPES } from "@/di/types/inversify.symbols";
+import SharedStateInterface from "@/model/SharedStateInterface";
 import { del, get, set } from "idb-keyval";
+import { inject } from "inversify";
 import { fluentProvide } from "inversify-binding-decorators";
-import CacheDataStorageInterface from "../CacheDataStorageInterface";
-import CacheManagementBridge from "../CacheManagementBridge";
 
 /**
  * A cache manager that utilizes IndexedDB to store data local
@@ -26,9 +28,22 @@ import CacheManagementBridge from "../CacheManagementBridge";
 @(fluentProvide(TYPES.CacheManagementInterface)
     .whenInjectedInto(CacheManagementBridge)
     .done())
-export default class IndexedDBCacheManagement<
-    T
-> extends AbstractCacheManagement<T> {
+export default class IndexedDBCacheManagement<T>
+    implements CacheManagementInterface<T> {
+    /**
+     * The sharedState of the application
+     */
+    protected sharedState: SharedStateInterface;
+
+    /**
+     * Constructor
+     */
+    public constructor(
+        @inject(TYPES.SharedStateInterface) sharedState: SharedStateInterface
+    ) {
+        this.sharedState = sharedState;
+    }
+
     /**
      * @inheritdoc
      *
@@ -79,7 +94,10 @@ export default class IndexedDBCacheManagement<
             }
 
             const lastAccessDelta = Date.now() - cacheItem.lastAccess.getTime();
-            if (lastAccessDelta / 1000 > this._lifetime) {
+            if (
+                lastAccessDelta / 1000 >
+                this.sharedState.currentConfig.cacheLifetime
+            ) {
                 return false;
             }
 
