@@ -36,6 +36,13 @@ export default function defaultConfigData(): ConfigDataInterface {
          */
         navigation: {
             links: []
+        },
+
+        /**
+         * @inheritdoc
+         */
+        notifications: {
+            timeout: 3000
         }
     };
 }

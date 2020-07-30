@@ -21,6 +21,9 @@
 <script lang="ts">
 import NotificationInterface from "@/model/notification/NotificationInterface";
 import { Component, Vue } from "vue-property-decorator";
+import { Module } from '@vue-ioc/core';
+import { TYPES } from '../di/types/inversify.symbols';
+import { inject } from 'inversify';
 
 /**
  * Component that handles notification display by making use of the

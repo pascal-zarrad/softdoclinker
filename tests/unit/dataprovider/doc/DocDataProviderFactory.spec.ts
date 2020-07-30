@@ -1,5 +1,5 @@
 import DataProviderInterface from "@/dataprovider/DataProviderInterface";
-import DocAjaxDataProvider from "@/dataprovider/doc/DocAjaxDataProvider";
+import DocAjaxDataProvider from "@/dataprovider/doc/ajax/DocAjaxDataProvider";
 import DocCollectionDataProviderFactory from "@/dataprovider/doc/DocCollectionDataProviderFactory";
 import DocCollectionInterface from "@/model/doc/DocCollectionInterface";
 

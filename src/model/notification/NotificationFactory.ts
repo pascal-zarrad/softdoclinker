@@ -1,3 +1,4 @@
+import { injectable } from "inversify";
 /* istanbul ignore file */
 
 import NotificationInterface from "./NotificationInterface";
@@ -7,6 +8,7 @@ import NotificationInterface from "./NotificationInterface";
  *
  * @since 2.0.0
  */
+@injectable()
 export default class NotificationFactory {
     /**
      * Create a new notification.

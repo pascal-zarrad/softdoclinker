@@ -1,9 +1,10 @@
 import CacheDataStorage from "@/cache/CacheDataStorage";
 import CacheDataStorageInterface from "@/cache/CacheDataStorageInterface";
 import CacheManagementInterface from "@/cache/CacheManagementInterface";
+import provideSingleton from "@/di/decorators/provideSingleton";
 import BridgeInterface from "@/di/pattern/BridgeInterface";
+import { TYPES } from "@/di/types/inversify.symbols";
 import { Inject } from "@vue-ioc/core";
-import { injectable } from "inversify";
 import IndexedDBCacheManagement from "./indexeddb/IndexedDBCacheManagement";
 
 /**
@@ -11,7 +12,7 @@ import IndexedDBCacheManagement from "./indexeddb/IndexedDBCacheManagement";
  *
  * @since 2.0.0
  */
-@injectable()
+@provideSingleton(TYPES.CacheManagementInterface)
 export default class CacheManagementBridge<T>
     implements
         CacheManagementInterface<T>,

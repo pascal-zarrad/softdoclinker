@@ -6,7 +6,7 @@ import IndexedDBCacheManagement from "@/cache/indexeddb/IndexedDBCacheManagement
 import ConfigDataInterface from "@/model/config/ConfigDataInterface";
 import CacheDataStorageFactory from "@/cache/CacheDataStorageFactory";
 import DocCollectionDataRepository from "@/model/doc/DocCollectionDataRepository";
-import DocAjaxDataProvider from "@/dataprovider/doc/DocAjaxDataProvider";
+import DocAjaxDataProvider from "@/dataprovider/doc/ajax/DocAjaxDataProvider";
 import DocCollectionInterface from "@/model/doc/DocCollectionInterface";
 import NotificationManagement from "@/service/notification/NotificationManagement";
 

@@ -12,5 +12,8 @@
                 "target": "_self"
             }
         ]
+    },
+    "notifications": {
+        "timeout": 3000
     }
 }

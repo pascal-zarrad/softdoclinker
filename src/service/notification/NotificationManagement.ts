@@ -1,6 +1,11 @@
 import NotificationManagementInterface from "@/service/notification/NotificationManagementInterface";
 import NotificationInterface from "@/model/notification/NotificationInterface";
 import Vue from "vue";
+import { provide } from "inversify-binding-decorators";
+import { TYPES } from "@/di/types/inversify.symbols";
+import provideSingleton from "@/di/decorators/provideSingleton";
+import SharedStateInterface from "@/model/SharedStateInterface";
+import { inject } from "inversify";
 
 /**
  * Simple notification management that is used to add and remove
@@ -9,6 +14,7 @@ import Vue from "vue";
  * @since 2.0.0
  * @see ./NotificationManagementInterface
  */
+@provideSingleton(TYPES.NotificationManagementInterface)
 export default class NotificationManagement
     implements NotificationManagementInterface {
     /**
@@ -17,17 +23,19 @@ export default class NotificationManagement
     protected _notifications: NotificationInterface[] = Vue.observable([]);
 
     /**
-     * The timeout how long a single notification is shown.
+     * The shared state of the application
      */
-    protected timeout: number;
+    protected _sharedState: SharedStateInterface;
 
     /**
      * Constructor
      *
      * @param timeout The timeout how long a single notification is shown.
      */
-    constructor(timeout: number = 3000) {
-        this.timeout = timeout;
+    constructor(
+        @inject(TYPES.SharedStateInterface) sharedState: SharedStateInterface
+    ) {
+        this._sharedState = sharedState;
     }
 
     /**
@@ -39,7 +47,7 @@ export default class NotificationManagement
         setTimeout(() => {
             notification.show = false;
             this.removeNotification(notification);
-        }, this.timeout);
+        }, this._sharedState.currentConfig.notifications.timeout);
 
         return true;
     }

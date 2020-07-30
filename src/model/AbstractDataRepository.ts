@@ -1,6 +1,5 @@
 import CacheDataStorageFactory from "@/cache/CacheDataStorageFactory";
 import CacheManagementInterface from "@/cache/CacheManagementInterface";
-import DataProviderInterface from "@/dataprovider/DataProviderInterface";
 import DataRepositoryInterface from "@/model/DataRepositoryInterface";
 
 /**

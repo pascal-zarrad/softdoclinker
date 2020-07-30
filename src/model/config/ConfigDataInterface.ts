@@ -1,4 +1,5 @@
 import NavigationInterface from "@/model/config/navigation/NavigationInterface";
+import NotificationConfigInterface from "@/model/config/notification/NotificationConfigInterface";
 
 /**
  * An interface that defines the base configuration of SoftDocLinker
@@ -33,4 +34,9 @@ export default interface ConfigDataInterface {
      * The configurable navigation of SoftDocLinker.
      */
     navigation: NavigationInterface;
+
+    /**
+     * The configuration of the frontend notification system
+     */
+    notifications: NotificationConfigInterface;
 }

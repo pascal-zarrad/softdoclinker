@@ -17,6 +17,16 @@ export const TYPES = {
     CacheManagementInterface: Symbol.for("CacheManagementInterface"),
     CacheDataStorageInterface: Symbol.for("CacheDataStorageInterface"),
 
+    // @/dataprovider/config
+    ConfigDataProviderInterface: Symbol.for("ConfigDataProviderInterface"),
+    // @/dataprovider/doc
+    DocDataProviderInterface: Symbol.for("DocDataProviderInterface"),
+
     // @/model
-    SharedStateInterface: Symbol.for("SharedStateInterface")
+    SharedStateInterface: Symbol.for("SharedStateInterface"),
+
+    // @/service/notification
+    NotificationManagementInterface: Symbol.for(
+        "NotificationManagementInterface"
+    )
 };

@@ -3,7 +3,7 @@ import CacheDataStorageFactory from "@/cache/CacheDataStorageFactory";
 import CacheManagementInterface from "@/cache/CacheManagementInterface";
 import IndexedDBCacheManagement from "@/cache/indexeddb/IndexedDBCacheManagement";
 import DataProviderInterface from "@/dataprovider/DataProviderInterface";
-import DocAjaxDataProvider from "@/dataprovider/doc/DocAjaxDataProvider";
+import DocAjaxDataProvider from "@/dataprovider/doc/ajax/DocAjaxDataProvider";
 import DocCollectionDataRepository from "@/model/doc/DocCollectionDataRepository";
 import DocCollectionInterface from "@/model/doc/DocCollectionInterface";
 

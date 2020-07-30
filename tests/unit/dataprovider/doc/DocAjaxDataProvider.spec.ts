@@ -1,4 +1,4 @@
-import DocAjaxDataProvider from "@/dataprovider/doc/DocAjaxDataProvider";
+import DocAjaxDataProvider from "@/dataprovider/doc/ajax/DocAjaxDataProvider";
 import Axios from "axios";
 
 jest.mock("axios");
